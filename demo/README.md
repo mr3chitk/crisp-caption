@@ -8,14 +8,14 @@ This folder contains short feature demos for the README.
 
 ## Transparent Desktop Overlay
 
-<video src="overlay.mp4" controls muted playsinline width="960"></video>
+https://github.com/user-attachments/assets/36bbb83d-79f2-49e7-a71c-f146bd5ca058
 
 [Open overlay.mp4](overlay.mp4)
 
 ## OBS Browser Source Overlay
 
-<video src="obs-subtitle.mp4" controls muted playsinline width="960"></video>
+https://github.com/user-attachments/assets/9b6e92a7-37d3-451e-bce8-c43d47ac3544
 
 [Open obs-subtitle.mp4](obs-subtitle.mp4)
 
-The original MKV captures can be kept locally as source files, but the README links to MP4 for GitHub preview.
+The local MP4 links are kept as fallback files inside the repository.

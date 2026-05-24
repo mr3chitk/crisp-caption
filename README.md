@@ -25,8 +25,9 @@ Feature demos are stored in `demo/`:
 
 - [Transparent desktop overlay](demo/overlay.mp4)
 - [OBS subtitle overlay](demo/obs-subtitle.mp4)
+- [Full demo page](demo/)
 
-The MP4 versions are intended for GitHub browser preview.
+The demo page includes GitHub-hosted video previews and local MP4 fallbacks.
 
 ## Windows Quick Start
 
