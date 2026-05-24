@@ -1,0 +1,24 @@
+{
+  "artifacts": [
+    {
+      "name": "Cohere Japanese ASR model",
+      "path": "models/asr/cohere-asr-ja-v0.1-q4_k.gguf",
+      "url": "https://huggingface.co/TransWithAI/cohere-transcribe-ja-v0.1-GGUF/resolve/c5d36d66dc7d92ade00e01862a95b571c04b446b/cohere-asr-ja-v0.1-q4_k.gguf",
+      "sha256": "0bdcbd18bd95c4fc020595f67f98ee08e37f48046ebc22442cadd7cc46be9712"
+    },
+    {
+      "name": "FireRed VAD model",
+      "path": "models/vad/firered-vad.gguf",
+      "url": "https://huggingface.co/cstr/firered-vad-GGUF/resolve/aa92f55584d0fa37b9aae9a9c10bee275a0af240/firered-vad.gguf",
+      "sha256": "72d37db1a5d2a9db386d1452b3f54d13f97bea79710105fc65acd050ea7db600"
+    },
+    {
+      "name": "Hy-MT2 translation model",
+      "path": "models/translation/Hy-MT2-1.8B-Q4_K_M.gguf",
+      "url": "https://huggingface.co/tencent/Hy-MT2-1.8B-GGUF/resolve/2a9c104757ab36f679ae8e6006b437cf9867c329/Hy-MT2-1.8B-Q4_K_M.gguf",
+      "sha256": "dc5f44fcf1fa496ee7ad725982c0c8c553a4de00259b53af84c4b89fb0c06699",
+      "license": "Tencent HY Community License Agreement",
+      "license_url": "https://github.com/Tencent-Hunyuan/Hy-MT2/blob/main/LICENSE.txt"
+    }
+  ]
+}

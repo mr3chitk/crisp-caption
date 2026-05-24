@@ -1,0 +1,2 @@
+Translate the input Japanese subtitle segment into Traditional Chinese (Taiwan).
+Output only the translation. Do not add explanations, notes, labels, or terminology lists.
