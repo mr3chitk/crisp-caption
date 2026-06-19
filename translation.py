@@ -48,7 +48,7 @@ def build_translation_system_prompt(glossary: dict[str, str]) -> str:
 def build_user_message(
     text: str,
     glossary: dict[str, str],
-    target_lang: str = "繁體中文（台灣）",
+    target_lang: str = "EN-US",
     history: Sequence[tuple[str, str]] | None = None,
 ) -> str:
     context_blocks: list[str] = []
@@ -59,20 +59,20 @@ def build_user_message(
     if history:
         history_lines = []
         for idx, (orig, trans) in enumerate(history, start=1):
-            history_lines.append(f"{idx}. 原文：{orig}\n   译文：{trans}")
-        context_blocks.append("上文参考（只用于理解语气、人物、代词和场景，不要重新翻译）：\n" + "\n".join(history_lines))
+            history_lines.append(f"{idx}. Original text:{orig}\n   Translation:{trans}")
+        context_blocks.append("Reference the following translations: \n" + "\n".join(history_lines))
 
     if context_blocks:
         context = "\n\n".join(context_blocks)
         return (
             f"{context}\n\n"
-            f"把【当前原文】翻译为{target_lang}。只输出译文，不要输出标签、原文、解释或额外内容。\n\n"
-            f"【当前原文】\n{text}"
+            f"Translate the following segment into {target_lang}. Note that you must ONLY output the translated result without any additional explanation:\n\n"
+            f"\n{text}"
         )
 
     return (
-        f"把【当前原文】翻译为{target_lang}。只输出译文，不要输出标签、原文、解释或额外内容。\n\n"
-        f"【当前原文】\n{text}"
+        f"Translate the following segment into {target_lang}. Note that you must ONLY output the translated result without any additional explanation:\n\n"
+        f"\n{text}"
     )
 
 

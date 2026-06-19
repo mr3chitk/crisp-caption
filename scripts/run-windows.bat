@@ -34,8 +34,8 @@ echo If the normal server failed, try scripts\start-translation-server-low-vram-
 
 :translation_ready
 echo Starting crisp-caption bridge...
-echo Opening http://127.0.0.1:8765/ after a short startup delay...
-start "" powershell -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command "Start-Sleep -Seconds 3; Start-Process 'http://127.0.0.1:8765/'"
+::echo Opening http://127.0.0.1:8765/ after a short startup delay...
+::start "" powershell -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command "Start-Sleep -Seconds 3; Start-Process 'http://127.0.0.1:8765/'"
 if "%PY%"=="py -3" (
   py -3 bridge_server.py --config profiles\profile.ja.json
 ) else (

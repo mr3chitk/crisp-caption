@@ -6,13 +6,13 @@ def qt_overlay_html(ws_url: str, font_px: int) -> str:
         ws_url=ws_url,
         body_css="align-items: end; display: grid; padding: 28px 42px 34px;",
         main_font=f"{font_px}px",
-        partial_font=f"{max(16, round(font_px * 0.72))}px",
-        main_weight="750",
-        main_line_height="1.32",
-        partial_weight="600",
-        partial_line_height="1.35",
-        partial_margin_top="8px",
-        status_font="16px",
+        partial_font=f"{max(16, round(font_px * 1.0))}px",
+        main_weight="650",
+        main_line_height="1.20",
+        partial_weight="650",
+        partial_line_height="1.20",
+        partial_margin_top="4px",
+        status_font="20px",
         status_weight="650",
         initial_status="Connecting to CrispASR...",
         connected_status="CrispASR connected",
@@ -79,28 +79,35 @@ body {{
   {body_css}
 }}
 #subtitle {{
-  text-align: center;
-  text-shadow: 0 2px 4px #000, 0 0 14px #000, 0 0 28px #000;
+  text-align: left;
+  text-shadow: 0 2px 4px #000, 0 0 8px #000, 0 0 16px #000, 0 0 32px #000;
   width: 100%;
 }}
 #main {{
+  color: rgba(190, 190, 255, 1.0);
   font-size: {main_font};
   font-weight: {main_weight};
   line-height: {main_line_height};
   overflow-wrap: anywhere;
 }}
 #partial {{
-  color: rgba(235, 244, 255, .74);
-  display: none;
+  color: rgba(240, 240, 240, 1.0);
   font-size: {partial_font};
-  font-style: italic;
+  font-weight: {partial_weight};
+  line-height: {partial_line_height};
+  margin-top: {partial_margin_top};
+  overflow-wrap: anywhere;
+}}
+#partial2 {{
+  color: rgba(240, 240, 240, 1.0);
+  font-size: {partial_font};
   font-weight: {partial_weight};
   line-height: {partial_line_height};
   margin-top: {partial_margin_top};
   overflow-wrap: anywhere;
 }}
 #status {{
-  color: rgba(235, 244, 255, .72);
+  color: rgba(190, 190, 255, 1.0);
   font-size: {status_font};
   font-weight: {status_weight};
 }}
@@ -109,8 +116,9 @@ body {{
 <body>
 <main id="subtitle">
   <div id="status">{initial_status}</div>
-  <div id="main"></div>
+  <div id="partial2"></div>
   <div id="partial"></div>
+  <div id="main"></div>
 </main>
 <script>
 (() => {{
@@ -118,6 +126,7 @@ body {{
   const status = document.getElementById('status');
   const mainLine = document.getElementById('main');
   const partialLine = document.getElementById('partial');
+  const partialLine2 = document.getElementById('partial2');
   const rowsByKey = new Map();
   const finalSeqToKey = new Map();
 
@@ -128,20 +137,20 @@ body {{
   function render() {{
     const rows = Array.from(rowsByKey.values());
     const finalRow = rows.slice().reverse().find((row) => row.kind === 'final');
-    const finalId = finalRow?.utterance_id ?? null;
-    const partialRow = rows.slice().reverse().find((row) =>
-      row.kind === 'partial' &&
-      row.text &&
-      (finalId == null || row.utterance_id == null || row.utterance_id !== finalId)
-    );
-
-    const main = finalRow?.translation || finalRow?.text || '';
-    const partial = partialRow?.text || '';
-    status.style.display = main || partial ? 'none' : 'block';
+    const finalId = rows.slice().reverse().findIndex((row) => row.kind === 'final');
+    const partialRow = rows.slice().reverse().at(finalId+1);
+    const partialRow2 = rows.slice().reverse().at(finalId+2);
+    const main = finalRow?.translation || '';
+    const partial = partialRow?.translation || '';
+    const partial2 = partialRow2?.translation || '';
+    status.style.display = main || partial || partial2 ? 'none' : 'block';
     status.textContent = 'Waiting for subtitles';
-    mainLine.textContent = main || partial || '';
-    partialLine.textContent = main && partial ? partial : '';
-    partialLine.style.display = main && partial ? 'block' : 'none';
+    mainLine.textContent = main || '';
+    mainLine.style.display = main ? 'block' : 'none';
+    partialLine.textContent = partial || '';
+    partialLine.style.display = partial ? 'block' : 'none';
+    partialLine2.textContent = partial2 || '';
+    partialLine2.style.display = partial2 ? 'block' : 'none';
   }}
 
   function connect() {{

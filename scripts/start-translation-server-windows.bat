@@ -3,7 +3,7 @@ setlocal
 cd /d "%~dp0\.."
 
 set "LLAMA_SERVER=tools\llama.cpp\llama-server.exe"
-set "MODEL=models\translation\Hy-MT2-1.8B-Q4_K_M.gguf"
+set "MODEL=models\translation\Hy-MT2-1.8B-UD-Q5_K_XL.gguf"
 
 if not exist "%LLAMA_SERVER%" (
   echo [FAIL] llama-server not found: %LLAMA_SERVER%
@@ -22,13 +22,10 @@ if not exist "%MODEL%" (
 "%LLAMA_SERVER%" ^
   -m "%MODEL%" ^
   -a Hy-MT2-1.8B ^
-  -dev Vulkan0 ^
   -ngl all ^
-  -sm none ^
-  -c 8192 ^
+  -c 4096 ^
   -b 2048 ^
   -ub 1024 ^
-  -fa on ^
   -np 1 ^
   --cache-prompt ^
   --cache-reuse 64 ^

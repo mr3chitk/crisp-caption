@@ -27,7 +27,6 @@ if not exist "%MODEL%" (
   -c 4096 ^
   -b 512 ^
   -ub 256 ^
-  -fa on ^
   -np 1 ^
   --cache-prompt ^
   --cache-reuse 64 ^
