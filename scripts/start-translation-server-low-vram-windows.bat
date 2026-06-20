@@ -23,7 +23,6 @@ if not exist "%MODEL%" (
   -m "%MODEL%" ^
   -a Hy-MT2-1.8B ^
   -ngl all ^
-  -sm none ^
   -c 4096 ^
   -b 512 ^
   -ub 256 ^

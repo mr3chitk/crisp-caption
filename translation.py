@@ -52,7 +52,11 @@ def build_user_message(
     history: Sequence[tuple[str, str]] | None = None,
 ) -> str:
     context_blocks: list[str] = []
-
+    # preprocess chars which may freeze MT2
+    to_remove = "!"
+    pattern = "(?P<char>[" + re.escape(to_remove) + "])(?P=char)+"
+    text = re.sub(pattern, r"\1", text)
+    
     if glossary:
         context_blocks.append(build_glossary_text(glossary))
 
