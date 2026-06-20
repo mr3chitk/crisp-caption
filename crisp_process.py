@@ -114,7 +114,7 @@ async def relay_stdout(
                     payload["t"] = val
                     audio_t = float(val)
                 terminal_payload = event if print_raw_crisp_events else payload
-                print(json.dumps(add_debug_timestamps(terminal_payload, audio_t), ensure_ascii=False), flush=True)
+                # print(json.dumps(add_debug_timestamps(terminal_payload, audio_t), ensure_ascii=False), flush=True)
                 await broadcast_json(state.ws_clients, payload)
                 continue
 
