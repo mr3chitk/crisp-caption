@@ -20,7 +20,7 @@ if not exist "tools\llama.cpp\llama-server.exe" (
 )
 
 echo Starting translation server in a new window...
-start "crisp-caption translation" cmd /k scripts\start-translation-server-windows.bat
+start /min "crisp-caption translation" cmd /c scripts\start-translation-server-windows.bat
 
 echo Waiting for translation server health endpoint...
 for /L %%i in (1,1,60) do (

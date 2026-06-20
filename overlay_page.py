@@ -80,8 +80,12 @@ body {{
 }}
 #subtitle {{
   text-align: left;
-  text-shadow: 0 2px 4px #000, 0 0 8px #000, 0 0 16px #000, 0 0 32px #000;
+  text-shadow: 0 2px 4px #000, 0 0 8px #000, 0 0 16px #000, 0 0 24px #000;
   width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }}
 #main {{
   color: rgba(190, 190, 255, 1.0);
