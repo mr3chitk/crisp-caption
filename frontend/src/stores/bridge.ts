@@ -82,7 +82,7 @@ export const useBridgeStore = defineStore('bridge', {
       showPartials: true,
       displayMode: 'both',
       autoScroll: true,
-      transcriptFontPx: 18,
+      transcriptFontPx: 20,
     } as UiSettings,
   }),
   getters: {
