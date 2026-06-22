@@ -52,11 +52,7 @@ def build_user_message(
     history: Sequence[tuple[str, str]] | None = None,
 ) -> str:
     context_blocks: list[str] = []
-    # preprocess chars which may freeze MT2
-    to_remove = "!"
-    pattern = "(?P<char>[" + re.escape(to_remove) + "])(?P=char)+"
-    text = re.sub(pattern, r"\1", text)
-    
+
     if glossary:
         context_blocks.append(build_glossary_text(glossary))
 
@@ -221,6 +217,7 @@ async def translator_worker(
             "top_p": translate_top_p,
             "repeat_penalty": translate_repeat_penalty,
             "max_tokens": translate_max_tokens,
+            "t_max_predict_ms": 8000,
             "stream": False,
         }
         try:
