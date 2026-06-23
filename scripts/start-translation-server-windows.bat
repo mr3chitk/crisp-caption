@@ -21,16 +21,13 @@ if not exist "%MODEL%" (
 
 "%LLAMA_SERVER%" ^
   -m "%MODEL%" ^
-  --models-preset ./my-models.ini
   -a Hy-MT2-1.8B ^
   -ngl all ^
   -c 4096 ^
   -b 2048 ^
   -ub 512 ^
   -np 1 ^
-  --cache-prompt ^
-  --cache-reuse 64 ^
   --host 127.0.0.1 ^
-  --port 8080
-
+  --port 8080 ^
+  --timeout 8
 pause

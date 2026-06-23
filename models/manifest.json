@@ -33,10 +33,10 @@
       "sha256": "7f38d2a226be8108dd7b51f1cea968e828a03eb0a537dd6c3436476368af29a2"
     },
     {
-      "name": "Hy-MT2.0 Q6",
-      "path": "models/translation/Hy-MT2-1.8B-Q6_K.gguf",
-      "url": "https://huggingface.co/tencent/Hy-MT2-1.8B-GGUF/resolve/main/Hy-MT2-1.8B-Q6_K.gguf",
-      "sha256": "d98fe604dec1f28f58f80d7d560f7177e584d3b8e5835862687660e5ff97cb40"
+      "name": "Hy-MT2.0 UDQ5",
+      "path": "models/translation/Hy-MT2-1.8B-UD-Q5_K_XL.gguf",
+      "url": "https://huggingface.co/unsloth/Hy-MT2-1.8B-GGUF/resolve/main/Hy-MT2-1.8B-UD-Q5_K_XL.gguf",
+      "sha256": "22a9e77b29fd486ceaab023b47d32102fc3fef25120225e833541eb59e6deba0"
     }
   ]
 }
