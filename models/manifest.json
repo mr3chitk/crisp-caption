@@ -1,16 +1,34 @@
 {
   "artifacts": [
     {
-      "name": "Cohere q4",
-      "path": "models/asr/cohere-asr-ja-v0.1-q4_k.gguf",
-      "url": "https://huggingface.co/TransWithAI/cohere-transcribe-ja-v0.1-GGUF/resolve/main/cohere-asr-ja-v0.1-q4_k.gguf",
-      "sha256": "0bdcbd18bd95c4fc020595f67f98ee08e37f48046ebc22442cadd7cc46be9712"
+      "name": "Cohere JP q6",
+      "path": "models/asr/cohere-asr-ja-v0.1-q6_k.gguf",
+      "url": "https://huggingface.co/TransWithAI/cohere-transcribe-ja-v0.1-GGUF/resolve/main/cohere-asr-ja-v0.1-q6_k.gguf",
+      "sha256": "192eee151417b6a7b08fff7023a1e3126306391e25c3ad9903d8562fdf2f75f4"
     },
     {
-      "name": "Cohere q5",
-      "path": "models/asr/cohere-asr-ja-v0.1-q5_0.gguf",
-      "url": "https://huggingface.co/TransWithAI/cohere-transcribe-ja-v0.1-GGUF/resolve/main/cohere-asr-ja-v0.1-q5_0.gguf",
-      "sha256": "16ca858b79d1faf07ed1f123e099838459e9da05bd7dff61a7197d0b35afc79b"
+      "name": "parakeet-tdt-0.6b-ja.gguf",
+      "path": "models/asr/parakeet-tdt-0.6b-ja.gguf",
+      "url": "https://huggingface.co/cstr/parakeet-tdt-0.6b-ja-GGUF/resolve/main/parakeet-tdt-0.6b-ja.gguf",
+      "sha256": "a9c43116b180b8a2ada2771ac829cf751b9e73adcbe69b7c8379593f9e5da31e"
+    },
+    {
+      "name": "qwen3-asr-1.7b-q8_0.gguf",
+      "path": "models/asr/qwen3-asr-1.7b-q8_0.gguf",
+      "url": "https://huggingface.co/cstr/qwen3-asr-1.7b-GGUF/resolve/main/qwen3-asr-1.7b-q8_0.gguf",
+      "sha256": "9851ab996591a2d0cb0efb216002764b509c86bd40c95e613d7b65b8e69c8a6e"
+    },
+    {
+      "name": "qwen3-asr-0.6b-q8_0.gguf",
+      "path": "models/asr/qwen3-asr-0.6b-q8_0.gguf",
+      "url": "https://huggingface.co/cstr/qwen3-asr-0.6b-GGUF/resolve/main/qwen3-asr-0.6b-q8_0.gguf",
+      "sha256": "f547589d5ca582e093b2d3312ad9ff13b609b43d413f972c0e92b823dde70a00"
+    },
+    {
+      "name": "nemotron-3.5-asr-streaming-0.6b-f16.gguf",
+      "path": "models/asr/nemotron-3.5-asr-streaming-0.6b-f16.gguf",
+      "url": "https://huggingface.co/cstr/nemotron-3.5-asr-streaming-GGUF/resolve/main/nemotron-3.5-asr-streaming-0.6b-f16.gguf",
+      "sha256": "14cbc98df495d8ab452c6a4ac367136d94ab5da55e73afaa96ba4f749dd95d09"
     },
     {
       "name": "FireRed VAD model",
@@ -19,24 +37,10 @@
       "sha256": "72d37db1a5d2a9db386d1452b3f54d13f97bea79710105fc65acd050ea7db600"
     },
     {
-      "name": "Hy-MT2 translation model",
-      "path": "models/translation/Hy-MT2-1.8B-Q4_K_M.gguf",
-      "url": "https://huggingface.co/tencent/Hy-MT2-1.8B-GGUF/resolve/2a9c104757ab36f679ae8e6006b437cf9867c329/Hy-MT2-1.8B-Q4_K_M.gguf",
-      "sha256": "dc5f44fcf1fa496ee7ad725982c0c8c553a4de00259b53af84c4b89fb0c06699",
-      "license": "Tencent HY Community License Agreement",
-      "license_url": "https://github.com/Tencent-Hunyuan/Hy-MT2/blob/main/LICENSE.txt"
-    },
-    {
       "name": "Hy-MT2.0 UDQ6",
       "path": "models/translation/Hy-MT2-1.8B-UD-Q6_K_XL.gguf",
       "url": "https://huggingface.co/unsloth/Hy-MT2-1.8B-GGUF/resolve/main/Hy-MT2-1.8B-UD-Q6_K_XL.gguf",
       "sha256": "7f38d2a226be8108dd7b51f1cea968e828a03eb0a537dd6c3436476368af29a2"
-    },
-    {
-      "name": "Hy-MT2.0 UDQ5",
-      "path": "models/translation/Hy-MT2-1.8B-UD-Q5_K_XL.gguf",
-      "url": "https://huggingface.co/unsloth/Hy-MT2-1.8B-GGUF/resolve/main/Hy-MT2-1.8B-UD-Q5_K_XL.gguf",
-      "sha256": "22a9e77b29fd486ceaab023b47d32102fc3fef25120225e833541eb59e6deba0"
     }
   ]
 }

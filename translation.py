@@ -19,15 +19,15 @@ logger = logging.getLogger(__name__)
 def select_context_history(
     history: deque[tuple[str, str]],
     max_items: int,
-) -> list[tuple[str, str]]:
-    return list(history)[-max_items:]
+) -> list[tuple[str, str]] | None:
+    return list(history)[-max_items:] if max_items > 0 else None
 
 
 def build_glossary_text(glossary: dict[str, str]) -> str:
     if not glossary:
         return ""
     lines = "\n".join(f"- {k} => {v}" for k, v in glossary.items())
-    return f"术语表（必须固定使用以下译法）：\n{lines}"
+    return f"Glossary (must always use the following translations): \n{lines}"
 
 
 def clean_translation_output(text: str) -> str:
@@ -54,30 +54,27 @@ def build_user_message(
     context_blocks: list[str] = []
 
     # preprocess chars
-    # to_remove = "!ー"
-    # pattern = "(?P<char>[" + re.escape(to_remove) + "])(?P=char)+"
-    # text = re.sub(pattern, r"\1", text)
+    text = re.sub(r'(.)\1{1,}$', r"\1\1", text)
     
     if glossary:
         context_blocks.append(build_glossary_text(glossary))
-
     if history:
         history_lines = []
         for idx, (orig, trans) in enumerate(history, start=1):
-            history_lines.append(f"{idx}. 原文：{orig}\n   译文：{trans}")
-        context_blocks.append("上文参考（只用于理解语气、人物、代词和场景，不要重新翻译）：\n" + "\n".join(history_lines))
+            history_lines.append(f"{idx}. Original:{orig}\n   Translated:{trans}")
+        context_blocks.append("The following segment is previous conversations. Use them to improve the context, don't re-translate them: \n" + "\n".join(history_lines))
 
     if context_blocks:
         context = "\n\n".join(context_blocks)
         return (
             f"{context}\n\n"
-            f"把【当前原文】翻译为{target_lang}。只输出译文，不要输出标签、原文、解释或额外内容。\n\n"
-            f"【当前原文】\n{text}"
+            f"Translate the following segment into {target_lang}. Note that you must ONLY output the translated result without any additional explanation:\n\n"
+            f"\n{text}"
         )
 
     return (
-        f"把【当前原文】翻译为{target_lang}。只输出译文，不要输出标签、原文、解释或额外内容。\n\n"
-        f"【当前原文】\n{text}"
+        f"Translate the following segment into {target_lang}. Note that you must ONLY output the translated result without any additional explanation:\n\n"
+        f"\n{text}"
     )
 
 
@@ -190,7 +187,7 @@ async def translator_worker(
     bearer: str | None,
     ws_clients: set[web.WebSocketResponse],
 ) -> None:
-    context_items = max(1, translate_window)
+    context_items = translate_window
     history: deque[tuple[str, str]] = deque(maxlen=max(12, context_items * 4))
     headers: dict[str, str] = {"Content-Type": "application/json"}
     if bearer:
@@ -221,8 +218,8 @@ async def translator_worker(
             "top_k": translate_top_k,
             "top_p": translate_top_p,
             "repeat_penalty": translate_repeat_penalty,
+            # "dry_multiplier": 0.8,
             "max_tokens": translate_max_tokens,
-            "t_max_predict_ms": 8000,
             "stream": False,
         }
         try:
