@@ -25,10 +25,22 @@
       "sha256": "f547589d5ca582e093b2d3312ad9ff13b609b43d413f972c0e92b823dde70a00"
     },
     {
+      "name": "qwen3-forced-aligner-0.6b-q8_0.gguf",
+      "path": "models/asr/qwen3-forced-aligner-0.6b-q8_0.gguf",
+      "url": "https://huggingface.co/cstr/qwen3-forced-aligner-0.6b-GGUF/resolve/main/qwen3-forced-aligner-0.6b-q8_0.gguf",
+      "sha256": "539df5dd0fe1721e378ac13bfac9a26b1260dafb62d892c518c1f21244762636"
+    },
+    {
       "name": "nemotron-3.5-asr-streaming-0.6b-f16.gguf",
       "path": "models/asr/nemotron-3.5-asr-streaming-0.6b-f16.gguf",
       "url": "https://huggingface.co/cstr/nemotron-3.5-asr-streaming-GGUF/resolve/main/nemotron-3.5-asr-streaming-0.6b-f16.gguf",
       "sha256": "14cbc98df495d8ab452c6a4ac367136d94ab5da55e73afaa96ba4f749dd95d09"
+    },
+    {
+      "name": "funasr-nano-2512-q8_0.gguf",
+      "path": "models/asr/funasr-nano-2512-q8_0.gguf",
+      "url": "https://huggingface.co/cstr/funasr-nano-GGUF/resolve/main/funasr-nano-2512-q8_0.gguf",
+      "sha256": "dac5e1b95659c0a95b2a1dc60083eb17740454a921ec39f9c24e50b930ca31ab"
     },
     {
       "name": "FireRed VAD model",
@@ -37,10 +49,16 @@
       "sha256": "72d37db1a5d2a9db386d1452b3f54d13f97bea79710105fc65acd050ea7db600"
     },
     {
-      "name": "Hy-MT2.0 UDQ6",
+      "name": "Hy-MT2-1.8B-UD-Q6_K_XL.gguf",
       "path": "models/translation/Hy-MT2-1.8B-UD-Q6_K_XL.gguf",
       "url": "https://huggingface.co/unsloth/Hy-MT2-1.8B-GGUF/resolve/main/Hy-MT2-1.8B-UD-Q6_K_XL.gguf",
       "sha256": "7f38d2a226be8108dd7b51f1cea968e828a03eb0a537dd6c3436476368af29a2"
+    },
+    {
+      "name": "madlad400-3b-mt-q4_k.gguf",
+      "path": "models/translation/madlad400-3b-mt-q4_k.gguf",
+      "url": "https://huggingface.co/cstr/madlad400-3b-mt-GGUF/resolve/main/madlad400-3b-mt-q4_k.gguf",
+      "sha256": "2c855ceb7cda790aa217bc760a73d07b5aa156b33dbd6a96a7b15a3501bf41c2"
     }
   ]
 }

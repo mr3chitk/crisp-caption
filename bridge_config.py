@@ -16,7 +16,7 @@ DEFAULT_TRANSLATE_URL = os.environ.get(
     "http://127.0.0.1:8080/v1/chat/completions",
 )
 
-CRISP_PATH_VALUE_FLAGS = frozenset({"-m", "-vm", "--model", "--vad-model", "--punc-model"})
+CRISP_PATH_VALUE_FLAGS = frozenset({"-m", "-vm", "-am", "--model", "--vad-model", "--punc-model", "--aligner-model", "--translate-model"})
 
 
 BRIDGE_CONFIG_KEYS = frozenset(
@@ -254,5 +254,7 @@ def parse_args(argv: list[str]) -> tuple[argparse.Namespace, list[str]]:
         crisp_argv = cfg_crisp
     else:
         crisp_argv = cli_crisp
-
+    print(ns)
+    print("\n")
+    print(crisp_argv)
     return ns, crisp_argv

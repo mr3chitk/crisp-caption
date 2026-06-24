@@ -54,7 +54,7 @@ def build_user_message(
     context_blocks: list[str] = []
 
     # preprocess chars
-    text = re.sub(r'(.)\1{1,}$', r"\1\1", text)
+    # text = re.sub(r'(.)\1{1,}$', r"\1\1", text)
     
     if glossary:
         context_blocks.append(build_glossary_text(glossary))
@@ -227,7 +227,7 @@ async def translator_worker(
                 translate_url,
                 json=payload,
                 headers=headers,
-                timeout=aiohttp.ClientTimeout(total=60),
+                timeout=aiohttp.ClientTimeout(total=8),
             ) as resp:
                 body = await resp.text()
                 if resp.status >= 400:
