@@ -254,7 +254,4 @@ def parse_args(argv: list[str]) -> tuple[argparse.Namespace, list[str]]:
         crisp_argv = cfg_crisp
     else:
         crisp_argv = cli_crisp
-    print(ns)
-    print("\n")
-    print(crisp_argv)
     return ns, crisp_argv

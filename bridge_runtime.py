@@ -70,7 +70,6 @@ class CrispRuntime:
                 raise ValueError(self.state.last_error)
 
             cmd = build_crispasr_cmd(exe, crispy_extra)
-            print("\n")
             logger.info("Spawning profile=%s: %s", profile_name, " ".join(cmd))
 
             cwd_path = os.path.dirname(os.path.abspath(exe))

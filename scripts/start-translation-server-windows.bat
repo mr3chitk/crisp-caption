@@ -27,6 +27,8 @@ if not exist "%MODEL%" (
   -b 2048 ^
   -ub 512 ^
   -np 1 ^
+  --cache-prompt ^
+  --cache-reuse 64 ^
   --host 127.0.0.1 ^
   --port 8080
 pause

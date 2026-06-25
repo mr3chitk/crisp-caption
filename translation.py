@@ -54,7 +54,7 @@ def build_user_message(
     context_blocks: list[str] = []
 
     # preprocess chars
-    # text = re.sub(r'(.)\1{1,}$', r"\1\1", text)
+    text = re.sub(r'(.)\1{1,}$', r"\1\1", text)
     
     if glossary:
         context_blocks.append(build_glossary_text(glossary))

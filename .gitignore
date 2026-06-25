@@ -41,6 +41,7 @@ pnpm-debug.log*
 profile-*.json
 profile.*.json
 profiles/*.json
+glossary.json
 !profile.*.example.json
 !profiles/*.example.json
 !glossary.example.json
