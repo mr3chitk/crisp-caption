@@ -27,7 +27,7 @@ def build_glossary_text(glossary: dict[str, str]) -> str:
     if not glossary:
         return ""
     lines = "\n".join(f"- {k} => {v}" for k, v in glossary.items())
-    return f"Glossary (must always use the following translations): \n{lines}"
+    return f"Glossary list for translation. Use the second word when the first word is fully found in source text: \n{lines}"
 
 
 def clean_translation_output(text: str) -> str:
@@ -54,7 +54,7 @@ def build_user_message(
     context_blocks: list[str] = []
 
     # preprocess chars
-    text = re.sub(r'(.)\1{1,}$', r"\1\1", text)
+    # text = re.sub(r'(.)\1{1,}$', r"\1\1", text)
     
     if glossary:
         context_blocks.append(build_glossary_text(glossary))

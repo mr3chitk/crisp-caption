@@ -1,7 +1,7 @@
 {
   "artifacts": [
     {
-      "name": "Cohere JP q6",
+      "name": "cohere-asr-ja-v0.1-q6_k.gguf",
       "path": "models/asr/cohere-asr-ja-v0.1-q6_k.gguf",
       "url": "https://huggingface.co/TransWithAI/cohere-transcribe-ja-v0.1-GGUF/resolve/main/cohere-asr-ja-v0.1-q6_k.gguf",
       "sha256": "192eee151417b6a7b08fff7023a1e3126306391e25c3ad9903d8562fdf2f75f4"
@@ -13,16 +13,16 @@
       "sha256": "a9c43116b180b8a2ada2771ac829cf751b9e73adcbe69b7c8379593f9e5da31e"
     },
     {
-      "name": "qwen3-asr-1.7b-q8_0.gguf",
-      "path": "models/asr/qwen3-asr-1.7b-q8_0.gguf",
-      "url": "https://huggingface.co/cstr/qwen3-asr-1.7b-GGUF/resolve/main/qwen3-asr-1.7b-q8_0.gguf",
-      "sha256": "9851ab996591a2d0cb0efb216002764b509c86bd40c95e613d7b65b8e69c8a6e"
+      "name": "qwen3-asr-1.7b-q4_k.gguf",
+      "path": "models/asr/qwen3-asr-1.7b-q4_k.gguf",
+      "url": "https://huggingface.co/cstr/qwen3-asr-1.7b-GGUF/resolve/main/qwen3-asr-1.7b-q4_k.gguf",
+      "sha256": "1f1d26ee044f0f041b0a7bfcf6d560996103c951acbde6eb48ccb24e7edfc69c"
     },
     {
-      "name": "qwen3-asr-0.6b-q8_0.gguf",
-      "path": "models/asr/qwen3-asr-0.6b-q8_0.gguf",
-      "url": "https://huggingface.co/cstr/qwen3-asr-0.6b-GGUF/resolve/main/qwen3-asr-0.6b-q8_0.gguf",
-      "sha256": "f547589d5ca582e093b2d3312ad9ff13b609b43d413f972c0e92b823dde70a00"
+      "name": "qwen3-asr-0.6b-q4_k.gguf",
+      "path": "models/asr/qwen3-asr-0.6b-q4_k.gguf",
+      "url": "https://huggingface.co/cstr/qwen3-asr-0.6b-GGUF/resolve/main/qwen3-asr-0.6b-q4_k.gguf",
+      "sha256": "4c67426908a518c28c24bc780df27175fcf84ce4d6dbd678133a4531904bbcc9"
     },
     {
       "name": "qwen3-forced-aligner-0.6b-q8_0.gguf",
@@ -31,34 +31,34 @@
       "sha256": "539df5dd0fe1721e378ac13bfac9a26b1260dafb62d892c518c1f21244762636"
     },
     {
-      "name": "nemotron-3.5-asr-streaming-0.6b-f16.gguf",
-      "path": "models/asr/nemotron-3.5-asr-streaming-0.6b-f16.gguf",
-      "url": "https://huggingface.co/cstr/nemotron-3.5-asr-streaming-GGUF/resolve/main/nemotron-3.5-asr-streaming-0.6b-f16.gguf",
-      "sha256": "14cbc98df495d8ab452c6a4ac367136d94ab5da55e73afaa96ba4f749dd95d09"
+      "name": "qwen3-forced-aligner-0.6b-q5_0.gguf",
+      "path": "models/asr/qwen3-forced-aligner-0.6b-q5_0.gguf",
+      "url": "https://huggingface.co/cstr/qwen3-forced-aligner-0.6b-GGUF/resolve/main/qwen3-forced-aligner-0.6b-q5_0.gguf",
+      "sha256": "d76ce68f71a241356d74f9148ad0dc29a0a92c00647bc27f5d166fbae8f78bf4"
     },
     {
-      "name": "funasr-nano-2512-q8_0.gguf",
-      "path": "models/asr/funasr-nano-2512-q8_0.gguf",
-      "url": "https://huggingface.co/cstr/funasr-nano-GGUF/resolve/main/funasr-nano-2512-q8_0.gguf",
-      "sha256": "dac5e1b95659c0a95b2a1dc60083eb17740454a921ec39f9c24e50b930ca31ab"
-    },
-    {
-      "name": "FireRed VAD model",
+      "name": "firered-vad.gguf",
       "path": "models/vad/firered-vad.gguf",
-      "url": "https://huggingface.co/cstr/firered-vad-GGUF/resolve/aa92f55584d0fa37b9aae9a9c10bee275a0af240/firered-vad.gguf",
+      "url": "https://huggingface.co/cstr/firered-vad-GGUF/resolve/main/firered-vad.gguf",
       "sha256": "72d37db1a5d2a9db386d1452b3f54d13f97bea79710105fc65acd050ea7db600"
     },
     {
-      "name": "Hy-MT2-1.8B-UD-Q6_K_XL.gguf",
-      "path": "models/translation/Hy-MT2-1.8B-UD-Q6_K_XL.gguf",
-      "url": "https://huggingface.co/unsloth/Hy-MT2-1.8B-GGUF/resolve/main/Hy-MT2-1.8B-UD-Q6_K_XL.gguf",
-      "sha256": "7f38d2a226be8108dd7b51f1cea968e828a03eb0a537dd6c3436476368af29a2"
+      "name": "firered-stream-vad.gguf",
+      "path": "models/vad/firered-stream-vad.gguf",
+      "url": "https://huggingface.co/cstr/firered-vad-GGUF/resolve/main/firered-stream-vad.gguf",
+      "sha256": "e862745198423ecb263491fbeef126f4e1c0f8021a5d5d2eb30ee4f03a66dd29"
     },
     {
-      "name": "madlad400-3b-mt-q4_k.gguf",
-      "path": "models/translation/madlad400-3b-mt-q4_k.gguf",
-      "url": "https://huggingface.co/cstr/madlad400-3b-mt-GGUF/resolve/main/madlad400-3b-mt-q4_k.gguf",
-      "sha256": "2c855ceb7cda790aa217bc760a73d07b5aa156b33dbd6a96a7b15a3501bf41c2"
+      "name": "Hy-MT2-1.8B-Q6_K.gguf",
+      "path": "models/translation/Hy-MT2-1.8B-Q6_K.gguf",
+      "url": "https://huggingface.co/tencent/Hy-MT2-1.8B-GGUF/resolve/main/Hy-MT2-1.8B-Q6_K.gguf",
+      "sha256": "d98fe604dec1f28f58f80d7d560f7177e584d3b8e5835862687660e5ff97cb40"
+    },
+    {
+      "name": "HY-MT1.5-1.8B-Q6_K.gguf",
+      "path": "models/translation/HY-MT1.5-1.8B-Q6_K.gguf",
+      "url": "https://huggingface.co/tencent/HY-MT1.5-1.8B-GGUF/resolve/main/HY-MT1.5-1.8B-Q6_K.gguf",
+      "sha256": "c3819200ab9a79cb29b9a05ce8920e2eb01ae7ce520094fc5b57356494f3c641"
     }
   ]
 }
