@@ -26,8 +26,8 @@ def select_context_history(
 def build_glossary_text(glossary: dict[str, str]) -> str:
     if not glossary:
         return ""
-    lines = "\n".join(f"- {k} => {v}" for k, v in glossary.items())
-    return f"Glossary list for translation. Use the second word when the first word is fully found in source text: \n{lines}"
+    lines = "\n".join(f"{k} 翻译成 {v}" for k, v in glossary.items())
+    return f"参考下面的翻译：\n{lines}"
 
 
 def clean_translation_output(text: str) -> str:
@@ -61,19 +61,19 @@ def build_user_message(
     if history:
         history_lines = []
         for idx, (orig, trans) in enumerate(history, start=1):
-            history_lines.append(f"{idx}. Original:{orig}\n   Translated:{trans}")
-        context_blocks.append("The following segment is previous conversations. Use them to improve the context, don't re-translate them: \n" + "\n".join(history_lines))
+            history_lines.append(f"{idx}. 原文：{orig}\n   译文：{trans}")
+        context_blocks.append("上文参考（只用于理解语气、人物、代词和场景，不要重新翻译）：\n" + "\n".join(history_lines))
 
     if context_blocks:
         context = "\n\n".join(context_blocks)
         return (
             f"{context}\n\n"
-            f"Translate the following segment into {target_lang}. Note that you must ONLY output the translated result without any additional explanation:\n\n"
+            f"参考上面的信息，把下面的文本翻译成 {target_lang}，注意不需要翻译上文，也不要额外解释：\n\n"
             f"\n{text}"
         )
 
     return (
-        f"Translate the following segment into {target_lang}. Note that you must ONLY output the translated result without any additional explanation:\n\n"
+        f"将以下文本翻译为 {target_lang}，注意只需要输出翻译后的结果，不要额外解释：\n\n"
         f"\n{text}"
     )
 
@@ -227,7 +227,7 @@ async def translator_worker(
                 translate_url,
                 json=payload,
                 headers=headers,
-                timeout=aiohttp.ClientTimeout(total=8),
+                timeout=aiohttp.ClientTimeout(total=15),
             ) as resp:
                 body = await resp.text()
                 if resp.status >= 400:
