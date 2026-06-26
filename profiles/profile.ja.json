@@ -43,7 +43,7 @@
     "-vm",
     "../models/vad/firered-stream-vad.gguf",
     "-vt",
-    "0.50",
+    "0.55",
     "-vspd",
     "300",
     "-vsd",
