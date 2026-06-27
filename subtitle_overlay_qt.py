@@ -525,11 +525,11 @@ class SubtitleOverlay(QWidget):
 def parse_args(argv: list[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--ws-url", default=DEFAULT_WS_URL, help="Bridge WebSocket URL.")
-    parser.add_argument("--width", type=int, default=600, help="Overlay window width.")
+    parser.add_argument("--width", type=int, default=700, help="Overlay window width.")
     parser.add_argument("--height", type=int, default=700, help="Overlay window height.")
     parser.add_argument("--x", type=int, default=500, help="Overlay left position.")
-    parser.add_argument("--y", type=int, default=50, help="Overlay top position.")
-    parser.add_argument("--font-px", type=int, default=22, help="Main subtitle font size.")
+    parser.add_argument("--y", type=int, default=150, help="Overlay top position.")
+    parser.add_argument("--font-px", type=int, default=24, help="Main subtitle font size.")
     parser.add_argument(
         "--edge-px",
         type=int,
