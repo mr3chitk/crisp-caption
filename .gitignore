@@ -60,6 +60,7 @@ models/**/*.onnx
 models/**/*.pt
 models/**/*.pth
 models/**/*.tmp
+models/**/*.jinja
 !models/manifest.json
 tools/
 *.gguf

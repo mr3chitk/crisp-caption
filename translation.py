@@ -27,7 +27,7 @@ def build_glossary_text(glossary: dict[str, str]) -> str:
     if not glossary:
         return ""
     lines = "\n".join(f"\"{k}\" -> \"{v}\"" for k, v in glossary.items())
-    return f"Translation Glossary:\n{lines}"
+    return f"Glossary:\n{lines}"
 
 
 def clean_translation_output(text: str) -> str:
@@ -62,19 +62,20 @@ def build_user_message(
     if history:
         history_lines = []
         for idx, (orig, trans) in enumerate(history, start=1):
-            history_lines.append(f"{idx}. Original:{orig}\n   Translated:{trans}")
+            # history_lines.append(f"{idx}. Original:{orig}\n   Translated:{trans}")
+            history_lines.append(f"{orig}\n")
         context_blocks.append("Previous context: \n" + "\n".join(history_lines))
 
     if context_blocks:
         context = "\n\n".join(context_blocks)
         return (
             f"{context}\n\n"
-            f"By referring to the informations above, translate the following segment into {target_lang}, return the output only without any additional explanation:\n\n"
+            f"Refer to the above information, translate the following text into {target_lang}, only return the {target_lang} output:\n\n"
             f"\n{text}"
         )
 
     return (
-        f"Translate the following segment into {target_lang}, return the output only without any additional explanation:\n\n"
+        f"Translate the following text into {target_lang}, only return the {target_lang} output:\n\n"
         f"\n{text}"
     )
 

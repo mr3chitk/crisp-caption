@@ -528,7 +528,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument("--width", type=int, default=700, help="Overlay window width.")
     parser.add_argument("--height", type=int, default=700, help="Overlay window height.")
     parser.add_argument("--x", type=int, default=500, help="Overlay left position.")
-    parser.add_argument("--y", type=int, default=150, help="Overlay top position.")
+    parser.add_argument("--y", type=int, default=120, help="Overlay top position.")
     parser.add_argument("--font-px", type=int, default=24, help="Main subtitle font size.")
     parser.add_argument(
         "--edge-px",
