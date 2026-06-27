@@ -26,8 +26,8 @@ def select_context_history(
 def build_glossary_text(glossary: dict[str, str]) -> str:
     if not glossary:
         return ""
-    lines = "\n".join(f"\"{k}\" translate to \"{v}\"" for k, v in glossary.items())
-    return f"Glossary:\n{lines}"
+    lines = "\n".join(f"\"{k}\" -> \"{v}\"" for k, v in glossary.items())
+    return f"Translation Glossary:\n{lines}"
 
 
 def clean_translation_output(text: str) -> str:
@@ -69,7 +69,7 @@ def build_user_message(
         context = "\n\n".join(context_blocks)
         return (
             f"{context}\n\n"
-            f"By referring to the information above, translate the following segment into {target_lang}, return the output only without any additional explanation:\n\n"
+            f"By referring to the informations above, translate the following segment into {target_lang}, return the output only without any additional explanation:\n\n"
             f"\n{text}"
         )
 
