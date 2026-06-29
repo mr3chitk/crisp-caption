@@ -27,14 +27,16 @@ def build_glossary_text(glossary: dict[str, str]) -> str:
     if not glossary:
         return ""
     lines = "\n".join(f"\"{k}\" -> \"{v}\"" for k, v in glossary.items())
-    return f"Glossary:\n{lines}"
+    return f"Glossary:\n\n{lines}"
 
 
 def clean_translation_output(text: str) -> str:
     cleaned = text.strip()
-    cleaned = re.sub(r"</?\s*source\s*>", "", cleaned, flags=re.IGNORECASE)
-    cleaned = re.sub(r"</?\s*translation\s*>", "", cleaned, flags=re.IGNORECASE)
-    #cleaned = cleaned.replace("譯文：", "").replace("译文：", "")
+    # cleaned = re.sub(r"</?\s*source\s*>", "", cleaned, flags=re.IGNORECASE)
+    # cleaned = re.sub(r"</?\s*translation\s*>", "", cleaned, flags=re.IGNORECASE)
+    m = re.search(r'\*\"(.+?)\"\*', cleaned)
+    if(m):
+        return m.group(1).strip()
     return cleaned.strip()
 
 
@@ -54,29 +56,29 @@ def build_user_message(
     context_blocks: list[str] = []
 
     # preprocess chars
-    text = re.sub(r'(.)\1{1,}$', r"\1\1", text)
-    text = text.replace("�","")
-    
+    # text = text.replace("�","")
+    # text = text.replace("language Japanese","")
+
     if glossary:
         context_blocks.append(build_glossary_text(glossary))
     if history:
         history_lines = []
         for idx, (orig, trans) in enumerate(history, start=1):
             # history_lines.append(f"{idx}. Original:{orig}\n   Translated:{trans}")
-            history_lines.append(f"{orig}\n")
-        context_blocks.append("Previous context: \n" + "\n".join(history_lines))
+            history_lines.append(f"{orig}")
+        context_blocks.append("Previous Contexts:\n\n" + "\n".join(history_lines))
 
     if context_blocks:
         context = "\n\n".join(context_blocks)
         return (
             f"{context}\n\n"
-            f"Refer to the above information, translate the following text into {target_lang}, only return the {target_lang} output:\n\n"
-            f"\n{text}"
+            f"Refer to the above information, translate the following text into {target_lang}, return the translated text in one line without any extra explaination:\n\n"
+            f"{text}"
         )
 
     return (
-        f"Translate the following text into {target_lang}, only return the {target_lang} output:\n\n"
-        f"\n{text}"
+        f"Translate the following text into {target_lang}, return the translated text in one line without any extra explaination:\n\n"
+        f"{text}"
     )
 
 

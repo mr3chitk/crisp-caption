@@ -7,34 +7,10 @@
       "sha256": "192eee151417b6a7b08fff7023a1e3126306391e25c3ad9903d8562fdf2f75f4"
     },
     {
-      "name": "parakeet-tdt-0.6b-ja.gguf",
-      "path": "models/asr/parakeet-tdt-0.6b-ja.gguf",
-      "url": "https://huggingface.co/cstr/parakeet-tdt-0.6b-ja-GGUF/resolve/main/parakeet-tdt-0.6b-ja.gguf",
-      "sha256": "a9c43116b180b8a2ada2771ac829cf751b9e73adcbe69b7c8379593f9e5da31e"
-    },
-    {
       "name": "qwen3-asr-1.7b-q4_k.gguf",
       "path": "models/asr/qwen3-asr-1.7b-q4_k.gguf",
       "url": "https://huggingface.co/cstr/qwen3-asr-1.7b-GGUF/resolve/main/qwen3-asr-1.7b-q4_k.gguf",
       "sha256": "1f1d26ee044f0f041b0a7bfcf6d560996103c951acbde6eb48ccb24e7edfc69c"
-    },
-    {
-      "name": "qwen3-asr-0.6b-q4_k.gguf",
-      "path": "models/asr/qwen3-asr-0.6b-q4_k.gguf",
-      "url": "https://huggingface.co/cstr/qwen3-asr-0.6b-GGUF/resolve/main/qwen3-asr-0.6b-q4_k.gguf",
-      "sha256": "4c67426908a518c28c24bc780df27175fcf84ce4d6dbd678133a4531904bbcc9"
-    },
-    {
-      "name": "qwen3-forced-aligner-0.6b-q8_0.gguf",
-      "path": "models/asr/qwen3-forced-aligner-0.6b-q8_0.gguf",
-      "url": "https://huggingface.co/cstr/qwen3-forced-aligner-0.6b-GGUF/resolve/main/qwen3-forced-aligner-0.6b-q8_0.gguf",
-      "sha256": "539df5dd0fe1721e378ac13bfac9a26b1260dafb62d892c518c1f21244762636"
-    },
-    {
-      "name": "qwen3-forced-aligner-0.6b-q5_0.gguf",
-      "path": "models/asr/qwen3-forced-aligner-0.6b-q5_0.gguf",
-      "url": "https://huggingface.co/cstr/qwen3-forced-aligner-0.6b-GGUF/resolve/main/qwen3-forced-aligner-0.6b-q5_0.gguf",
-      "sha256": "d76ce68f71a241356d74f9148ad0dc29a0a92c00647bc27f5d166fbae8f78bf4"
     },
     {
       "name": "firered-vad.gguf",
@@ -49,16 +25,10 @@
       "sha256": "e862745198423ecb263491fbeef126f4e1c0f8021a5d5d2eb30ee4f03a66dd29"
     },
     {
-      "name": "Hy-MT2-1.8B-Q6_K.gguf",
-      "path": "models/translation/Hy-MT2-1.8B-Q6_K.gguf",
-      "url": "https://huggingface.co/tencent/Hy-MT2-1.8B-GGUF/resolve/main/Hy-MT2-1.8B-Q6_K.gguf",
-      "sha256": "d98fe604dec1f28f58f80d7d560f7177e584d3b8e5835862687660e5ff97cb40"
-    },
-    {
-      "name": "HY-MT1.5-1.8B-Q6_K.gguf",
-      "path": "models/translation/HY-MT1.5-1.8B-Q6_K.gguf",
-      "url": "https://huggingface.co/tencent/HY-MT1.5-1.8B-GGUF/resolve/main/HY-MT1.5-1.8B-Q6_K.gguf",
-      "sha256": "c3819200ab9a79cb29b9a05ce8920e2eb01ae7ce520094fc5b57356494f3c641"
+      "name": "Ministral-3-3B-Instruct-2512-Q4_K_M.gguf",
+      "path": "models/translation/Ministral-3-3B-Instruct-2512-Q4_K_M.gguf",
+      "url": "https://huggingface.co/mistralai/Ministral-3-3B-Instruct-2512-GGUF/resolve/main/Ministral-3-3B-Instruct-2512-Q4_K_M.gguf",
+      "sha256": "9ed150d4367e68df0ac8e1540f6ddc65b42d0ee26378329d1ecbca60f93fc5f8"
     }
   ]
 }
