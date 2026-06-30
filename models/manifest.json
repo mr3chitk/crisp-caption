@@ -25,10 +25,16 @@
       "sha256": "e862745198423ecb263491fbeef126f4e1c0f8021a5d5d2eb30ee4f03a66dd29"
     },
     {
-      "name": "Ministral-3-3B-Instruct-2512-Q4_K_M.gguf",
-      "path": "models/translation/Ministral-3-3B-Instruct-2512-Q4_K_M.gguf",
-      "url": "https://huggingface.co/mistralai/Ministral-3-3B-Instruct-2512-GGUF/resolve/main/Ministral-3-3B-Instruct-2512-Q4_K_M.gguf",
-      "sha256": "9ed150d4367e68df0ac8e1540f6ddc65b42d0ee26378329d1ecbca60f93fc5f8"
+      "name": "LFM2.5-1.2B-JP-202606-Q8_0.gguf",
+      "path": "models/translation/LFM2.5-1.2B-JP-202606-Q8_0.gguf",
+      "url": "https://huggingface.co/LiquidAI/LFM2.5-1.2B-JP-202606-GGUF/resolve/main/LFM2.5-1.2B-JP-202606-Q8_0.gguf",
+      "sha256": "d61784727aeac0da2f413dbb481273f465c7adf01b0bd72c8fd2ca1040c62c5e"
+    },
+    {
+      "name": "Qwen3-4B-Instruct-2507-Q4_K_M.gguf",
+      "path": "models/translation/Qwen3-4B-Instruct-2507-Q4_K_M.gguf",
+      "url": "https://huggingface.co/unsloth/Qwen3-4B-Instruct-2507-GGUF/resolve/main/Qwen3-4B-Instruct-2507-Q4_K_M.gguf",
+      "sha256": "3605803b982cb64aead44f6c1b2ae36e3acdb41d8e46c8a94c6533bc4c67e597"
     }
   ]
 }

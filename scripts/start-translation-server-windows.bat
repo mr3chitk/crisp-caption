@@ -3,7 +3,7 @@ setlocal
 cd /d "%~dp0\.."
 
 set "LLAMA_SERVER=tools\llama.cpp\llama-server.exe"
-set "MODEL=models\translation\Ministral-3-3B-Instruct-2512-Q4_K_M.gguf"
+set "MODEL=models\translation\Qwen3-4B-Instruct-2507-Q4_K_M.gguf"
 
 if not exist "%LLAMA_SERVER%" (
   echo [FAIL] llama-server not found: %LLAMA_SERVER%

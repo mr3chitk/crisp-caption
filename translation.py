@@ -26,18 +26,15 @@ def select_context_history(
 def build_glossary_text(glossary: dict[str, str]) -> str:
     if not glossary:
         return ""
-    lines = "\n".join(f"\"{k}\" -> \"{v}\"" for k, v in glossary.items())
-    return f"Glossary:\n\n{lines}"
+    lines = "\n".join(f"\"{k}\" is translated to \"{v}\"" for k, v in glossary.items())
+    return f"GLOSSARY.\n\n{lines}"
 
 
 def clean_translation_output(text: str) -> str:
     cleaned = text.strip()
     # cleaned = re.sub(r"</?\s*source\s*>", "", cleaned, flags=re.IGNORECASE)
     # cleaned = re.sub(r"</?\s*translation\s*>", "", cleaned, flags=re.IGNORECASE)
-    m = re.search(r'\*\"(.+?)\"\*', cleaned)
-    if(m):
-        return m.group(1).strip()
-    return cleaned.strip()
+    return cleaned
 
 
 def build_translation_system_prompt(glossary: dict[str, str]) -> str:
@@ -57,7 +54,6 @@ def build_user_message(
 
     # preprocess chars
     # text = text.replace("�","")
-    # text = text.replace("language Japanese","")
 
     if glossary:
         context_blocks.append(build_glossary_text(glossary))
@@ -66,19 +62,19 @@ def build_user_message(
         for idx, (orig, trans) in enumerate(history, start=1):
             # history_lines.append(f"{idx}. Original:{orig}\n   Translated:{trans}")
             history_lines.append(f"{orig}")
-        context_blocks.append("Previous Contexts:\n\n" + "\n".join(history_lines))
+        context_blocks.append("PREVIOUS CONTEXTS.\n\n" + "\n".join(history_lines))
 
     if context_blocks:
         context = "\n\n".join(context_blocks)
         return (
             f"{context}\n\n"
-            f"Refer to the above information, translate the following text into {target_lang}, return the translated text in one line without any extra explaination:\n\n"
-            f"{text}"
+            f"Translate the following text into {target_lang} without any explanation.\n\n"
+            f"{text}\n"
         )
 
     return (
-        f"Translate the following text into {target_lang}, return the translated text in one line without any extra explaination:\n\n"
-        f"{text}"
+        f"Translate the following text into {target_lang} without any explanation.\n\n"
+        f"{text}\n"
     )
 
 
@@ -231,7 +227,7 @@ async def translator_worker(
                 translate_url,
                 json=payload,
                 headers=headers,
-                timeout=aiohttp.ClientTimeout(total=15),
+                timeout=aiohttp.ClientTimeout(total=30),
             ) as resp:
                 body = await resp.text()
                 if resp.status >= 400:
