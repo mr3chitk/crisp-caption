@@ -41,7 +41,7 @@
     "-vm",
     "../models/vad/firered-vad.gguf",
     "-vt",
-    "0.50",
+    "0.60",
     "-vspd",
     "250",
     "-vsd",

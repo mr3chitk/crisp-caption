@@ -3,7 +3,7 @@ setlocal
 cd /d "%~dp0\.."
 
 set "LLAMA_SERVER=tools\llama.cpp\llama-server.exe"
-set "MODEL=models\translation\Qwen3-4B-Instruct-2507-Q4_K_M.gguf"
+set "MODEL=models\translation\translategemma-4b-it.Q4_K_M.gguf"
 
 if not exist "%LLAMA_SERVER%" (
   echo [FAIL] llama-server not found: %LLAMA_SERVER%
@@ -29,5 +29,6 @@ if not exist "%MODEL%" (
   -np 1 ^
   -fa auto ^
   --host 127.0.0.1 ^
-  --port 8080
+  --port 8080 ^
+  --no-jinja
 pause

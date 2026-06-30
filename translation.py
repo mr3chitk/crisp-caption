@@ -221,6 +221,10 @@ async def translator_worker(
             # "dry_multiplier": 0.8,
             "max_tokens": translate_max_tokens,
             "stream": False,
+            "chat_template_kwargs": { 
+                "source_lang_code": "jp",
+                "target_lang_code": "en"
+            }
         }
         try:
             async with session.post(
