@@ -1,10 +1,10 @@
 {
   "artifacts": [
     {
-      "name": "cohere-asr-ja-v0.1-q6_k.gguf",
-      "path": "models/asr/cohere-asr-ja-v0.1-q6_k.gguf",
-      "url": "https://huggingface.co/TransWithAI/cohere-transcribe-ja-v0.1-GGUF/resolve/main/cohere-asr-ja-v0.1-q6_k.gguf",
-      "sha256": "192eee151417b6a7b08fff7023a1e3126306391e25c3ad9903d8562fdf2f75f4"
+      "name": "cohere-asr-ja-v0.1-q5_1.gguf",
+      "path": "models/asr/cohere-asr-ja-v0.1-q5_1.gguf",
+      "url": "https://huggingface.co/TransWithAI/cohere-transcribe-ja-v0.1-GGUF/resolve/main/cohere-asr-ja-v0.1-q5_1.gguf",
+      "sha256": "548d6945a8cdde4f27e622d2006592787c76d531ce386909d6e3a9bc056df4b1"
     },
     {
       "name": "qwen3-asr-1.7b-q4_k.gguf",

@@ -19,7 +19,7 @@
     "--backend",
     "cohere",
     "-m",
-    "../models/asr/cohere-asr-ja-v0.1-q6_k.gguf",
+    "../models/asr/cohere-asr-ja-v0.1-q5_1.gguf",
     "-l",
     "ja",
     "--stream-json",
