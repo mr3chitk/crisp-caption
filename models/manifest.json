@@ -7,12 +7,6 @@
       "sha256": "548d6945a8cdde4f27e622d2006592787c76d531ce386909d6e3a9bc056df4b1"
     },
     {
-      "name": "qwen3-asr-1.7b-q4_k.gguf",
-      "path": "models/asr/qwen3-asr-1.7b-q4_k.gguf",
-      "url": "https://huggingface.co/cstr/qwen3-asr-1.7b-GGUF/resolve/main/qwen3-asr-1.7b-q4_k.gguf",
-      "sha256": "1f1d26ee044f0f041b0a7bfcf6d560996103c951acbde6eb48ccb24e7edfc69c"
-    },
-    {
       "name": "firered-vad.gguf",
       "path": "models/vad/firered-vad.gguf",
       "url": "https://huggingface.co/cstr/firered-vad-GGUF/resolve/main/firered-vad.gguf",
@@ -25,22 +19,10 @@
       "sha256": "e862745198423ecb263491fbeef126f4e1c0f8021a5d5d2eb30ee4f03a66dd29"
     },
     {
-      "name": "LFM2.5-1.2B-JP-202606-Q8_0.gguf",
-      "path": "models/translation/LFM2.5-1.2B-JP-202606-Q8_0.gguf",
-      "url": "https://huggingface.co/LiquidAI/LFM2.5-1.2B-JP-202606-GGUF/resolve/main/LFM2.5-1.2B-JP-202606-Q8_0.gguf",
-      "sha256": "d61784727aeac0da2f413dbb481273f465c7adf01b0bd72c8fd2ca1040c62c5e"
-    },
-    {
-      "name": "Qwen3-4B-Instruct-2507-Q4_K_M.gguf",
-      "path": "models/translation/Qwen3-4B-Instruct-2507-Q4_K_M.gguf",
-      "url": "https://huggingface.co/unsloth/Qwen3-4B-Instruct-2507-GGUF/resolve/main/Qwen3-4B-Instruct-2507-Q4_K_M.gguf",
-      "sha256": "3605803b982cb64aead44f6c1b2ae36e3acdb41d8e46c8a94c6533bc4c67e597"
-    },
-    {
-      "name": "translategemma-4b-it.Q4_K_M.gguf",
-      "path": "models/translation/translategemma-4b-it.Q4_K_M.gguf",
-      "url": "https://huggingface.co/mradermacher/translategemma-4b-it-GGUF/resolve/main/translategemma-4b-it.Q4_K_M.gguf",
-      "sha256": "81200d03e843d2ec1ece6eeafe7d13cb6e5211e1fcd336ade55790b683a08330"
+      "name": "Qwen3.5-4B-Q4_K_M.gguf",
+      "path": "models/translation/Qwen3.5-4B-Q4_K_M.gguf",
+      "url": "https://huggingface.co/unsloth/Qwen3.5-4B-GGUF/resolve/main/Qwen3.5-4B-Q4_K_M.gguf",
+      "sha256": "00fe7986ff5f6b463e62455821146049db6f9313603938a70800d1fb69ef11a4"
     }
   ]
 }

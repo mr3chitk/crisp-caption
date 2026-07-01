@@ -213,18 +213,18 @@ async def translator_worker(
 
         payload = {
             "model": translate_model,
+            "chat_template_kwargs": { 
+                "source_lang_code": "jp",
+                "target_lang_code": "en",
+                "enable_thinking": False
+            },
             "messages": messages,
             "temperature": translate_temperature,
             "top_k": translate_top_k,
             "top_p": translate_top_p,
             "repeat_penalty": translate_repeat_penalty,
-            # "dry_multiplier": 0.8,
             "max_tokens": translate_max_tokens,
             "stream": False,
-            "chat_template_kwargs": { 
-                "source_lang_code": "jp",
-                "target_lang_code": "en"
-            }
         }
         try:
             async with session.post(
