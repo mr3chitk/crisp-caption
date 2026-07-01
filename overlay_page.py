@@ -131,8 +131,10 @@ body {{
   const mainLine = document.getElementById('main');
   const partialLine = document.getElementById('partial');
   const partialLine2 = document.getElementById('partial2');
+  const subTitle = document.getElementById('subtitle');
   const rowsByKey = new Map();
   const finalSeqToKey = new Map();
+  var timeoutId;
 
   function rowKey(ev) {{
     return ev.utterance_id != null ? `u:${{ev.utterance_id}}` : `s:${{ev.seq}}`;
@@ -155,6 +157,9 @@ body {{
     partialLine.style.display = partial ? 'block' : 'none';
     partialLine2.textContent = partial2 || '';
     partialLine2.style.display = partial2 ? 'block' : 'none';
+    subTitle.style.display = "flex";
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(function() {{ subTitle.style.display = "none"; }}, 120000);
   }}
 
   function connect() {{
