@@ -159,7 +159,7 @@ body {{
     partialLine2.style.display = partial2 ? 'block' : 'none';
     subTitle.style.display = "flex";
     clearTimeout(timeoutId);
-    timeoutId = setTimeout(function() {{ subTitle.style.display = "none"; }}, 120000);
+    timeoutId = setTimeout(function() {{ subTitle.style.display = "none"; }}, 60000);
   }}
 
   function connect() {{
