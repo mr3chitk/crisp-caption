@@ -80,15 +80,13 @@ body {{
 }}
 #subtitle {{
   text-align: left;
-  text-shadow: 0 2px 4px #000, 0 0 8px #000, 0 0 16px #000, 0 0 24px #000;
-  width: 100%;
-  height: 100%;
+  text-shadow: 0 2px 4px #000, 0 0 8px #000, 0 0 16px #000, 0 0 24px #000, 0 0 32px #000;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }}
 #main {{
-  color: rgba(190, 190, 255, 1.0);
+  color: rgba(200, 200, 255, 1.0);
   font-size: {main_font};
   font-weight: {main_weight};
   line-height: {main_line_height};
@@ -111,9 +109,10 @@ body {{
   overflow-wrap: anywhere;
 }}
 #status {{
-  color: rgba(190, 190, 255, 1.0);
+  color: rgba(200, 200, 255, 1.0);
   font-size: {status_font};
   font-weight: {status_weight};
+  overflow-wrap: anywhere;
 }}
 </style>
 </head>
@@ -142,15 +141,14 @@ body {{
 
   function render() {{
     const rows = Array.from(rowsByKey.values());
-    const finalRow = rows.slice().reverse().find((row) => row.kind === 'final');
     const finalId = rows.slice().reverse().findIndex((row) => row.kind === 'final');
+    const finalRow = rows.slice().reverse().at(finalId);
     const partialRow = rows.slice().reverse().at(finalId+1);
     const partialRow2 = rows.slice().reverse().at(finalId+2);
     const main = finalRow?.translation || '';
     const partial = partialRow?.translation || '';
     const partial2 = partialRow2?.translation || '';
     status.style.display = main || partial || partial2 ? 'none' : 'block';
-    status.textContent = 'Waiting for subtitles';
     mainLine.textContent = main || '';
     mainLine.style.display = main ? 'block' : 'none';
     partialLine.textContent = partial || '';
