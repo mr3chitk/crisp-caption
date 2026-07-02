@@ -28,6 +28,8 @@ if not exist "%MODEL%" (
   -ub 512 ^
   -np 1 ^
   -fa auto ^
+  --cache-prompt ^
+  --cache-ram 2048 ^
   --host 127.0.0.1 ^
   --port 8080
   :: ENABLE THIS FOR MTP --spec-type draft-mtp --spec-draft-n-max 6
