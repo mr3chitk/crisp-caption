@@ -55,7 +55,7 @@
     "--frequency-penalty",
     "0.2",
     "--beam-size",
-    "2",
+    "1",
     "--hotwords-file",
     "hotwords.txt",
     "--hotwords-boost",
