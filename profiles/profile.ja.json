@@ -28,7 +28,7 @@
     "--stream-utterance-max-sec",
     "60",
     "--stream-final-on-silence-ms",
-    "500",
+    "400",
     "--stream-vad-merge-gap-ms",
     "0",
     "--stream-length",
@@ -41,7 +41,7 @@
     "-vm",
     "../models/vad/firered-vad.gguf",
     "-vt",
-    "0.5",
+    "0.50",
     "-vspd",
     "250",
     "-vsd",
@@ -55,8 +55,10 @@
     "--frequency-penalty",
     "0.2",
     "--beam-size",
-    "1",
-    "--hotwords",
-    "hotwords.txt"
+    "2",
+    "--hotwords-file",
+    "hotwords.txt",
+    "--hotwords-boost",
+    "2.0"
   ]
 }
