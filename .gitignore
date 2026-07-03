@@ -38,6 +38,7 @@ pnpm-debug.log*
 !demo/*.png
 
 # Local profiles and prompts
+profiles/*.json
 glossary.json
 !profile.*.example.json
 !profiles/*.example.json
