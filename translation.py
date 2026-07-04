@@ -60,15 +60,15 @@ def build_user_message(
     if history:
         history_lines = []
         for idx, (orig, trans) in enumerate(history, start=1):
-            # history_lines.append(f"{idx}. Original:{orig}\n   Translated:{trans}")
-            history_lines.append(f"{orig}")
+            history_lines.append(f"{idx}. Original:{orig}\n    Translated:{trans}")
+            # history_lines.append(f"{orig}")
         context_blocks.append("PREVIOUS CONTEXTS.\n\n" + "\n".join(history_lines))
 
     if context_blocks:
         context = "\n\n".join(context_blocks)
         return (
             f"{context}\n\n"
-            f"Translate the following text into {target_lang} without any explanation.\n\n"
+            f"Refer to the above information, translate the following text only, into {target_lang} without any explanation.\n\n"
             f"{text}\n"
         )
 
@@ -223,6 +223,7 @@ async def translator_worker(
             "top_k": translate_top_k,
             "top_p": translate_top_p,
             "repeat_penalty": translate_repeat_penalty,
+            "frequency_penalty": 0.2,
             "max_tokens": translate_max_tokens,
             "stream": False,
         }
