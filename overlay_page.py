@@ -92,7 +92,7 @@ body {{
   line-height: {main_line_height};
   overflow-wrap: anywhere;
 }}
-#partial {{
+#partial1 {{
   color: rgba(240, 240, 240, 1.0);
   font-size: {partial_font};
   font-weight: {partial_weight};
@@ -108,28 +108,30 @@ body {{
   margin-top: {partial_margin_top};
   overflow-wrap: anywhere;
 }}
-#status {{
-  color: rgba(200, 200, 255, 1.0);
-  font-size: {status_font};
-  font-weight: {status_weight};
+#partial3 {{
+  color: rgba(240, 240, 240, 1.0);
+  font-size: {partial_font};
+  font-weight: {partial_weight};
+  line-height: {partial_line_height};
+  margin-top: {partial_margin_top};
   overflow-wrap: anywhere;
 }}
 </style>
 </head>
 <body>
 <main id="subtitle">
-  <div id="status">{initial_status}</div>
+  <div id="partial3"></div>
   <div id="partial2"></div>
-  <div id="partial"></div>
+  <div id="partial1"></div>
   <div id="main"></div>
 </main>
 <script>
 (() => {{
   const wsUrl = {ws_url!r};
-  const status = document.getElementById('status');
   const mainLine = document.getElementById('main');
-  const partialLine = document.getElementById('partial');
+  const partialLine1 = document.getElementById('partial1');
   const partialLine2 = document.getElementById('partial2');
+  const partialLine3 = document.getElementById('partial3');
   const subTitle = document.getElementById('subtitle');
   const rowsByKey = new Map();
   const finalSeqToKey = new Map();
@@ -141,33 +143,29 @@ body {{
 
   function render() {{
     const rows = Array.from(rowsByKey.values());
-    const finalId = rows.slice().reverse().findIndex((row) => row.kind === 'final');
-    const finalRow = rows.slice().reverse().at(finalId);
-    const partialRow = rows.slice().reverse().at(finalId+1);
-    const partialRow2 = rows.slice().reverse().at(finalId+2);
-    const main = finalRow?.translation || '';
-    const partial = partialRow?.translation || '';
-    const partial2 = partialRow2?.translation || '';
-    status.style.display = main || partial || partial2 ? 'none' : 'block';
-    mainLine.textContent = main || '';
+    const finalId = rows.slice().findLastIndex((row) => row.kind === 'final' && (row.translation || row.error));
+    const main = finalId >= 0 ? rows.at(finalId).translation:'';
+    const partial1 = finalId >= 1 ? rows.at(finalId-1).translation:'';
+    const partial2 = finalId >= 2 ? rows.at(finalId-2).translation:'';
+    const partial3 = finalId >= 3 ? rows.at(finalId-3).translation:'';
+    mainLine.textContent = main;
     mainLine.style.display = main ? 'block' : 'none';
-    partialLine.textContent = partial || '';
-    partialLine.style.display = partial ? 'block' : 'none';
-    partialLine2.textContent = partial2 || '';
+    partialLine1.textContent = partial1;
+    partialLine1.style.display = partial1 ? 'block' : 'none';
+    partialLine2.textContent = partial2;
     partialLine2.style.display = partial2 ? 'block' : 'none';
+    partialLine3.textContent = partial3;
+    partialLine3.style.display = partial3 ? 'block' : 'none';
     subTitle.style.display = "flex";
     clearTimeout(timeoutId);
     timeoutId = setTimeout(function() {{ subTitle.style.display = "none"; }}, 90000);
   }}
 
   function connect() {{
-    status.style.display = 'block';
-    status.textContent = {initial_status!r};
     const ws = new WebSocket(wsUrl);
     window.__crispasrWs = ws;
 
     ws.onopen = () => {{
-      status.textContent = {connected_status!r};
       setTimeout(render, {render_delay_ms});
     }};
 
@@ -196,13 +194,11 @@ body {{
     }};
 
     ws.onerror = () => {{
-      status.style.display = 'block';
-      status.textContent = 'CrispASR WebSocket error';
+      mainLine.textContent = 'CrispASR WebSocket error';
     }};
 
     ws.onclose = () => {{
-      status.style.display = 'block';
-      status.textContent = 'CrispASR disconnected; reconnecting...';
+      mainLine.textContent = 'CrispASR disconnected; reconnecting...';
       setTimeout(connect, 1500);
     }};
   }}
