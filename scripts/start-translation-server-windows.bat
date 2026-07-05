@@ -29,9 +29,12 @@ if not exist "%MODEL%" (
   -np 1 ^
   -fa auto ^
   --cache-prompt ^
-  --cache-ram 2048 ^
+  --cache-ram 1024 ^
   --host 127.0.0.1 ^
   --port 8080
-  :: ENABLE THIS FOR MTP --spec-type draft-mtp --spec-draft-n-max 6
+  ::--kv-unified ^
+  :: --cache-type-v q8_0 ^
+  :: --cache-type-k q8_0 ^
+  :: ENABLE THIS FOR MTP --spec-type draft-mtp --spec-draft-n-max 6 ^
   :: ENABLE THIS FOR TRANSLATEGEMMA --no-jinja
 pause
