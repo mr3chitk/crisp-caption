@@ -23,6 +23,18 @@
       "path": "models/translation/Qwen3.5-4B-Q4_K_M.gguf",
       "url": "https://huggingface.co/unsloth/Qwen3.5-4B-GGUF/resolve/main/Qwen3.5-4B-Q4_K_M.gguf",
       "sha256": "00fe7986ff5f6b463e62455821146049db6f9313603938a70800d1fb69ef11a4"
+    },
+    {
+      "name": "gemma-4-E4B-it-qat-UD-Q4_K_XL.gguf",
+      "path": "models/translation/gemma-4-E4B-it-qat-UD-Q4_K_XL.gguf",
+      "url": "https://huggingface.co/unsloth/gemma-4-E4B-it-qat-GGUF/resolve/main/gemma-4-E4B-it-qat-UD-Q4_K_XL.gguf",
+      "sha256": "b3052f962d6449b4eb2075733c068bdec1c51eadb7b237e6c3157bfbb7b1dae0"
+    },
+    {
+      "name": "gemma-4-E2B-it-qat-UD-Q4_K_XL.gguf",
+      "path": "models/translation/gemma-4-E2B-it-qat-UD-Q4_K_XL.gguf",
+      "url": "https://huggingface.co/unsloth/gemma-4-E2B-it-qat-GGUF/resolve/main/gemma-4-E2B-it-qat-UD-Q4_K_XL.gguf",
+      "sha256": "cd4526493dccbfd6791bee8822e37e30340074d1d4d9aada52ce09afefd6a33a"
     }
   ]
 }

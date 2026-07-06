@@ -3,7 +3,7 @@ setlocal
 cd /d "%~dp0\.."
 
 set "LLAMA_SERVER=tools\llama.cpp\llama-server.exe"
-set "MODEL=models\translation\Qwen3.5-4B-Q4_K_M.gguf"
+set "MODEL=models\translation\gemma-4-E4B-it-qat-UD-Q4_K_XL.gguf"
 
 if not exist "%LLAMA_SERVER%" (
   echo [FAIL] llama-server not found: %LLAMA_SERVER%
@@ -36,5 +36,5 @@ if not exist "%MODEL%" (
   :: --cache-type-v q8_0 ^
   :: --cache-type-k q8_0 ^
   :: ENABLE THIS FOR MTP --spec-type draft-mtp --spec-draft-n-max 6 ^
-  :: ENABLE THIS FOR TRANSLATEGEMMA --no-jinja
+  :: ENABLE THIS FOR TRANSLATEGEMMA --no-jinja ^
 pause
