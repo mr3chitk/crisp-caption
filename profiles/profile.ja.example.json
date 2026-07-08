@@ -14,7 +14,7 @@
   "repeat_penalty": 1.05,
   "max_tokens": 4096,
   "translate_prompt_file": "",
-  "glossary_file": "",
+  "glossary_file": "glossary.json",
   "crisp_args": [
     "--backend",
     "cohere",
