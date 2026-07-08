@@ -26,7 +26,7 @@ def select_context_history(
 def build_glossary_text(glossary: dict[str, str]) -> str:
     if not glossary:
         return ""
-    lines = "\n".join(f"\"{k}\" is translated to \"{v}\"" for k, v in glossary.items())
+    lines = "\n".join(f"\"{k}\" translates to \"{v}\"" for k, v in glossary.items())
     return f"GLOSSARY.\n\n{lines}"
 
 

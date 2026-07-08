@@ -30,11 +30,10 @@ if not exist "%MODEL%" (
   -fa auto ^
   --cache-prompt ^
   --cache-ram 1024 ^
+  --cache-type-v q8_0 ^
+  --cache-type-k q8_0 ^
   --host 127.0.0.1 ^
   --port 8080
-  ::--kv-unified ^
-  :: --cache-type-v q8_0 ^
-  :: --cache-type-k q8_0 ^
   :: ENABLE THIS FOR MTP --spec-type draft-mtp --spec-draft-n-max 6 ^
   :: ENABLE THIS FOR TRANSLATEGEMMA --no-jinja ^
 pause

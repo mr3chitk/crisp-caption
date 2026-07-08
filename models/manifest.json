@@ -13,12 +13,6 @@
       "sha256": "72d37db1a5d2a9db386d1452b3f54d13f97bea79710105fc65acd050ea7db600"
     },
     {
-      "name": "firered-stream-vad.gguf",
-      "path": "models/vad/firered-stream-vad.gguf",
-      "url": "https://huggingface.co/cstr/firered-vad-GGUF/resolve/main/firered-stream-vad.gguf",
-      "sha256": "e862745198423ecb263491fbeef126f4e1c0f8021a5d5d2eb30ee4f03a66dd29"
-    },
-    {
       "name": "Qwen3.5-4B-Q4_K_M.gguf",
       "path": "models/translation/Qwen3.5-4B-Q4_K_M.gguf",
       "url": "https://huggingface.co/unsloth/Qwen3.5-4B-GGUF/resolve/main/Qwen3.5-4B-Q4_K_M.gguf",

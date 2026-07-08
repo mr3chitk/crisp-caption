@@ -80,6 +80,11 @@ if not exist "hotwords.txt" (
   copy /Y "hotwords.example.txt" "hotwords.txt" >nul
 )
 
+if not exist "glossary.json" (
+  echo Creating glossary.json...
+  copy /Y "glossary.example.json" "glossary.json" >nul
+)
+
 where node >nul 2>nul
 if errorlevel 1 (
   echo [FAIL] Node.js was not found on PATH.
