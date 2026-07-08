@@ -12,7 +12,7 @@
   "top_k": 20,
   "top_p": 0.95,
   "repeat_penalty": 1.05,
-  "max_tokens": 4096,
+  "max_tokens": 2048,
   "translate_prompt_file": "",
   "glossary_file": "glossary.json",
   "crisp_args": [

@@ -1,0 +1,7 @@
+{
+	"temperature": 0,
+	"mcpServers": [{"enabled":true,"url":"http://127.0.0.1:8123/mcp"}],
+	"repeat_penalty": 1.05,
+	"top_k": 20,
+	"top_p": 0.95
+}

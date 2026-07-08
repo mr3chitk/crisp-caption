@@ -82,6 +82,9 @@ class CrispRuntime:
             await broadcast_health(self.state)
 
             env = os.environ.copy()
+            env["CRISPASR_KV_QUANT"] = "q8_0"
+            env["CRISPASR_GGUF_MMAP"] = "1"
+            env["CRISPASR_GGUF_PRELOAD"] = "1"
             # env["CRISPASR_KV_QUANT_K"] = "q8_0"
             # env["CRISPASR_KV_QUANT_V"] = "q8_0"
             env["CRISPASR_NEMOTRON_STREAMING"] = "1"
@@ -94,7 +97,7 @@ class CrispRuntime:
                 stderr=stderr_arg,
                 cwd=cwd,
                 limit=1024 * 1024,
-                env=env,
+                env=env
             )
 
             self.tasks = [

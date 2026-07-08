@@ -29,6 +29,12 @@
       "path": "models/translation/gemma-4-E2B-it-qat-UD-Q4_K_XL.gguf",
       "url": "https://huggingface.co/unsloth/gemma-4-E2B-it-qat-GGUF/resolve/main/gemma-4-E2B-it-qat-UD-Q4_K_XL.gguf",
       "sha256": "cd4526493dccbfd6791bee8822e37e30340074d1d4d9aada52ce09afefd6a33a"
+    },
+    {
+      "name": "gemma-4-E4B-it-qat-q4_0-unquantized.mmproj-Q8_0.gguf",
+      "path": "models/translation/gemma-4-E4B-it-qat-q4_0-unquantized.mmproj-Q8_0.gguf",
+      "url": "https://huggingface.co/mradermacher/gemma-4-E4B-it-qat-q4_0-unquantized-GGUF/resolve/main/gemma-4-E4B-it-qat-q4_0-unquantized.mmproj-Q8_0.gguf",
+      "sha256": "23e72a770f11803362bf18bcde201b5b39e9cd6e2552e0bb2f523da8ac2fce78"
     }
   ]
 }
