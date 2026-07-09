@@ -80,58 +80,29 @@ body {{
 }}
 #subtitle {{
   text-align: left;
-  text-shadow: 0 2px 4px #000, 0 0 8px #000, 0 0 16px #000, 0 0 24px #000, 0 0 32px #000;
-  display: flex;
+  text-shadow: 0 2px 4px #000, 0 0 8px #000, 0 0 16px #000, 0 0 24px #000;
+  height: 100%;
+  display: block;
   flex-direction: column;
   justify-content: flex-end;
 }}
 #main {{
-  color: rgba(200, 200, 255, 1.0);
+  color: rgba(240, 240, 240, 1.0);
   font-size: {main_font};
   font-weight: {main_weight};
   line-height: {main_line_height};
-  overflow-wrap: anywhere;
-}}
-#partial1 {{
-  color: rgba(240, 240, 240, 1.0);
-  font-size: {partial_font};
-  font-weight: {partial_weight};
-  line-height: {partial_line_height};
-  margin-top: {partial_margin_top};
-  overflow-wrap: anywhere;
-}}
-#partial2 {{
-  color: rgba(240, 240, 240, 1.0);
-  font-size: {partial_font};
-  font-weight: {partial_weight};
-  line-height: {partial_line_height};
-  margin-top: {partial_margin_top};
-  overflow-wrap: anywhere;
-}}
-#partial3 {{
-  color: rgba(240, 240, 240, 1.0);
-  font-size: {partial_font};
-  font-weight: {partial_weight};
-  line-height: {partial_line_height};
-  margin-top: {partial_margin_top};
   overflow-wrap: anywhere;
 }}
 </style>
 </head>
 <body>
 <main id="subtitle">
-  <div id="partial3"></div>
-  <div id="partial2"></div>
-  <div id="partial1"></div>
   <div id="main"></div>
 </main>
 <script>
 (() => {{
   const wsUrl = {ws_url!r};
   const mainLine = document.getElementById('main');
-  const partialLine1 = document.getElementById('partial1');
-  const partialLine2 = document.getElementById('partial2');
-  const partialLine3 = document.getElementById('partial3');
   const subTitle = document.getElementById('subtitle');
   const rowsByKey = new Map();
   const finalSeqToKey = new Map();
@@ -144,18 +115,11 @@ body {{
   function render() {{
     const rows = Array.from(rowsByKey.values());
     const finalId = rows.slice().findLastIndex((row) => row.kind === 'final' && (row.translation || row.error));
-    const main = finalId >= 0 ? rows.at(finalId).translation:'';
+    var main = finalId >= 0 ? rows.at(finalId).translation:'';
     const partial1 = finalId >= 1 ? rows.at(finalId-1).translation:'';
     const partial2 = finalId >= 2 ? rows.at(finalId-2).translation:'';
     const partial3 = finalId >= 3 ? rows.at(finalId-3).translation:'';
-    mainLine.textContent = main;
-    mainLine.style.display = main ? 'block' : 'none';
-    partialLine1.textContent = partial1;
-    partialLine1.style.display = partial1 ? 'block' : 'none';
-    partialLine2.textContent = partial2;
-    partialLine2.style.display = partial2 ? 'block' : 'none';
-    partialLine3.textContent = partial3;
-    partialLine3.style.display = partial3 ? 'block' : 'none';
+    mainLine.innerHTML = partial3 + "<br/>" + partial2 + "<br/>" + partial1 + "<br/>" + main;
     subTitle.style.display = "flex";
     clearTimeout(timeoutId);
     timeoutId = setTimeout(function() {{ subTitle.style.display = "none"; }}, 90000);
