@@ -25,10 +25,10 @@ if not exist "%MODEL%" (
   -mm "%MMPROJ%" ^
   -a Translator ^
   -ngl all ^
-  -c 2048 ^
+  -c 4096 ^
   -b 1024 ^
   -ub 256 ^
-  -np 2 ^
+  -np -1 ^
   -fa auto ^
   --cache-prompt ^
   --cache-ram 1024 ^
@@ -38,10 +38,10 @@ if not exist "%MODEL%" (
   --ctx-checkpoints 0 ^
   --ui-config-file .\ui-configs.json ^
   --mlock ^
+  --reasoning off ^
+  --reasoning-budget 0 ^
   --host 127.0.0.1 ^
   --port 8080
-  :: --reasoning-budget 0 ^
-  :: --reasoning off ^
   :: ENABLE THIS FOR MTP --spec-type draft-mtp --spec-draft-n-max 6 ^
   :: ENABLE THIS FOR TRANSLATEGEMMA --no-jinja ^
 pause

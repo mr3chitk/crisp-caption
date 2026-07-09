@@ -1,5 +1,5 @@
 {
-  "name": "JP_EN",
+  "name": "JP_EN Translator",
   "description": "Stable JP_EN config",
   "tags": ["live", "stable", "ja", "example"],
   "host": "127.0.0.1",
@@ -12,7 +12,7 @@
   "top_k": 20,
   "top_p": 0.95,
   "repeat_penalty": 1.05,
-  "max_tokens": 2048,
+  "max_tokens": 4096,
   "translate_prompt_file": "",
   "glossary_file": "glossary.json",
   "crisp_args": [
