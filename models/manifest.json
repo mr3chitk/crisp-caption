@@ -1,12 +1,6 @@
 {
   "artifacts": [
     {
-      "name": "cohere-transcribe-q4_k.gguf",
-      "path": "models/asr/cohere-transcribe-q4_k.gguf",
-      "url": "https://huggingface.co/cstr/cohere-transcribe-03-2026-GGUF/resolve/main/cohere-transcribe-q4_k.gguf",
-      "sha256": "2931fc0ac6d6708eef5389aadf1ebd5eec7b8e764bac385be585e910c0e7b410"
-    },
-    {
       "name": "cohere-asr-ja-v0.1-q4_k.gguf",
       "path": "models/asr/cohere-asr-ja-v0.1-q4_k.gguf",
       "url": "https://huggingface.co/TransWithAI/cohere-transcribe-ja-v0.1-GGUF/resolve/main/cohere-asr-ja-v0.1-q4_k.gguf",
@@ -31,10 +25,10 @@
       "sha256": "b3052f962d6449b4eb2075733c068bdec1c51eadb7b237e6c3157bfbb7b1dae0"
     },
     {
-      "name": "gemma-4-E4B-it-qat-q4_0-unquantized.mmproj-Q8_0.gguf",
-      "path": "models/translation/gemma-4-E4B-it-qat-q4_0-unquantized.mmproj-Q8_0.gguf",
-      "url": "https://huggingface.co/mradermacher/gemma-4-E4B-it-qat-q4_0-unquantized-GGUF/resolve/main/gemma-4-E4B-it-qat-q4_0-unquantized.mmproj-Q8_0.gguf",
-      "sha256": "23e72a770f11803362bf18bcde201b5b39e9cd6e2552e0bb2f523da8ac2fce78"
+      "name": "gemma-4-E4B-it-qat-mmproj-BF16.gguf",
+      "path": "models/translation/gemma-4-E4B-it-qat-mmproj-BF16.gguf",
+      "url": "https://huggingface.co/unsloth/gemma-4-E4B-it-qat-GGUF/resolve/main/mmproj-BF16.gguf",
+      "sha256": "7c9bafa27f82d658eda805c1d82ef62bb0368e1ff75f64f77de58ad318beaaf9"
     }
   ]
 }
