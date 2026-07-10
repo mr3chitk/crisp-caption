@@ -30,15 +30,13 @@ if not exist "%MODEL%" (
   -ub 256 ^
   -np -1 ^
   -fa auto ^
-  --cache-prompt ^
+  --no-cache-prompt ^
   --cache-ram 1024 ^
   --cache-type-k q8_0 ^
   --cache-type-v q8_0 ^
   --ctx-checkpoints 0 ^
   --ui-config-file .\ui-configs.json ^
   --mlock ^
-  --reasoning off ^
-  --reasoning-budget 0 ^
   --host 127.0.0.1 ^
   --port 8080
   :: ENABLE THIS FOR MTP --spec-type draft-mtp --spec-draft-n-max 6 ^
