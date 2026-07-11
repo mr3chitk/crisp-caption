@@ -68,12 +68,12 @@ def build_user_message(
         context = "\n\n".join(context_blocks)
         return (
             f"{context}\n\n"
-            f"Refer to the above information, translate the following text only, into {target_lang}, output simply in one line.\n\n"
+            f"Refer to the above information, translate the following text only, into {target_lang}, output in one line without explanations.\n\n"
             f"{text}\n"
         )
 
     return (
-        f"Translate the following text into {target_lang}, output simply in one line.\n\n"
+        f"Translate the following text into {target_lang}, output in one line without explanations.\n\n"
         f"{text}\n"
     )
 

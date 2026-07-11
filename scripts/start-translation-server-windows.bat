@@ -5,7 +5,7 @@ cd /d "%~dp0\.."
 set "LLAMA_SERVER=tools\llama.cpp\llama-server.exe"
 set "MODEL=models\translation\gemma-4-E4B-it-qat-UD-Q4_K_XL.gguf"
 set "MMPROJ=models\translation\gemma-4-E4B-it-qat-mmproj-BF16.gguf"
-set "DRAFT=models\translation\mtp-gemma-4-E4B-it-Q4_0.gguf"
+set "DRAFT=models\translation\mtp-gemma-4-E4B-it-Q8_0.gguf"
 
 if not exist "%LLAMA_SERVER%" (
   echo [FAIL] llama-server not found: %LLAMA_SERVER%
@@ -39,8 +39,8 @@ if not exist "%MODEL%" (
   --cache-type-k q8_0 ^
   --cache-type-v q8_0 ^
   --mlock ^
+  --model-draft "%DRAFT%" --spec-type draft-mtp --spec-draft-n-max 2 ^
   --host 127.0.0.1 ^
   --port 8080
-  :: --model-draft "%DRAFT%" --spec-type draft-mtp --spec-draft-n-max 4 ^
   :: ENABLE THIS FOR TRANSLATEGEMMA --no-jinja ^
 pause
