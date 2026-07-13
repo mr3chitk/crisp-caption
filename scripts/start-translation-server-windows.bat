@@ -4,7 +4,7 @@ cd /d "%~dp0\.."
 
 set "LLAMA_SERVER=tools\llama.cpp\llama-server.exe"
 set "MODEL=models\translation\gemma-4-E4B-it-qat-UD-Q4_K_XL.gguf"
-set "MMPROJ=models\translation\gemma-4-E4B-it-qat-mmproj-BF16.gguf"
+set "MMPROJ=models\translation\gemma-4-E4B-it-qat-mmproj-F16.gguf"
 set "DRAFT=models\translation\mtp-gemma-4-E4B-it-Q8_0.gguf"
 
 if not exist "%LLAMA_SERVER%" (
@@ -34,6 +34,7 @@ if not exist "%MODEL%" (
   -fa auto ^
   --cache-prompt ^
   --cache-ram 1024 ^
+  --cache-reuse 64 ^
   --ctx-checkpoints 0 ^
   --ui-config-file .\ui-configs.json ^
   --cache-type-k q8_0 ^
