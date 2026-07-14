@@ -41,6 +41,7 @@ if not exist "%MODEL%" (
   --cache-type-v q8_0 ^
   --mlock ^
   --model-draft "%DRAFT%" --spec-type draft-mtp --spec-draft-n-max 2 ^
+  --offline ^
   --host 127.0.0.1 ^
   --port 8080
   :: ENABLE THIS FOR TRANSLATEGEMMA --no-jinja ^
