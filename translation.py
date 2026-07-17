@@ -26,8 +26,8 @@ def select_context_history(
 def build_glossary_text(glossary: dict[str, str]) -> str:
     if not glossary:
         return ""
-    lines = "\n".join(f"\"{k}\" translates to \"{v}\"" for k, v in glossary.items())
-    return f"GLOSSARY.\n\n{lines}"
+    lines = "\n".join(f"\"{k}\" --> \"{v}\"" for k, v in glossary.items())
+    return f"GLOSSARY. Left-sided word must be translated to right-sided word.\n\n{lines}"
 
 
 def clean_translation_output(text: str) -> str:
@@ -68,12 +68,12 @@ def build_user_message(
         context = "\n\n".join(context_blocks)
         return (
             f"{context}\n\n"
-            f"Refer to the above information, translate the following text only, into {target_lang}, output in one line without explanations.\n\n"
+            f"Refer to the above informations, translate the following text only, into {target_lang}, output the result in one line without explanations.\n\n"
             f"{text}\n"
         )
 
     return (
-        f"Translate the following text into {target_lang}, output in one line without explanations.\n\n"
+        f"Translate the following text into {target_lang}, output the result in one line without explanations.\n\n"
         f"{text}\n"
     )
 

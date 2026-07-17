@@ -49,7 +49,7 @@
     "-vmsd",
     "15",
     "-vp",
-    "15",
+    "30",
     "--frequency-penalty",
     "0.2",
     "--beam-size",

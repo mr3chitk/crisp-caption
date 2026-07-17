@@ -116,10 +116,10 @@ body {{
     const rows = Array.from(rowsByKey.values());
     const finalId = rows.slice().findLastIndex((row) => row.kind === 'final' && (row.translation || row.error));
     const main = finalId >= 0 ? rows.at(finalId).translation:'';
-    const partial1 = finalId >= 1 ? rows.at(finalId-1).translation + "<br/>":'';
-    const partial2 = finalId >= 2 ? rows.at(finalId-2).translation + "<br/>":'';
-    const partial3 = finalId >= 3 ? rows.at(finalId-3).translation + "<br/>":'';
-    mainLine.innerHTML = partial3 + partial2 + partial1 + main;
+    const partial1 = finalId >= 1 ? "- " + rows.at(finalId-1).translation + "<br/>":'';
+    const partial2 = finalId >= 2 ? "- " + rows.at(finalId-2).translation + "<br/>":'';
+    const partial3 = finalId >= 3 ? "- " + rows.at(finalId-3).translation + "<br/>":'';
+    mainLine.innerHTML = partial3 + partial2 + partial1 + "- " + main;
     subTitle.style.display = "flex";
     clearTimeout(timeoutId);
     timeoutId = setTimeout(function() {{ subTitle.style.display = "none"; }}, 90000);

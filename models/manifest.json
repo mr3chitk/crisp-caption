@@ -25,10 +25,10 @@
       "sha256": "b3052f962d6449b4eb2075733c068bdec1c51eadb7b237e6c3157bfbb7b1dae0"
     },
     {
-      "name": "gemma-4-E4B-it-qat-mmproj-F16.gguf",
-      "path": "models/translation/gemma-4-E4B-it-qat-mmproj-F16.gguf",
-      "url": "https://huggingface.co/unsloth/gemma-4-E4B-it-qat-GGUF/resolve/main/mmproj-F16.gguf",
-      "sha256": "6a255159ee4b01b304f633a57f017dd7d5a69d30fff52abb2614bf0813cef034"
+      "name": "gemma-4-E4B-it-qat-mmproj-BF16.gguf",
+      "path": "models/translation/gemma-4-E4B-it-qat-mmproj-BF16.gguf",
+      "url": "https://huggingface.co/unsloth/gemma-4-E4B-it-qat-GGUF/resolve/main/mmproj-BF16.gguf",
+      "sha256": "7c9bafa27f82d658eda805c1d82ef62bb0368e1ff75f64f77de58ad318beaaf9"
     },
     {
       "name": "mtp-gemma-4-E4B-it-Q8_0.gguf",

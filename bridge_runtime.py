@@ -86,8 +86,8 @@ class CrispRuntime:
             env["CRISPASR_GGUF_PRELOAD"] = "1"
             # env["CRISPASR_KV_QUANT_K"] = "q8_0"
             # env["CRISPASR_KV_QUANT_V"] = "q8_0"
-            env["CRISPASR_NEMOTRON_STREAMING"] = "1"
-            env["CRISPASR_NEMOTRON_CONTEXT_PRESET"] = "3"
+            # env["CRISPASR_NEMOTRON_STREAMING"] = "1"
+            # env["CRISPASR_NEMOTRON_CONTEXT_PRESET"] = "3"
 
             self.proc = await asyncio.create_subprocess_exec(
                 *cmd,
