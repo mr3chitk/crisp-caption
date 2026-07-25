@@ -25,6 +25,7 @@ if not exist "%MODEL%" (
   -m "%MODEL%" ^
   -mm "%MMPROJ%" ^
   --no-mmproj-offload ^
+  --chat-template-file "models\translation\chat_template.jinja" ^
   -a Translator ^
   -ngl all ^
   -c 4096 ^
@@ -43,7 +44,5 @@ if not exist "%MODEL%" (
   --reasoning off ^
   --reasoning-budget 0 ^
   --host 127.0.0.1 --port 8080
-  :: --no-jinja ^
-  :: --chat-template-file "models\translation\Qwen3.5-chat_template.jinja" ^
   :: --model-draft "%DRAFT%" --spec-type draft-mtp --spec-draft-n-max 2 ^
 pause

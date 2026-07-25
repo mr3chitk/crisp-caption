@@ -25,6 +25,12 @@
       "sha256": "254145e7e03e9e8d3120813fac8033ffa04e411eb6d70a198833504935681084"
     },
     {
+      "name": "chat_template.jinja",
+      "path": "models/translation/chat_template.jinja",
+      "url": "https://huggingface.co/froggeric/Qwen-Fixed-Chat-Templates/resolve/main/chat_template.jinja",
+      "sha256": ""
+    },
+    {
       "name": "gemma-4-E4B-it-qat-UD-Q4_K_XL.gguf",
       "path": "models/translation/gemma-4-E4B-it-qat-UD-Q4_K_XL.gguf",
       "url": "https://huggingface.co/unsloth/gemma-4-E4B-it-qat-GGUF/resolve/main/gemma-4-E4B-it-qat-UD-Q4_K_XL.gguf",
