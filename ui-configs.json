@@ -1,5 +1,5 @@
 {
-	"temperature": 0.3,
+	"temperature": 0.0,
 	"repeat_penalty": 1.05,
 	"top_k": 20,
 	"top_p": 0.95,
