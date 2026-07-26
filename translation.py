@@ -27,7 +27,7 @@ def build_glossary_text(glossary: dict[str, str]) -> str:
     if not glossary:
         return ""
     lines = "\n".join(f"\"{k}\" --> \"{v}\"" for k, v in glossary.items())
-    return f"GLOSSARY. Left-sided word must be translated to right-sided word.\n\n{lines}"
+    return f"GLOSSARY. Left-sided word must be translated to right-sided word when translating.\n\n{lines}"
 
 
 def clean_translation_output(text: str) -> str:
@@ -62,7 +62,7 @@ def build_user_message(
         for idx, (orig, trans) in enumerate(history, start=1):
             # history_lines.append(f"{idx}. Original:{orig}\n    Translated:{trans}")
             history_lines.append(f"{orig}")
-        context_blocks.append("PREVIOUS CONTEXTS.\n\n" + "\n".join(history_lines))
+        context_blocks.append("PREVIOUS CONTEXTS. Use to identify omitted parts or to correct wrong transcription when translating. \n\n" + "\n".join(history_lines))
 
     if context_blocks:
         context = "\n\n".join(context_blocks)
