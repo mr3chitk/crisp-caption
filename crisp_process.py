@@ -135,7 +135,7 @@ _MERGED_LONG_FLAG_NUM = re.compile(
     r"^--(?P<flag>stream-length|stream-step|stream-keep|stream-partial-decode-ms|stream-final-on-silence-ms|stream-utterance-max-sec|"
     r"stream-final-mode|stream-vad-merge-gap-ms|flush-after|max-new-tokens|chunk-seconds|"
     r"tts-steps|tts-max-input-chars|vad-min-speech-duration-ms|vad-min-silence-duration-ms|vad-speech-pad-ms|"
-    r"seed|frequency-penalty|beam-size|hotwords-boost|hotwords-file|"
+    r"seed|frequency-penalty|beam-size|hotwords-boost|hotwords-file|chunk-seconds|chunk-overlap|"
     r"vad-max-speech-duration-s|vad-samples-overlap|vad-threshold)\s+(?P<val>\S.+)$",
     re.IGNORECASE,
 )
