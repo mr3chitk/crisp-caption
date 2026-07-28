@@ -4,9 +4,9 @@ cd /d "%~dp0\.."
 
 set "PY=%CD%\.venv\Scripts\python.exe"
 
-set "CRISPASR_VERSION=v0.8.23"
-set "CRISPASR_URL=https://github.com/CrispStrobe/CrispASR/releases/download/v0.8.23/crispasr-windows-x86_64-cuda.zip"
-set "CRISPASR_SHA256=e5786bd9622735349977dd5da52c294d4ebafb58ba85316383178d6062fe036e"
+set "CRISPASR_VERSION=v0.8.24"
+set "CRISPASR_URL=https://github.com/CrispStrobe/CrispASR/releases/download/v0.8.24/crispasr-windows-x86_64-cuda.zip"
+set "CRISPASR_SHA256=832af6218508ac52fc71ac5653c433786bdfae81f775e2c77bfefd05df6f255b"
 set "CRISPASR_ZIP=tools\cache\crispasr-windows-vulkan.zip"
 set "CRISPASR_DIR=tools\crispasr"
 

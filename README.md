@@ -1,3 +1,14 @@
+# crisp-caption (forked)
+WHAT ARE NEW?
+- cuda 12 is default, if you want cuda 13/vulcan, change download scripts and redownload them
+- improved overlay: displays 4 translated lines, hides after 90s
+- improved models and configs, focusing on high quality JP-EN translation
+- mmproj for ocr
+MODEL SELECTION
+- ASR: you can use any ASR that is supported by crispASR. Some recommended self-built ASRs are: 
+  - [cohere-ja](https://huggingface.co/efwkjn/cohere-asr-ja)
+  - [efwkjn/whisper-ja-760M](https://huggingface.co/efwkjn/whisper-ja-760M)
+- Translator: you can change to any gguf model that runs on llama.cpp and fits your machine
 # crisp-caption
 
 Live Japanese captions and translation for browser audio, video playback, livestream watching, and OBS.

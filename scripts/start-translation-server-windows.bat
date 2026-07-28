@@ -5,7 +5,6 @@ cd /d "%~dp0\.."
 set "LLAMA_SERVER=tools\llama.cpp\llama-server.exe"
 set "MODEL=models\translation\gemma-4-E4B-it-qat-UD-Q4_K_XL.gguf"
 set "MMPROJ=models\translation\gemma-4-E4B-it-qat-mmproj-BF16.gguf"
-set "DRAFT=models\translation\mtp-gemma-4-E4B-it-Q8_0.gguf"
 
 if not exist "%LLAMA_SERVER%" (
   echo [FAIL] llama-server not found: %LLAMA_SERVER%
@@ -25,7 +24,7 @@ if not exist "%MODEL%" (
   -m "%MODEL%" ^
   -mm "%MMPROJ%" ^
   --no-mmproj-offload ^
-  --model-draft "%DRAFT%" --spec-type draft-mtp --spec-draft-n-max 2 ^
+  --model-draft "models\translation\mtp-gemma-4-E4B-it-Q8_0.gguf" --spec-type draft-mtp --spec-draft-n-max 2 ^
   -a Translator ^
   -ngl all ^
   -c 2048 ^
@@ -37,11 +36,11 @@ if not exist "%MODEL%" (
   --cache-prompt ^
   --cache-ram 1024 ^
   --ui-config-file .\ui-configs.json ^
-  --mlock ^
+  --load-mode mlock ^
   --offline ^
   --reasoning off ^
   --reasoning-budget 0 ^
   --seed 1 ^
   --host 127.0.0.1 --port 8080
-  :: --chat-template-file "models\translation\chat_template.jinja" ^
+:: --chat-template-file "models\translation\chat_template.jinja" ^
 pause
