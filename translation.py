@@ -62,13 +62,13 @@ def build_user_message(
         for idx, (orig, trans) in enumerate(history, start=1):
             # history_lines.append(f"{idx}. Original:{orig}\n    Translated:{trans}")
             history_lines.append(f"{orig}")
-        context_blocks.append("PREVIOUS CONTEXTS. Use to identify omitted parts or to correct wrong transcription when translating. \n\n" + "\n".join(history_lines))
+        context_blocks.append("PREVIOUS CONTEXTS. When translating, use them to improve translation (e.g. topic, subject, objects, pronoun, ...) and to correct transcription errors. \n\n" + "\n".join(history_lines))
 
     if context_blocks:
         context = "\n\n".join(context_blocks)
         return (
             f"{context}\n\n"
-            f"Refer to the above informations, translate the following text only, into {target_lang}, output the result in one line without explanations.\n\n"
+            f"TRANSLATION. Refer to the above informations, translate the following text ONLY, into {target_lang}, output the result in one line without explanations.\n\n"
             f"{text}\n"
         )
 

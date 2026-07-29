@@ -55,14 +55,10 @@
     "--frequency-penalty",
     "0.2",
     "--beam-size",
-    "2",
+    "5",
     "--hotwords-file",
     "hotwords.txt",
     "--hotwords-boost",
-    "2.0",
-    "--chunk-seconds",
-    "60",
-    "--chunk-overlap",
-    "1"
+    "2.0"
   ]
 }
