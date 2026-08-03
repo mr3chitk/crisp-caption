@@ -4,13 +4,13 @@ cd /d "%~dp0\.."
 
 set "PY=%CD%\.venv\Scripts\python.exe"
 
-set "LLAMA_CPP_VERSION=b10199"
-set "LLAMA_CPP_URL=https://github.com/ggml-org/llama.cpp/releases/download/b10199/llama-b10199-bin-win-cuda-12.4-x64.zip"
-set "LLAMA_CPP_SHA256=34b0073cf5c7b2412066b89ad5374ae96663005d50852ce3ae59a1f6dafe793f"
-set "LLAMA_CPP_ZIP=tools\cache\llama-cpp-windows-vulkan.zip"
+set "LLAMA_CPP_VERSION=b10235"
+set "LLAMA_CPP_URL=https://github.com/ggml-org/llama.cpp/releases/download/b10235/llama-b10235-bin-win-cuda-12.4-x64.zip"
+set "LLAMA_CPP_SHA256=208c192f9c72489c847847339b4c99475a5419ba9813b69eb4f41c245d91b2f8"
+set "LLAMA_CPP_ZIP=tools\cache\llama-cpp-windows.zip"
 set "LLAMA_CPP_DIR=tools\llama.cpp"
 
-echo Downloading llama.cpp Vulkan runtime...
+echo Downloading llama.cpp runtime...
 if exist "%PY%" (
   "%PY%" scripts\download_file.py one --url "%LLAMA_CPP_URL%" --target "%LLAMA_CPP_ZIP%" --sha256 "%LLAMA_CPP_SHA256%"
 ) else (
