@@ -24,6 +24,7 @@ if not exist "%MODEL%" (
   -m "%MODEL%" ^
   -mm "%MMPROJ%" ^
   --no-mmproj-offload ^
+  --model-draft "models\translation\mtp-gemma-4-E4B-it-Q8_0.gguf" --spec-type draft-mtp --spec-draft-n-max 2 ^
   -a Translator ^
   -ngl all ^
   -c 2048 ^
@@ -41,5 +42,5 @@ if not exist "%MODEL%" (
   --reasoning-budget 0 ^
   --seed 1 ^
   --host 127.0.0.1 --port 8080
-:: --model-draft "models\translation\mtp-gemma-4-E4B-it-Q8_0.gguf" --spec-type draft-mtp --spec-draft-n-max 2 ^
+:: 
 pause
