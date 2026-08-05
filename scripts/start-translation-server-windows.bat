@@ -23,8 +23,8 @@ if not exist "%MODEL%" (
 "%LLAMA_SERVER%" ^
   -m "%MODEL%" ^
   -mm "%MMPROJ%" ^
-  --no-mmproj-offload ^
   --model-draft "models\translation\mtp-gemma-4-E4B-it-Q8_0.gguf" --spec-type draft-mtp --spec-draft-n-max 2 ^
+  --no-mmproj-offload ^
   -a Translator ^
   -ngl all ^
   -c 2048 ^

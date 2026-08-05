@@ -9,6 +9,9 @@ MODEL SELECTION
   - [cohere-ja](https://huggingface.co/efwkjn/cohere-asr-ja)
   - [efwkjn/whisper-ja-760M](https://huggingface.co/efwkjn/whisper-ja-760M)
 - Translator: you can change to any gguf model that runs on llama.cpp and fits your machine
+KNOWN ISSUES
+- Gemma4 mmproj is bad at Japanese OCR. Use Qwen + another ASR for OCR (see below).
+- You will need Gemma4 or bigger models for CohereASR because Cohere overcooks Japanese names and models like Qwen3.5-4b/Agent-A1 will likely fail to translate those kanji correctly.
 # crisp-caption
 
 Live Japanese captions and translation for browser audio, video playback, livestream watching, and OBS.
