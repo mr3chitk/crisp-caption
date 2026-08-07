@@ -6,11 +6,11 @@ WHAT ARE NEW?
 - mmproj for ocr
 MODEL SELECTION
 - ASR: you can use any ASR that is supported by crispASR. Some recommended self-built ASRs are: 
-  - [cohere-ja](https://huggingface.co/efwkjn/cohere-asr-ja)
+  - [cohere-ja (my current setup)](https://huggingface.co/efwkjn/cohere-asr-ja)
   - [efwkjn/whisper-ja-760M](https://huggingface.co/efwkjn/whisper-ja-760M)
 - Translator: you can change to any gguf model that runs on llama.cpp and fits your machine
 KNOWN ISSUES
-- Gemma4 mmproj is bad at Japanese OCR. Use Qwen + another ASR for OCR (see below).
+- Gemma4 mmproj is bad at Japanese OCR. Use seperated OCR models (umi, qwen,...) or a different config.
 - You will need Gemma4 or bigger models for CohereASR because Cohere overcooks Japanese names and models like Qwen3.5-4b/Agent-A1 will likely fail to translate those kanji correctly.
 # crisp-caption
 

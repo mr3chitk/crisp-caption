@@ -62,7 +62,7 @@ def build_user_message(
         for idx, (orig, trans) in enumerate(history, start=1):
             # history_lines.append(f"{idx}. Original:{orig}\n    Translated:{trans}")
             history_lines.append(f"{orig}")
-        context_blocks.append("PREVIOUS TRANSCRIPTS. Use them to improve the translation. \n\n" + "\n".join(history_lines))
+        context_blocks.append("PREVIOUS TRANSCRIPTS. Use them to improve the translation when translating. \n\n" + "\n".join(history_lines))
 
     if context_blocks:
         context = "\n\n".join(context_blocks)
