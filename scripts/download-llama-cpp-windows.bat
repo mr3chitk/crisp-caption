@@ -4,9 +4,9 @@ cd /d "%~dp0\.."
 
 set "PY=%CD%\.venv\Scripts\python.exe"
 
-set "LLAMA_CPP_VERSION=b10298"
-set "LLAMA_CPP_URL=https://github.com/ggml-org/llama.cpp/releases/download/b10298/llama-b10298-bin-win-cuda-12.4-x64.zip"
-set "LLAMA_CPP_SHA256=c337a4ebc07d5f93a076bc5d674f1b6366df4bd17260306c41fadd5dff3f0300"
+set "LLAMA_CPP_VERSION=b10326"
+set "LLAMA_CPP_URL=https://github.com/ggml-org/llama.cpp/releases/download/b10326/llama-b10326-bin-win-cuda-12.4-x64.zip"
+set "LLAMA_CPP_SHA256=62b4cb0d65ce95561f23d662bd7e5a568f462e24254b24b5b4f8c9e71ea692a7"
 set "LLAMA_CPP_ZIP=tools\cache\llama-cpp-windows.zip"
 set "LLAMA_CPP_DIR=tools\llama.cpp"
 

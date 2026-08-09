@@ -1,10 +1,10 @@
 {
   "artifacts": [
     {
-      "name": "cohere-asr-ja-v0.1-q4_k.gguf",
-      "path": "models/asr/cohere-asr-ja-v0.1-q4_k.gguf",
-      "url": "https://huggingface.co/TransWithAI/cohere-transcribe-ja-v0.1-GGUF/resolve/main/cohere-asr-ja-v0.1-q4_k.gguf",
-      "sha256": "0bdcbd18bd95c4fc020595f67f98ee08e37f48046ebc22442cadd7cc46be9712"
+      "name": "cohere-transcribe-q4_k.gguf",
+      "path": "models/asr/cohere-transcribe-q4_k.gguf",
+      "url": "https://huggingface.co/cstr/cohere-transcribe-03-2026-GGUF/resolve/main/cohere-transcribe-q4_k.gguf",
+      "sha256": "237261c543dc9124a3f08f95b48c9c672896ef0d79dc8cadce3fb4ddc09a2ef8"
     },
     {
       "name": "firered-vad.gguf",
