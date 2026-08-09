@@ -6,7 +6,7 @@ WHAT ARE NEW?
 - mmproj for ocr
 MODEL SELECTION
 - ASR: you can use any ASR that is supported by crispASR. Some recommended self-built ASRs are: 
-  - [cohere-ja (my current setup)](https://huggingface.co/efwkjn/cohere-asr-ja)
+  - [cohere-ja, more accuracy but unstable short-form](https://huggingface.co/efwkjn/cohere-asr-ja)
   - [efwkjn/whisper-ja-760M](https://huggingface.co/efwkjn/whisper-ja-760M)
 - Translator: you can change to any gguf model that runs on llama.cpp and fits your machine
 KNOWN ISSUES
