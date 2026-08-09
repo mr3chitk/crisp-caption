@@ -4,19 +4,27 @@ cd /d "%~dp0\.."
 
 set "PY=%CD%\.venv\Scripts\python.exe"
 
-set "CRISPASR_VERSION=v0.8.25"
-set "CRISPASR_URL=https://github.com/CrispStrobe/CrispASR/releases/download/v0.8.25/crispasr-windows-x86_64-cuda.zip"
-set "CRISPASR_SHA256=3a19127a8f082e5ef4f9eaa0505cd2d9bf93f7ec45dff174a51990ef675f055e"
 set "CRISPASR_ZIP=tools\cache\crispasr-windows.zip"
 set "CRISPASR_DIR=tools\crispasr"
+set "REPO=CrispStrobe/CrispASR"
+set "PATTERN=crispasr-windows-x86_64-cuda.zip"
 
 echo Downloading CrispASR runtime...
-if exist "%PY%" (
-  "%PY%" scripts\download_file.py one --url "%CRISPASR_URL%" --target "%CRISPASR_ZIP%" --sha256 "%CRISPASR_SHA256%"
-) else (
-  py -3 scripts\download_file.py one --url "%CRISPASR_URL%" --target "%CRISPASR_ZIP%" --sha256 "%CRISPASR_SHA256%"
-  if errorlevel 1 python scripts\download_file.py one --url "%CRISPASR_URL%" --target "%CRISPASR_ZIP%" --sha256 "%CRISPASR_SHA256%"
-)
+powershell -NoProfile -ExecutionPolicy Bypass -Command ^
+  "$ErrorActionPreference='Stop';" ^
+  "$repo='%REPO%';" ^
+  "$pattern='%PATTERN%';" ^
+  "$api='https://api.github.com/repos/' + $repo + '/releases/latest';" ^
+  "$rel=Invoke-RestMethod -UseBasicParsing $api;" ^
+  "$assets=$rel.assets | Where-Object { $_.name -like $pattern } | Sort-Object name -Descending;" ^
+  "if(-not $assets){ throw 'No asset matched pattern: ' + $pattern }" ^
+  "$asset=$assets | Select-Object -First 1;" ^
+  "Write-Host ('Selected asset: ' + $asset.browser_download_url);" ^
+  "$out='%CD%\%CRISPASR_ZIP%';" ^
+  "$parentDir = Split-Path -Parent $out;" ^
+  "New-Item -Path $parentDir -ItemType Directory -Force | Out-Null;" ^
+  "Write-Host ('Downloading to: ' + $out);" ^
+  "Invoke-WebRequest -UseBasicParsing -Uri $asset.browser_download_url -OutFile $out;"
 if errorlevel 1 (
   echo [FAIL] CrispASR download failed.
   echo If the release asset name changed, edit CRISPASR_URL in this BAT file.
@@ -25,12 +33,7 @@ if errorlevel 1 (
 )
 
 echo Extracting CrispASR to %CRISPASR_DIR%...
-if exist "%PY%" (
-  "%PY%" scripts\download_file.py extract --archive "%CRISPASR_ZIP%" --dest "%CRISPASR_DIR%" --strip-top-level --delete-archive
-) else (
-  py -3 scripts\download_file.py extract --archive "%CRISPASR_ZIP%" --dest "%CRISPASR_DIR%" --strip-top-level --delete-archive
-  if errorlevel 1 python scripts\download_file.py extract --archive "%CRISPASR_ZIP%" --dest "%CRISPASR_DIR%" --strip-top-level --delete-archive
-)
+"%PY%" scripts\download_file.py extract --archive "%CRISPASR_ZIP%" --dest "%CRISPASR_DIR%" --strip-top-level --delete-archive
 if errorlevel 1 (
   echo [FAIL] CrispASR extract failed.
   pause

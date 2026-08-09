@@ -4,19 +4,27 @@ cd /d "%~dp0\.."
 
 set "PY=%CD%\.venv\Scripts\python.exe"
 
-set "LLAMA_CPP_VERSION=b10326"
-set "LLAMA_CPP_URL=https://github.com/ggml-org/llama.cpp/releases/download/b10326/llama-b10326-bin-win-cuda-12.4-x64.zip"
-set "LLAMA_CPP_SHA256=62b4cb0d65ce95561f23d662bd7e5a568f462e24254b24b5b4f8c9e71ea692a7"
 set "LLAMA_CPP_ZIP=tools\cache\llama-cpp-windows.zip"
 set "LLAMA_CPP_DIR=tools\llama.cpp"
+set "REPO=ggml-org/llama.cpp"
+set "PATTERN=llama-*-bin-win-cuda-12.4-x64.zip"
 
 echo Downloading llama.cpp runtime...
-if exist "%PY%" (
-  "%PY%" scripts\download_file.py one --url "%LLAMA_CPP_URL%" --target "%LLAMA_CPP_ZIP%" --sha256 "%LLAMA_CPP_SHA256%"
-) else (
-  py -3 scripts\download_file.py one --url "%LLAMA_CPP_URL%" --target "%LLAMA_CPP_ZIP%" --sha256 "%LLAMA_CPP_SHA256%"
-  if errorlevel 1 python scripts\download_file.py one --url "%LLAMA_CPP_URL%" --target "%LLAMA_CPP_ZIP%" --sha256 "%LLAMA_CPP_SHA256%"
-)
+powershell -NoProfile -ExecutionPolicy Bypass -Command ^
+  "$ErrorActionPreference='Stop';" ^
+  "$repo='%REPO%';" ^
+  "$pattern='%PATTERN%';" ^
+  "$api='https://api.github.com/repos/' + $repo + '/releases/latest';" ^
+  "$rel=Invoke-RestMethod -UseBasicParsing $api;" ^
+  "$assets=$rel.assets | Where-Object { $_.name -like $pattern } | Sort-Object name -Descending;" ^
+  "if(-not $assets){ throw 'No asset matched pattern: ' + $pattern }" ^
+  "$asset=$assets | Select-Object -First 1;" ^
+  "Write-Host ('Selected asset: ' + $asset.browser_download_url);" ^
+  "$out='%CD%\%LLAMA_CPP_ZIP%';" ^
+  "$parentDir = Split-Path -Parent $out;" ^
+  "New-Item -Path $parentDir -ItemType Directory -Force | Out-Null;" ^
+  "Write-Host ('Downloading to: ' + $out);" ^
+  "Invoke-WebRequest -UseBasicParsing -Uri $asset.browser_download_url -OutFile $out;"
 if errorlevel 1 (
   echo [FAIL] llama.cpp download failed.
   echo If the release asset name changed, edit LLAMA_CPP_URL in this BAT file.
@@ -25,12 +33,7 @@ if errorlevel 1 (
 )
 
 echo Extracting llama.cpp to %LLAMA_CPP_DIR%...
-if exist "%PY%" (
-  "%PY%" scripts\download_file.py extract --archive "%LLAMA_CPP_ZIP%" --dest "%LLAMA_CPP_DIR%" --strip-top-level --delete-archive
-) else (
-  py -3 scripts\download_file.py extract --archive "%LLAMA_CPP_ZIP%" --dest "%LLAMA_CPP_DIR%" --strip-top-level --delete-archive
-  if errorlevel 1 python scripts\download_file.py extract --archive "%LLAMA_CPP_ZIP%" --dest "%LLAMA_CPP_DIR%" --strip-top-level --delete-archive
-)
+"%PY%" scripts\download_file.py extract --archive "%LLAMA_CPP_ZIP%" --dest "%LLAMA_CPP_DIR%" --strip-top-level --delete-archive
 if errorlevel 1 (
   echo [FAIL] llama.cpp extract failed.
   pause
