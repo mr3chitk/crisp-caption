@@ -37,10 +37,10 @@
       "sha256": "7c9bafa27f82d658eda805c1d82ef62bb0368e1ff75f64f77de58ad318beaaf9"
     },
     {
-      "name": "mtp-gemma-4-E4B-it-Q8_0.gguf",
-      "path": "models/translation/mtp-gemma-4-E4B-it-Q8_0.gguf",
-      "url": "https://huggingface.co/unsloth/gemma-4-E4B-it-qat-GGUF/resolve/main/MTP/mtp-gemma-4-E4B-it-Q8_0.gguf",
-      "sha256": "c566f6885963c83a0d868f9656287ed5d4f12a2b8f0c86a20524f89a96169ed2"
+      "name": "mtp-gemma-4-E4B-it-Q4_0.gguf",
+      "path": "models/translation/mtp-gemma-4-E4B-it-Q4_0.gguf",
+      "url": "https://huggingface.co/unsloth/gemma-4-E4B-it-qat-GGUF/resolve/main/MTP/mtp-gemma-4-E4B-it-Q4_0.gguf",
+      "sha256": "423074e537504b4f9ec5eafed5c639fac82c96631626efccacdd3c4039b20605"
     }
   ]
 }

@@ -19,17 +19,17 @@ if not exist "%MODEL%" (
   pause
   exit /b 1
 )
-
+REM it's recommended to increase -np to 2 if you use mmproj
 "%LLAMA_SERVER%" ^
   -m "%MODEL%" ^
   -mm "%MMPROJ%" ^
-  --model-draft "models\translation\mtp-gemma-4-E4B-it-Q8_0.gguf" --spec-type draft-mtp --spec-draft-n-max 2 ^
+  --model-draft "models\translation\mtp-gemma-4-E4B-it-Q4_0.gguf" --spec-type draft-mtp --spec-draft-n-max 2 ^
   -a Translator ^
   -ngl all ^
   -c 2048 ^
   -b 1024 ^
   -ub 512 ^
-  -np 2 ^
+  -np 1 ^
   -fa auto ^
   --no-mmproj-offload ^
   --kv-unified ^

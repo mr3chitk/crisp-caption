@@ -7,7 +7,7 @@ WHAT ARE NEW?
 MODEL SELECTION
 - ASR: you can use any ASR that is supported by crispASR. Some recommended self-built ASRs are: 
   - [cohere-ja, more accuracy but unstable short-form](https://huggingface.co/efwkjn/cohere-asr-ja)
-  - [efwkjn/whisper-ja-760M](https://huggingface.co/efwkjn/whisper-ja-760M)
+  - [whisper-large-v3-turbo](https://huggingface.co/openai/whisper-large-v3-turbo)
 - Translator: you can change to any gguf model that runs on llama.cpp and fits your machine
 KNOWN ISSUES
 - Gemma4 mmproj is bad at Japanese OCR. Use seperated OCR models (umi, qwen,...) or a different config.
