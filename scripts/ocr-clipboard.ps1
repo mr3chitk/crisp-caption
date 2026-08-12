@@ -21,61 +21,74 @@ Add-Type -AssemblyName System.Drawing
 $tempPng = Join-Path $env:TEMP ("clip_ocr_{0}.png" -f ([Guid]::NewGuid().ToString("N")))
 $img.Save($tempPng)
 
-# markdown cleaner
+# markdown cleaners
 function ConvertFrom-Markdown {
     param([string]$Text)
-    
     # Remove markdown links [text](url) -> text
     $Text = $Text -replace '\[([^\]]+)\]\([^\)]+\)', '$1'
-    
     # Remove markdown images ![alt](url)
     $Text = $Text -replace '!\[([^\]]*)\]\([^\)]+\)', '$1'
-    
     # Remove bold/italic **text** or __text__ -> text
     $Text = $Text -replace '(\*\*|__)(.*?)\1', '$2'
-    
     # Remove italic *text* or _text_ -> text
     $Text = $Text -replace '(\*|_)(.*?)\1', '$2'
-    
     # Remove inline code `text` -> text
     $Text = $Text -replace '`([^`]+)`', '$1'
-    
     # Remove headers (#, ##, etc.)
     $Text = $Text -replace '^#+\s+', ''
-    
     # Remove horizontal rules (---, ***, ___)
     $Text = $Text -replace '^\s*(---|===|___)\s*$', ''
-    
     # Remove blockquotes (>)
     $Text = $Text -replace '^\s*>\s+', ''
-    
     # Remove strikethrough ~~text~~ -> text
     $Text = $Text -replace '~~([^~]+)~~', '$1'
-    
-    # ARTIFACT: Remove <think> tags and content
-    $Text = $Text -replace '<think>[\s\S]*?</think>', ''
     return $Text.Trim()
+}
+function ConvertFrom-Html {
+    param([string]$Html)
+    # Remove script tags and content
+    $Html = $Html -replace '<script[^>]*>[\s\S]*?</script>', ''
+    # Remove style tags and content
+    $Html = $Html -replace '<style[^>]*>[\s\S]*?</style>', ''
+    # Remove all HTML tags
+    $Html = $Html -replace '<[^>]+>', ''
+    # Decode HTML entities
+    $Html = $Html -replace '&nbsp;', ' '
+    $Html = $Html -replace '&lt;', '<'
+    $Html = $Html -replace '&gt;', '>'
+    $Html = $Html -replace '&amp;', '&'
+    $Html = $Html -replace '&quot;', '"'
+    $Html = $Html -replace '&#39;', "'"
+    $Html = $Html -replace '&copy;', '©'
+    $Html = $Html -replace '&reg;', '®'
+    return $Html.Trim()
 }
 
 # 3) Run OCR client
 $parent = Split-Path -Parent $MyInvocation.MyCommand.Path
 $parent = Split-Path -Parent $parent
 try {
-    # INFO: if you have extra VRAM, you can disable "--device","none" 
+    # INFO: if you have extra VRAM, you can disable "--device","none"
+    # INFO: for q8_0, you need to build yourself via llama-quantize.exe
+    $model = "${parent}\models\ocr\surya-2-q8_0.gguf"
+    if (-not (Test-Path -Path $model)){
+        $model = "${parent}\models\ocr\surya-2.gguf"
+    }
     $exe = "${parent}\tools\llama.cpp\llama-mtmd-cli.exe"
     $args = @(
-		"-m","${parent}\models\ocr\OvisOCR2-Q8_0.gguf",
-		"--mmproj","${parent}\models\ocr\OvisOCR2-mmproj-BF16.gguf",
+		"-m","${model}",
+		"--mmproj","${parent}\models\ocr\surya-2-mmproj.gguf",
         "--image", $tempPng,
-		"-p", "<|im_start|>user\nExtract all readable content from the image in natural human reading order and output the result as a single Markdown document. Format formulas as LaTeX. Format tables as HTML: <table>...</table>. Preserve the original text without translation.<|im_end|>\n<|im_start|>assistant\n",
+		"-p", "OCR: ",
 		"-n","4096",
 		"--temp","0.0",
         "--offline",
+        "--no-mmproj-offload",
         "--device","none"
     )
     # Capture whatever .exe prints and treat it as OCR text.
     $ocrText = (& $exe @args | Out-String).Trim()
-    $plain = ConvertFrom-Markdown -Text $ocrText 
+    $plain = ConvertFrom-Html -Html $ocrText 
     if (-not $plain) { throw "OCR client returned empty text." }
 
     # 4) Copy OCR text back to clipboard
