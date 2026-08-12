@@ -4,6 +4,8 @@
     #SingleInstance Force
     Pause::
 	{
+        Clipboard := "" ; Clear Clipboard
+		Send "{PrintScreen}" ; Send PrintScreen to capture image
 		ps1 := "C:\Users\PC\crisp-caption\scripts\ocr-clipboard.ps1"
 		cmd := 'powershell.exe -NoProfile -ExecutionPolicy Bypass -File "' ps1 '"'
 		Run(cmd, , "Min")
@@ -12,8 +14,16 @@
 
 $ErrorActionPreference = "Stop"
 
-# 1) Read the clipboard image
-$img = Get-Clipboard -Format Image
+# 1) Read the clipboard image (wait if no image in Clipboard)
+$counter = 60
+for ($i = 0; $i -le $counter; $i++) {
+    $img = Get-Clipboard -Format Image
+    if ($img) {
+        break
+    }
+    Start-Sleep -Seconds 1
+    Write-Output "Waited $i seconds..."
+}
 if (-not $img) { throw "Clipboard does not contain an image." }
 
 # 2) Save image to a temp PNG file
