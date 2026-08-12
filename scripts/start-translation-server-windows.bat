@@ -24,7 +24,7 @@ if not exist "%MODEL%" (
   --model-draft "models\translation\mtp-gemma-4-E4B-it-Q4_0.gguf" --spec-type draft-mtp --spec-draft-n-max 2 ^
   -a Translator ^
   -ngl all ^
-  -c 4096 ^
+  -c 8192 ^
   -b 1024 ^
   -ub 512 ^
   -np 1 ^

@@ -69,7 +69,7 @@ $parent = Split-Path -Parent $MyInvocation.MyCommand.Path
 $parent = Split-Path -Parent $parent
 try {
     # INFO: if you have extra VRAM, you can disable "--device","none"
-    # INFO: for q8_0, you need to build yourself via llama-quantize.exe
+    # INFO: for q8_0, you need to quantize it yourself via llama-quantize.exe
     $model = "${parent}\models\ocr\surya-2-q8_0.gguf"
     if (-not (Test-Path -Path $model)){
         $model = "${parent}\models\ocr\surya-2.gguf"

@@ -3,5 +3,6 @@
 	"repeat_penalty": 1.05,
 	"top_k": 20,
 	"top_p": 0.95,
-	"alwaysShowSidebarOnDesktop": true
+	"alwaysShowSidebarOnDesktop": true,
+	"sendOnEnter":true
 }
