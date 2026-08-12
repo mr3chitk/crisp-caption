@@ -4,7 +4,6 @@ cd /d "%~dp0\.."
 
 set "LLAMA_SERVER=tools\llama.cpp\llama-server.exe"
 set "MODEL=models\translation\gemma-4-E4B-it-qat-UD-Q4_K_XL.gguf"
-set "MMPROJ=models\translation\gemma-4-E4B-it-qat-mmproj-BF16.gguf"
 
 if not exist "%LLAMA_SERVER%" (
   echo [FAIL] llama-server not found: %LLAMA_SERVER%
@@ -19,10 +18,9 @@ if not exist "%MODEL%" (
   pause
   exit /b 1
 )
-REM it's recommended to increase -np to 2 if you use mmproj
+
 "%LLAMA_SERVER%" ^
   -m "%MODEL%" ^
-  -mm "%MMPROJ%" ^
   --model-draft "models\translation\mtp-gemma-4-E4B-it-Q4_0.gguf" --spec-type draft-mtp --spec-draft-n-max 2 ^
   -a Translator ^
   -ngl all ^

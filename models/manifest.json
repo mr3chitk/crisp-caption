@@ -13,34 +13,28 @@
       "sha256": "72d37db1a5d2a9db386d1452b3f54d13f97bea79710105fc65acd050ea7db600"
     },
     {
-      "name": "Qwen3.5-4B-Q4_K_M.gguf",
-      "path": "models/translation/Qwen3.5-4B-Q4_K_M.gguf",
-      "url": "https://huggingface.co/unsloth/Qwen3.5-4B-GGUF/resolve/main/Qwen3.5-4B-Q4_K_M.gguf",
-      "sha256": "00fe7986ff5f6b463e62455821146049db6f9313603938a70800d1fb69ef11a4"
-    },
-    {
-      "name": "Qwen3.5-mmproj-BF16.gguf",
-      "path": "models/translation/Qwen3.5-mmproj-BF16.gguf",
-      "url": "https://huggingface.co/unsloth/Qwen3.5-4B-GGUF/resolve/main/mmproj-BF16.gguf",
-      "sha256": "302b92d565080b9cc0281186979ae75a7429ec23d14f6f7607a035539b21f3a6"
-    },
-    {
       "name": "gemma-4-E4B-it-qat-UD-Q4_K_XL.gguf",
       "path": "models/translation/gemma-4-E4B-it-qat-UD-Q4_K_XL.gguf",
       "url": "https://huggingface.co/unsloth/gemma-4-E4B-it-qat-GGUF/resolve/main/gemma-4-E4B-it-qat-UD-Q4_K_XL.gguf",
       "sha256": "df0fd4ee07072c607c29a0a1cb4f98918426cca12f45a2776bdd6ee6d09a4de3"
     },
     {
-      "name": "gemma-4-E4B-it-qat-mmproj-BF16.gguf",
-      "path": "models/translation/gemma-4-E4B-it-qat-mmproj-BF16.gguf",
-      "url": "https://huggingface.co/unsloth/gemma-4-E4B-it-qat-GGUF/resolve/main/mmproj-BF16.gguf",
-      "sha256": "7c9bafa27f82d658eda805c1d82ef62bb0368e1ff75f64f77de58ad318beaaf9"
-    },
-    {
       "name": "mtp-gemma-4-E4B-it-Q4_0.gguf",
       "path": "models/translation/mtp-gemma-4-E4B-it-Q4_0.gguf",
       "url": "https://huggingface.co/unsloth/gemma-4-E4B-it-qat-GGUF/resolve/main/MTP/mtp-gemma-4-E4B-it-Q4_0.gguf",
       "sha256": "423074e537504b4f9ec5eafed5c639fac82c96631626efccacdd3c4039b20605"
+    },
+    {
+      "name": "OvisOCR2-Q6_K.gguf",
+      "path": "models/ocr/OvisOCR2-Q6_K.gguf",
+      "url": "https://huggingface.co/Abiray/OvisOCR2-GGUF/resolve/main/OvisOCR2-Q6_K.gguf",
+      "sha256": "a30b5664163d16c363b624814e4a1d8f3e20ca7b5285785ef6a9978b288b5a99"
+    },
+    {
+      "name": "OvisOCR2-Q6_K-mmproj-BF16.gguf",
+      "path": "models/ocr/OvisOCR2-Q6_K-mmproj-BF16.gguf",
+      "url": "https://huggingface.co/Abiray/OvisOCR2-GGUF/resolve/main/mmproj-BF16.gguf",
+      "sha256": "19040aa7e90af72567f397c9398f0203b13555c3adbc625d01992f77735e2d8f"
     }
   ]
 }
