@@ -1,4 +1,14 @@
 # OCR whatever image is currently in the Windows clipboard, then copy the recognized text back to the clipboard.
+# TIP: You can setup AutoHotkey v2 for fast screenshot + ocr shortcuts.
+<#
+    #SingleInstance Force
+    Pause::
+	{
+		ps1 := "C:\Users\PC\crisp-caption\scripts\ocr-clipboard.ps1"
+		cmd := 'powershell.exe -NoProfile -ExecutionPolicy Bypass -File "' ps1 '"'
+		Run(cmd, , "Min")
+	}
+#>
 
 $ErrorActionPreference = "Stop"
 
