@@ -25,14 +25,14 @@
       "sha256": "423074e537504b4f9ec5eafed5c639fac82c96631626efccacdd3c4039b20605"
     },
     {
-      "name": "OvisOCR2-Q6_K.gguf",
-      "path": "models/ocr/OvisOCR2-Q6_K.gguf",
-      "url": "https://huggingface.co/Abiray/OvisOCR2-GGUF/resolve/main/OvisOCR2-Q6_K.gguf",
-      "sha256": "a30b5664163d16c363b624814e4a1d8f3e20ca7b5285785ef6a9978b288b5a99"
+      "name": "OvisOCR2-Q8_0.gguf",
+      "path": "models/ocr/OvisOCR2-Q8_0.gguf",
+      "url": "https://huggingface.co/Abiray/OvisOCR2-GGUF/resolve/main/OvisOCR2-Q8_0.gguf",
+      "sha256": "3fba6d94312e550575a92d55cffb8d75997bf68a9f133c92ab6ad7f0bf2bc93e"
     },
     {
-      "name": "OvisOCR2-Q6_K-mmproj-BF16.gguf",
-      "path": "models/ocr/OvisOCR2-Q6_K-mmproj-BF16.gguf",
+      "name": "OvisOCR2-mmproj-BF16.gguf",
+      "path": "models/ocr/OvisOCR2-mmproj-BF16.gguf",
       "url": "https://huggingface.co/Abiray/OvisOCR2-GGUF/resolve/main/mmproj-BF16.gguf",
       "sha256": "19040aa7e90af72567f397c9398f0203b13555c3adbc625d01992f77735e2d8f"
     }

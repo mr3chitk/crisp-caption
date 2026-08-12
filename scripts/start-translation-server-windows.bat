@@ -24,7 +24,7 @@ if not exist "%MODEL%" (
   --model-draft "models\translation\mtp-gemma-4-E4B-it-Q4_0.gguf" --spec-type draft-mtp --spec-draft-n-max 2 ^
   -a Translator ^
   -ngl all ^
-  -c 2048 ^
+  -c 4096 ^
   -b 1024 ^
   -ub 512 ^
   -np 1 ^
@@ -34,7 +34,7 @@ if not exist "%MODEL%" (
   --cache-prompt ^
   --cache-ram 1024 ^
   --ui-config-file .\ui-configs.json ^
-  --load-mode mlock ^
+  --load-mode mmap+mlock ^
   --offline ^
   --reasoning off ^
   --reasoning-budget 0 ^
