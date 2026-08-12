@@ -3,15 +3,17 @@ WHAT ARE NEW?
 - cuda 12 is default, if you want cuda 13/vulcan, change download scripts and redownload them
 - improved overlay: displays 4 translated lines, hides after 90s
 - improved models and configs, focusing on high quality JP-EN translation
-- mmproj for ocr
+- ocr
 MODEL SELECTION
 - ASR: you can use any ASR that is supported by crispASR. Some recommended self-built ASRs are: 
   - [cohere-ja, more accuracy but unstable short-form](https://huggingface.co/efwkjn/cohere-asr-ja)
   - [whisper-large-v3-turbo](https://huggingface.co/openai/whisper-large-v3-turbo)
 - Translator: you can change to any gguf model that runs on llama.cpp and fits your machine
 KNOWN ISSUES
-- Gemma4 mmproj is bad at Japanese OCR. Use seperated OCR models (umi, qwen,...) or a different config.
-- You will need Gemma4 or bigger models for CohereASR because Cohere overcooks Japanese names and models like Qwen3.5-4b/Agent-A1 will likely fail to translate those kanji correctly.
+- You will need Gemma4 or bigger models for CohereASR because Cohere overcooks Japanese names and models like Qwen3.5-4b will likely fail to translate those kanji correctly.
+- This project is ON-HOLD!
+  - My current jp-en translator is LiveTranslate (energy-based whisper-ja-anime-v0.3)
+  - Only some parts of this project will still get maintained (OCR, tool-download,...) because i still use them.
 # crisp-caption
 
 Live Japanese captions and translation for browser audio, video playback, livestream watching, and OBS.
