@@ -90,11 +90,12 @@ try {
 		"--mmproj","${parent}\models\ocr\surya-2-mmproj.gguf",
         "--image", $tempPng,
 		"-p", "OCR: ",
-		"-n","4096",
-		"--temp","0.0",
+		"-n",4096,
+		"--temp",0.0,
         "--offline",
         "--no-mmproj-offload",
-        "--device","none"
+        "--device","none",
+        "--frequency-penalty",0.2
     )
     # Capture whatever .exe prints and treat it as OCR text.
     $ocrText = (& $exe @args | Out-String).Trim()
