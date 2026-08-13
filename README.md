@@ -12,7 +12,7 @@ MODEL SELECTION
 KNOWN ISSUES
 - You will need Gemma4 or bigger models for CohereASR because Cohere overcooks Japanese names and models like Qwen3.5-4b will likely fail to translate those kanji correctly.
 - This project is ON-HOLD!
-  - My current jp-en translator is LiveTranslate (energy-based whisper-ja-anime-v0.3)
+  - My current jp-en translator is LiveTranslate (whisper-ja-anime-v0.3)
   - Only some parts of this project will still get maintained (OCR, tool-download,...) because i still use them.
 # crisp-caption
 
