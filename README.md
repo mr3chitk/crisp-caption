@@ -1,5 +1,5 @@
 # crisp-caption (forked)
-WHAT ARE NEW?
+WHAT'S NEW?
 - cuda 12 is default, if you want cuda 13/vulcan, change download scripts and redownload them
 - improved overlay: displays 4 translated lines, hides after 90s
 - improved models and configs, focusing on high quality JP-EN translation
