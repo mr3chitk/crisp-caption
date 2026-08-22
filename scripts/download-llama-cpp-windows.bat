@@ -10,26 +10,44 @@ set "REPO=ggml-org/llama.cpp"
 set "PATTERN=llama-*-bin-win-cuda-12.4-x64.zip"
 
 echo Downloading llama.cpp runtime...
-powershell -NoProfile -ExecutionPolicy Bypass -Command ^
-  "$ErrorActionPreference='Stop';" ^
-  "$repo='%REPO%';" ^
-  "$pattern='%PATTERN%';" ^
-  "$api='https://api.github.com/repos/' + $repo + '/releases/latest';" ^
-  "$rel=Invoke-RestMethod -UseBasicParsing $api;" ^
-  "$assets=$rel.assets | Where-Object { $_.name -like $pattern } | Sort-Object name -Descending;" ^
-  "if(-not $assets){ throw 'No asset matched pattern: ' + $pattern }" ^
-  "$asset=$assets | Select-Object -First 1;" ^
-  "Write-Host ('Selected asset: ' + $asset.browser_download_url);" ^
-  "$out='%CD%\%LLAMA_CPP_ZIP%';" ^
-  "$parentDir = Split-Path -Parent $out;" ^
-  "New-Item -Path $parentDir -ItemType Directory -Force | Out-Null;" ^
-  "Write-Host ('Downloading to: ' + $out);" ^
-  "Invoke-WebRequest -UseBasicParsing -Uri $asset.browser_download_url -OutFile $out;"
+set "DEST=%~1"
+if not defined DEST set "DEST=%CD%"
+
+set "ASSET_PATTERN=%~2"
+if not defined ASSET_PATTERN set "ASSET_PATTERN=llama-*-bin-win-cuda-12.4-x64.zip"
+
+set "RELEASES_URL=%~3"
+if not defined RELEASES_URL set "RELEASES_URL=https://api.github.com/repos/ggml-org/llama.cpp/releases"
+
+powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -Command ^
+   "$ErrorActionPreference = 'Stop';" ^
+   "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12;" ^
+   "$out = Join-Path $env:DEST $env:LLAMA_CPP_ZIP;" ^
+   "$parentDir = Split-Path -Parent $out;" ^
+   "New-Item -Path $parentDir -ItemType Directory -Force | Out-Null;" ^
+   "$pattern = $env:ASSET_PATTERN;" ^
+   "$baseUrl = $env:RELEASES_URL;" ^
+   "$headers = @{'User-Agent' = 'llama-cpp-downloader'};" ^
+   "$found = $null;" ^
+   "for ($page = 1; $page -le 100 -and -not $found; $page++) {" ^
+       "Write-Host ('Checking releases page {0}...' -f $page);" ^
+       "$separator = if ($baseUrl -match '\?') { '&' } else { '?' };" ^
+       "$url = $baseUrl + $separator + 'per_page=100&page=' + $page;" ^
+       "$releases = Invoke-RestMethod -Uri $url -Headers $headers;" ^
+       "if (-not $releases -or $releases.Count -eq 0) { break };" ^
+       "foreach ($release in $releases) {foreach ($asset in @($release.assets)) {if ($asset.name -like $pattern) { $found = $asset; $tag = $release.tag_name; break }} if ($found) { break } } " ^
+   "}" ^
+   "if (-not $found) {" ^
+       "throw ('No release asset matched pattern: {0}' -f $pattern)" ^
+   "}" ^
+   "Write-Host ('Selected release: {0}' -f $tag);" ^
+   "Write-Host ('Downloading: {0}' -f $found.name);" ^
+   "Invoke-WebRequest -Uri $found.browser_download_url -Headers $headers -OutFile $out;" ^
+   "Write-Host ('Saved to: {0}' -f $out)"
+
 if errorlevel 1 (
-  echo [FAIL] llama.cpp download failed.
-  echo If the release asset name changed, edit LLAMA_CPP_URL in this BAT file.
-  pause
-  exit /b 1
+    echo Download failed.
+    exit /b 1
 )
 
 echo Extracting llama.cpp to %LLAMA_CPP_DIR%...
