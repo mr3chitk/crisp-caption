@@ -6,18 +6,14 @@ set "PY=%CD%\.venv\Scripts\python.exe"
 
 set "LLAMA_CPP_ZIP=tools\cache\llama-cpp-windows.zip"
 set "LLAMA_CPP_DIR=tools\llama.cpp"
-set "REPO=ggml-org/llama.cpp"
-set "PATTERN=llama-*-bin-win-cuda-12.4-x64.zip"
-
-echo Downloading llama.cpp runtime...
 set "DEST=%~1"
 if not defined DEST set "DEST=%CD%"
-
 set "ASSET_PATTERN=%~2"
 if not defined ASSET_PATTERN set "ASSET_PATTERN=llama-*-bin-win-cuda-12.4-x64.zip"
-
 set "RELEASES_URL=%~3"
 if not defined RELEASES_URL set "RELEASES_URL=https://api.github.com/repos/ggml-org/llama.cpp/releases"
+
+echo Downloading llama.cpp runtime...
 
 powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -Command ^
    "$ErrorActionPreference = 'Stop';" ^
