@@ -7,7 +7,7 @@ def qt_overlay_html(
     *,
     mode: str = "both",
     hold_sec: float = 2.0,
-    hold_per_char_sec: float = 0.03,
+    hold_per_char_sec: float = 0.08,
     fade_sec: float = 4.0,
 ) -> str:
     return subtitle_overlay_html(
@@ -39,7 +39,7 @@ def obs_overlay_html(
     *,
     mode: str = "both",
     hold_sec: float = 2.0,
-    hold_per_char_sec: float = 0.03,
+    hold_per_char_sec: float = 0.08,
     fade_sec: float = 4.0,
     font: float = 1.0,
     pos: str = "bottom",
@@ -266,7 +266,7 @@ body {{
 
   function prunePending() {{
     const now = Date.now();
-    pendingQueue = pendingQueue.filter((e) => e.fireAt > now);
+    pendingQueue = pendingQueue.filter((e) => e.fireAt >= now - 1000);
   }}
 
   function schedulePending(d, startTime, now) {{
@@ -274,7 +274,7 @@ body {{
     let entry = {{ fireAt: startTime, msg: {{ main: d.main, trans: d.trans, sourceKey: d.sourceKey }} }};
     entry.timer = setTimeout(() => {{
       pendingQueue = pendingQueue.filter((e) => e !== entry);
-      apply({{ main: entry.msg.main, trans: entry.msg.trans, partial: d.partial, sourceKey: entry.msg.sourceKey }}, true, true);
+      apply({{ main: entry.msg.main, trans: entry.msg.trans, partial: d.partial, sourceKey: entry.msg.sourceKey }});
     }}, startTime - now);
     pendingQueue.push(entry);
   }}
@@ -285,9 +285,13 @@ body {{
     const d = opts.demo ? demoDesired() : desired();
     const mainChanged = d.main !== displayed.main || d.trans !== displayed.trans;
     const partialChanged = d.partial !== displayed.partial;
-    if (!mainChanged && !partialChanged) return;
 
-    // Same source already queued: refresh its text in place, keep its timer.
+    if (d.sourceKey === displayed.sourceKey) {{
+      // clearPending();
+      apply(d);
+      return;
+    }}
+
     let same = pendingQueue.find((e) => e.msg.sourceKey === d.sourceKey);
     if (same) {{
       same.msg = {{ main: d.main, trans: d.trans, sourceKey: d.sourceKey }};
@@ -297,22 +301,10 @@ body {{
       return;
     }}
 
-    // Same source as what's on screen: apply now, drop any pending copies.
-    if (mainChanged && d.sourceKey === displayed.sourceKey) {{
-      clearPending();
-      apply(d, !d.partialMode, partialChanged);
-      return;
-    }}
-
-    if (!mainChanged) {{
-      applyPartial(d);
-      return;
-    }}
-
     const now = Date.now();
     if (mainShownAt > 0) {{
-      let startTimeD = mainShownAt + opts.holdMs + opts.holdPerCharMs * displayed.main.length;
-      let startTimeP = pendingQueue.reduce((m, e) => Math.max(m, e.fireAt + opts.holdMs + opts.holdPerCharMs + e.msg.main.length), 0);
+      let startTimeD = mainShownAt + opts.holdMs + (opts.holdPerCharMs*displayed.main.length);
+      let startTimeP = pendingQueue.reduce((m, e) => Math.max(m, e.fireAt + opts.holdMs + (opts.holdPerCharMs*e.msg.main.length)), 0);
       let startTime = Math.max(startTimeD,startTimeP);
       if(now < startTime) {{
         schedulePending(d, startTime, now);
@@ -320,27 +312,22 @@ body {{
       }}
     }}
 
-    clearPending();
-    apply(d, true, partialChanged);
+    // clearPending();
+    apply(d);
   }}
 
   function applyPartial(d) {{
     if (displayed.main || displayed.trans) {{
       partialLine.textContent = d.partial;
       partialLine.style.visibility = d.partial ? 'visible' : 'hidden';
-      if (d.partial) {{
-        partialLine.style.animation = 'none';
-        void partialLine.offsetWidth;
-        partialLine.style.animation = 'partialIn 120ms ease';
-      }}
       displayed = {{ ...displayed, partial: d.partial }};
       restartFade();
       return;
     }}
-    apply(d, false, true);
+    apply(d);
   }}
 
-  function apply(d, animateMain, animatePartial) {{
+  function apply(d) {{
     if (d.main !== displayed.main || d.trans !== displayed.trans) {{
       mainShownAt = Date.now();
     }}
@@ -348,8 +335,6 @@ body {{
     const showMain = !!d.main;
     const showTrans = !!d.trans;
     const hasPartial = !!d.partial;
-    let primary = mainLine;
-    let primaryText = d.main;
     mainLine.textContent = d.main;
     transLine.textContent = d.trans;
     partialLine.textContent = d.partial;
@@ -357,16 +342,6 @@ body {{
     transLine.style.visibility = showTrans ? 'visible' : 'hidden';
     partialLine.style.visibility = hasPartial ? 'visible' : 'hidden';
     status.style.display = showMain || showTrans || hasPartial ? 'none' : 'block';
-    if (animateMain && primaryText) {{
-      primary.style.animation = 'none';
-      void primary.offsetWidth;
-      primary.style.animation = 'lineIn 200ms ease';
-    }}
-    if (animatePartial && hasPartial) {{
-      partialLine.style.animation = 'none';
-      void partialLine.offsetWidth;
-      partialLine.style.animation = 'partialIn 120ms ease';
-    }}
     showSubtitle(!!(showMain || showTrans || hasPartial));
     restartFade();
   }}
