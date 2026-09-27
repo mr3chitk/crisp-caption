@@ -621,7 +621,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument(
         "--hold",
         type=float,
-        default=2.0,
+        default=1.5,
         help="Minimum seconds each line stays before the next may replace it.",
     )
     parser.add_argument(
