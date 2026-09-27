@@ -3,22 +3,14 @@
     {
       "name": "Cohere Japanese ASR model",
       "path": "models/asr/cohere-asr-ja-q6_k.gguf",
-      "url": "https://huggingface.co/CKHO/cohere-asr-ja-GGUF/resolve/main/cohere-asr-ja-q6_k.gguf",
-      "sha256": "7387d3a40011fd9517d67e242a3a41eaa015c45b93eacaff771e7870a50c349e"
+      "url": "https://huggingface.co/CKHO/cohere-asr-ja-GGUF/resolve/main/cohere-asr-ja-q5_0.gguf",
+      "sha256": "135e62208f042a9304a1ac42f43e9c0e81cb9f89b666b89495e63adc1291a722"
     },
     {
       "name": "FireRed VAD model",
       "path": "models/vad/firered-vad.gguf",
       "url": "https://huggingface.co/cstr/firered-vad-GGUF/resolve/aa92f55584d0fa37b9aae9a9c10bee275a0af240/firered-vad.gguf",
       "sha256": "72d37db1a5d2a9db386d1452b3f54d13f97bea79710105fc65acd050ea7db600"
-    },
-    {
-      "name": "Hy-MT2 translation model",
-      "path": "models/translation/Hy-MT2-1.8B-Q4_K_M.gguf",
-      "url": "https://huggingface.co/tencent/Hy-MT2-1.8B-GGUF/resolve/2a9c104757ab36f679ae8e6006b437cf9867c329/Hy-MT2-1.8B-Q4_K_M.gguf",
-      "sha256": "dc5f44fcf1fa496ee7ad725982c0c8c553a4de00259b53af84c4b89fb0c06699",
-      "license": "Tencent HY Community License Agreement",
-      "license_url": "https://github.com/Tencent-Hunyuan/Hy-MT2/blob/main/LICENSE.txt"
     }
   ]
 }

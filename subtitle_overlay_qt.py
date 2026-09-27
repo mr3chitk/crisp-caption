@@ -42,9 +42,9 @@ WS_EX_TRANSPARENT = 0x00000020
 WS_EX_LAYERED = 0x00080000
 VK_CONTROL = 0x11
 CONFIG_PATH = Path.home() / ".crispasr-overlay.json"
-DEFAULT_WIDTH = 1180
-DEFAULT_HEIGHT = 340
-DEFAULT_FONT_PX = 34
+DEFAULT_WIDTH = 1000
+DEFAULT_HEIGHT = 250
+DEFAULT_FONT_PX = 28
 
 
 def load_overlay_config() -> dict[str, int]:
@@ -627,7 +627,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument(
         "--fade",
         type=float,
-        default=4.0,
+        default=20.0,
         help="Seconds of inactivity before the subtitle fades out (0 = never).",
     )
     parser.add_argument(

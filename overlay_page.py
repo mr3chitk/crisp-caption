@@ -7,28 +7,29 @@ def qt_overlay_html(
     *,
     mode: str = "both",
     hold_sec: float = 2.0,
+    hold_per_char_sec: float = 0.03,
     fade_sec: float = 4.0,
 ) -> str:
     return subtitle_overlay_html(
         ws_url=ws_url,
-        body_css="align-items: end; display: grid; padding: 28px 42px 34px;",
+        body_css="align-items: start; display: grid; padding: 28px 42px 34px;",
         main_font=f"{font_px}px",
-        partial_font=f"{max(16, round(font_px * 0.72))}px",
-        trans_font=f"{max(16, round(font_px * 0.88))}px",
-        main_weight="750",
-        main_line_height="1.32",
-        partial_weight="600",
-        partial_line_height="1.35",
+        partial_font=f"{max(16, round(font_px * 1))}px",
+        trans_font=f"{max(16, round(font_px * 1))}px",
+        main_weight="650",
+        main_line_height="1.2",
+        partial_weight="650",
+        partial_line_height="1.2",
         partial_margin_top="8px",
-        trans_weight="680",
-        trans_margin_top="6px",
-        status_font="16px",
+        trans_weight="650",
+        trans_margin_top="8px",
+        status_font="20px",
         status_weight="650",
         initial_status="Connecting to CrispASR...",
         connected_status="CrispASR connected",
         show_connected_briefly=True,
-        mode=mode,
         hold_sec=hold_sec,
+        hold_per_char_sec=hold_per_char_sec,
         fade_sec=fade_sec,
     )
 
@@ -38,13 +39,11 @@ def obs_overlay_html(
     *,
     mode: str = "both",
     hold_sec: float = 2.0,
+    hold_per_char_sec: float = 0.03,
     fade_sec: float = 4.0,
     font: float = 1.0,
     pos: str = "bottom",
     demo: bool = False,
-    interj_len: int = 3,
-    interj_ratio: float = 0.4,
-    interj_gap_sec: float = 2.0,
 ) -> str:
     body_css = (
         "align-items: start; display: grid; padding: 9vh 7vw 0;"
@@ -69,13 +68,10 @@ def obs_overlay_html(
         initial_status="Waiting for subtitles",
         connected_status="Waiting for subtitles",
         show_connected_briefly=False,
-        mode=mode,
         hold_sec=hold_sec,
+        hold_per_char_sec=hold_per_char_sec,
         fade_sec=fade_sec,
         demo=demo,
-        interj_len=interj_len,
-        interj_ratio=interj_ratio,
-        interj_gap_sec=interj_gap_sec,
     )
 
 
@@ -98,18 +94,15 @@ def subtitle_overlay_html(
     initial_status: str,
     connected_status: str,
     show_connected_briefly: bool,
-    mode: str,
     hold_sec: float,
+    hold_per_char_sec: float,
     fade_sec: float,
     demo: bool = False,
-    interj_len: int = 3,
-    interj_ratio: float = 0.4,
-    interj_gap_sec: float = 2.0,
 ) -> str:
     render_delay_ms = 650 if show_connected_briefly else 0
     hold_ms = round(hold_sec * 1000)
+    hold_per_char_ms = round(hold_per_char_sec * 1000)
     fade_ms = round(fade_sec * 1000)
-    interj_gap_ms = round(interj_gap_sec * 1000)
     demo_js = "true" if demo else "false"
     return f"""<!doctype html>
 <html>
@@ -133,17 +126,17 @@ body {{
   {body_css}
 }}
 #status {{
-  color: rgba(235, 244, 255, .72);
+  color: rgba(230, 230, 230, 1);
   font-size: {status_font};
   font-weight: {status_weight};
   text-align: center;
-  text-shadow: 0 2px 4px #000, 0 0 14px #000;
+  text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 6px #000, 0 0 6px #000;
   width: 100%;
 }}
 #subtitle {{
   opacity: 1;
   text-align: center;
-  text-shadow: 0 2px 4px #000, 0 0 14px #000, 0 0 28px #000;
+  text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 6px #000, 0 0 6px #000;
   transition: opacity 300ms ease;
   width: 100%;
 }}
@@ -152,6 +145,7 @@ body {{
 }}
 #main {{
   display: -webkit-box;
+  color: rgba(210, 210, 210, 1);
   font-size: {main_font};
   font-weight: {main_weight};
   line-height: {main_line_height};
@@ -162,16 +156,17 @@ body {{
   -webkit-line-clamp: 3;
 }}
 #trans {{
-  color: rgba(235, 244, 255, .92);
+  color: rgba(255, 255, 255, 1);
   font-size: {trans_font};
   font-weight: {trans_weight};
-  line-height: 1.3;
-  min-height: 1.3em;
+  line-height: {main_line_height};
+  min-height: {main_line_height}em;
   margin-top: {trans_margin_top};
+  overflow: hidden;
   overflow-wrap: anywhere;
 }}
 #partial {{
-  color: rgba(235, 244, 255, .74);
+  color: rgba(170, 170, 170, 1);
   font-size: {partial_font};
   font-style: italic;
   font-weight: {partial_weight};
@@ -204,13 +199,10 @@ body {{
     initialStatus: {initial_status!r},
     connectedStatus: {connected_status!r},
     renderDelayMs: {render_delay_ms},
-    mode: {mode!r},
     holdMs: {hold_ms},
+    holdPerCharMs: {hold_per_char_ms},
     fadeMs: {fade_ms},
     demo: {demo_js},
-    interjLen: {interj_len},
-    interjRatio: {interj_ratio},
-    interjGapMs: {interj_gap_ms},
   }};
   const status = document.getElementById('status');
   const mainLine = document.getElementById('main');
@@ -219,7 +211,7 @@ body {{
   const subtitleEl = document.getElementById('subtitle');
   const rowsByKey = new Map();
   const finalSeqToKey = new Map();
-  const MAX_ROWS = 100;
+  const MAX_ROWS = 50;
   const DEMO_LINES = [
     'これはサンプル字幕です',
     'This is a sample subtitle',
@@ -227,8 +219,8 @@ body {{
   ];
   let lastEpoch = null;
   let mainShownAt = 0;
-  let pendingMain = null;
-  let swapTimer = 0, fadeTimer = 0, demoTimer = 0;
+  let pendingQueue = [];
+  let fadeTimer = 0, demoTimer = 0;
   let visible = true;
   let demoIdx = 0;
   let displayed = {{ main: '', trans: '', partial: '', sourceKey: null }};
@@ -237,52 +229,18 @@ body {{
     return ev.utterance_id != null ? `u:${{ev.utterance_id}}` : `s:${{ev.seq}}`;
   }}
 
-  function isInterj(F, P) {{
-    const lenF = F.text.length;
-    if (lenF > opts.interjLen) return false;
-    if (lenF / Math.max(P.text.length, 1) >= opts.interjRatio) return false;
-    if (typeof F.t1 === 'number' && typeof P.t1 === 'number' && (F.t1 - P.t1) * 1000 >= opts.interjGapMs) return false;
-    return true;
-  }}
-
   function desired() {{
     const rows = Array.from(rowsByKey.values());
-    const finals = rows.filter((r) => r.kind === 'final' && r.text);
-    let base = null;
-    const merged = [];
-    for (let i = 0; i < finals.length; i++) {{
-      const f = finals[i];
-      if (base === null) {{
-        base = f;
-        continue;
-      }}
-      if (isInterj(f, base)) {{
-        merged.push(f);
-        continue;
-      }}
-      base = f;
-      merged.length = 0;
-    }}
-    const baseId = base?.utterance_id ?? null;
-    const partialRow = rows.slice().reverse().find((row) =>
-      row.kind === 'partial' &&
-      row.text &&
-      (baseId == null || row.utterance_id == null || row.utterance_id !== baseId)
-    );
-    let main = '';
-    let trans = '';
-    if (base) {{
-      main = base.text + merged.map((m) => ' ' + m.text).join('');
-      trans = (base.translation || '') + merged.map((m) => (m.translation ? ' ' + m.translation : '')).join('');
-    }} else if (partialRow) {{
-      main = partialRow.text;
-    }}
+    const finals = rows.filter((r) => r.kind === 'final' && r.text && r.translation);
+    let translatedRow = null;
+    if (finals.length > 0) {{ translatedRow = finals[finals.length - 1]; }}
+    const partialRow = null; //rows.slice().reverse().find((row) => row.kind === 'partial' && row.text);
     return {{
-      main,
-      trans,
-      partial: base ? (partialRow?.text || '') : '',
-      sourceKey: (base || partialRow)?.key ?? null,
-      partialMode: base === null && !!partialRow,
+      main: translatedRow?.text || '',
+      trans: translatedRow?.translation || '',
+      partial: partialRow?.text || '',
+      sourceKey: (translatedRow || partialRow)?.key ?? null,
+      partialMode: translatedRow === null && !!partialRow,
     }};
   }}
 
@@ -301,6 +259,27 @@ body {{
     }}
   }}
 
+  function clearPending() {{
+    for (const e of pendingQueue) clearTimeout(e.timer);
+    pendingQueue = [];
+  }}
+
+  function prunePending() {{
+    const now = Date.now();
+    pendingQueue = pendingQueue.filter((e) => e.fireAt > now);
+  }}
+
+  function schedulePending(d, startTime, now) {{
+    prunePending();
+    let entry = {{ fireAt: startTime, msg: {{ main: d.main, trans: d.trans, sourceKey: d.sourceKey }} }};
+    entry.timer = setTimeout(() => {{
+      pendingQueue = pendingQueue.filter((e) => e !== entry);
+      apply({{ main: entry.msg.main, trans: entry.msg.trans, partial: d.partial, sourceKey: entry.msg.sourceKey }}, true, true);
+    }}, startTime - now);
+    pendingQueue.push(entry);
+  }}
+
+
   function commit() {{
     prune();
     const d = opts.demo ? demoDesired() : desired();
@@ -308,17 +287,19 @@ body {{
     const partialChanged = d.partial !== displayed.partial;
     if (!mainChanged && !partialChanged) return;
 
-    if (pendingMain && d.sourceKey === pendingMain.sourceKey) {{
-      pendingMain = {{ main: d.main, trans: d.trans, sourceKey: d.sourceKey }};
+    // Same source already queued: refresh its text in place, keep its timer.
+    let same = pendingQueue.find((e) => e.msg.sourceKey === d.sourceKey);
+    if (same) {{
+      same.msg = {{ main: d.main, trans: d.trans, sourceKey: d.sourceKey }};
       if (partialChanged) {{
         applyPartial({{ main: displayed.main, trans: displayed.trans, partial: d.partial, sourceKey: displayed.sourceKey }});
       }}
       return;
     }}
 
+    // Same source as what's on screen: apply now, drop any pending copies.
     if (mainChanged && d.sourceKey === displayed.sourceKey) {{
-      clearTimeout(swapTimer);
-      pendingMain = null;
+      clearPending();
       apply(d, !d.partialMode, partialChanged);
       return;
     }}
@@ -329,18 +310,17 @@ body {{
     }}
 
     const now = Date.now();
-    if (mainChanged && mainShownAt > 0 && now - mainShownAt < opts.holdMs) {{
-      pendingMain = {{ main: d.main, trans: d.trans, sourceKey: d.sourceKey }};
-      clearTimeout(swapTimer);
-      swapTimer = setTimeout(() => {{
-        const fresh = opts.demo ? demoDesired() : desired();
-        apply({{ main: pendingMain.main, trans: pendingMain.trans, partial: fresh.partial, sourceKey: pendingMain.sourceKey }}, true, partialChanged);
-      }}, opts.holdMs - (now - mainShownAt));
-      return;
+    if (mainShownAt > 0) {{
+      let startTimeD = mainShownAt + opts.holdMs + opts.holdPerCharMs * displayed.main.length;
+      let startTimeP = pendingQueue.reduce((m, e) => Math.max(m, e.fireAt + opts.holdMs + opts.holdPerCharMs + e.msg.main.length), 0);
+      let startTime = Math.max(startTimeD,startTimeP);
+      if(now < startTime) {{
+        schedulePending(d, startTime, now);
+        return;
+      }}
     }}
 
-    clearTimeout(swapTimer);
-    pendingMain = null;
+    clearPending();
     apply(d, true, partialChanged);
   }}
 
@@ -370,24 +350,11 @@ body {{
     const hasPartial = !!d.partial;
     let primary = mainLine;
     let primaryText = d.main;
-    if (opts.mode === 'trans') {{
-      primary = transLine;
-      primaryText = d.trans || d.main;
-      transLine.textContent = primaryText;
-      transLine.style.visibility = showMain || showTrans ? 'visible' : 'hidden';
-      mainLine.style.visibility = 'hidden';
-    }} else if (opts.mode === 'both') {{
-      mainLine.textContent = d.main;
-      transLine.textContent = d.trans;
-      mainLine.style.visibility = showMain ? 'visible' : 'hidden';
-      transLine.style.visibility = showTrans ? 'visible' : 'hidden';
-    }} else {{
-      mainLine.textContent = d.main;
-      transLine.textContent = '';
-      mainLine.style.visibility = showMain ? 'visible' : 'hidden';
-      transLine.style.visibility = 'hidden';
-    }}
+    mainLine.textContent = d.main;
+    transLine.textContent = d.trans;
     partialLine.textContent = d.partial;
+    mainLine.style.visibility = showMain ? 'visible' : 'hidden';
+    transLine.style.visibility = showTrans ? 'visible' : 'hidden';
     partialLine.style.visibility = hasPartial ? 'visible' : 'hidden';
     status.style.display = showMain || showTrans || hasPartial ? 'none' : 'block';
     if (animateMain && primaryText) {{

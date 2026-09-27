@@ -141,7 +141,7 @@ class CrispEventRelay:
                     state.last_audio_t = audio_t
                     await broadcast_health(state)
                 terminal_payload = event if self.print_raw_crisp_events else payload
-                print(json.dumps(self.add_debug_timestamps(terminal_payload, audio_t), ensure_ascii=False), flush=True)
+                # print(json.dumps(self.add_debug_timestamps(terminal_payload, audio_t), ensure_ascii=False), flush=True)
                 await broadcast_json(state.ws_clients, payload)
                 return
 

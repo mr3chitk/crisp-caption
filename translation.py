@@ -34,7 +34,7 @@ def clean_translation_output(text: str) -> str:
 def build_user_message(
     text: str,
     glossary: dict[str, str],
-    target_lang: str = "繁體中文（台灣）",
+    target_lang: str = "en",
     history: Sequence[tuple[str, str]] | None = None,
 ) -> str:
     context_blocks: list[str] = []
@@ -217,13 +217,14 @@ async def translator_worker(
             "repeat_penalty": translate_repeat_penalty,
             "max_tokens": translate_max_tokens,
             "stream": False,
+            "chat_template_kwargs": { "enable_thinking": False }
         }
         try:
             async with session.post(
                 translate_url,
                 json=payload,
                 headers=headers,
-                timeout=aiohttp.ClientTimeout(total=180),
+                timeout=aiohttp.ClientTimeout(total=15),
             ) as resp:
                 body = await resp.text()
                 if resp.status >= 400:
