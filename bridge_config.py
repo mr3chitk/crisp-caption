@@ -343,31 +343,6 @@ def parse_args(argv: list[str]) -> tuple[argparse.Namespace, list[str]]:
         action="store_true",
         help="Disable translation worker (WebSocket still receives transcripts only)",
     )
-    p.add_argument(
-        "--overlay-interj-len",
-        type=int,
-        default=3,
-        help="Overlay: max chars of a trailing final that gets merged into the current sentence (default 3).",
-    )
-    p.add_argument(
-        "--overlay-interj-ratio",
-        type=float,
-        default=0.4,
-        help="Overlay: merge threshold as ratio of the previous final length (default 0.4).",
-    )
-    p.add_argument(
-        "--overlay-interj-gap",
-        dest="overlay_interj_gap_sec",
-        type=float,
-        default=2.0,
-        help="Overlay: max seconds between finals for interjection merge (default 2.0).",
-    )
-    p.add_argument(
-        "--overlay-mode",
-        choices=("source", "trans", "both"),
-        default="both",
-        help="Overlay display mode: source only, translation only, or both (default both).",
-    )
     p.set_defaults(**defaults)
 
     cli_crisp = normalize_crisp_argv(crisp_argv)
