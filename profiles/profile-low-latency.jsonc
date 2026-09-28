@@ -34,7 +34,8 @@
     "-vspd", "200",
     "-vsd", "200",
     "-vmsd", "10",
-    "-vp", "100"
+    "-vp", "100",
+    "--beam-size", "3"
   ],
 
   // --- 翻譯 ---
@@ -46,7 +47,7 @@
   "top_p": 0.95,
   "repeat_penalty": 1.05,
   "max_tokens": 2048,
-  "translate_prompt_file": "",
+  "translate_prompt_file": "translate_prompt.txt",
   "glossary_file": "glossary.json",
 
   // --- Overlay（字幕顯示）---

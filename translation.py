@@ -19,15 +19,14 @@ logger = logging.getLogger(__name__)
 def build_glossary_text(glossary: dict[str, str]) -> str:
     if not glossary:
         return ""
-    lines = "\n".join(f"- {k} => {v}" for k, v in glossary.items())
-    return f"術語表（必須固定使用以下譯法）：\n{lines}"
+    lines = "\n".join(f"- {k} => {v}." for k, v in glossary.items())
+    return f"Glossary (must use on perfect matching words in translating text): \n{lines}"
 
 
 def clean_translation_output(text: str) -> str:
     cleaned = text.strip()
     cleaned = re.sub(r"</?\s*source\s*>", "", cleaned, flags=re.IGNORECASE)
     cleaned = re.sub(r"</?\s*translation\s*>", "", cleaned, flags=re.IGNORECASE)
-    cleaned = cleaned.replace("譯文：", "").replace("译文：", "").strip()
     return cleaned
 
 
@@ -42,16 +41,16 @@ def build_user_message(
         context_blocks.append(build_glossary_text(glossary))
     if history:
         history_lines = [
-            f"{idx}. 原文：{orig}\n   译文：{trans}" for idx, (orig, trans) in enumerate(history, start=1)
+            f"{idx}. Original: {orig}\n   Translation: {trans}" for idx, (orig, trans) in enumerate(history, start=1)
         ]
         context_blocks.append(
-            "上文参考（只用于理解语气、人物、代词和场景，不要重新翻译）：\n" + "\n".join(history_lines)
+            "Previous context (Use to improve translation, do not retranslate):\n" + "\n".join(history_lines)
         )
     prefix = ("\n\n".join(context_blocks) + "\n\n") if context_blocks else ""
     return (
         f"{prefix}"
-        f"把【当前原文】翻译为{target_lang}。只输出译文，不要输出标签、原文、解释或额外内容。\n\n"
-        f"【当前原文】\n{text}"
+        f"Translate the following text to {target_lang}:\n"
+        f"{text}"
     )
 
 

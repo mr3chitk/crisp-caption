@@ -12,7 +12,7 @@ def qt_overlay_html(
 ) -> str:
     return subtitle_overlay_html(
         ws_url=ws_url,
-        body_css="align-items: start; display: grid; padding: 28px 42px 34px;",
+        body_css="align-items: start; display: grid; padding: 8px 8px 8px;",
         main_font=f"{font_px}px",
         partial_font=f"{max(16, round(font_px * 1))}px",
         trans_font=f"{max(16, round(font_px * 1))}px",
@@ -23,10 +23,10 @@ def qt_overlay_html(
         partial_margin_top="8px",
         trans_weight="650",
         trans_margin_top="8px",
-        status_font="20px",
+        status_font="22px",
         status_weight="650",
-        initial_status="Connecting to CrispASR...",
-        connected_status="CrispASR connected",
+        initial_status="",
+        connected_status="",
         show_connected_briefly=True,
         hold_sec=hold_sec,
         hold_per_char_sec=hold_per_char_sec,
@@ -115,7 +115,7 @@ def subtitle_overlay_html(
 }}
 html,
 body {{
-  background: transparent;
+  background: rgba(10, 10, 10, 0.2);
   color: #fff;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   height: 100%;
