@@ -27,7 +27,7 @@
     "--stream-length", "7500",
     "--stream-step", "1500",
     "--stream-partial-decode-ms", "0",
-    "--hotwords","トワ,ヤゴオ,フブキ,スバル,ネネ,ホロライブ,ホロメン",
+    "--hotwords-file","hotwords.txt",
     "--vad",
     "-vm", "../models/vad/firered-vad.gguf",
     "-vt", "0.50",
