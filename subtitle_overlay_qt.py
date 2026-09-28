@@ -138,6 +138,7 @@ class SubtitleOverlay(QWidget):
         font_px: int | None,
         mode: str,
         hold_sec: float,
+        hold_per_char_sec: float,
         fade_sec: float,
         edge_px: int,
         corner_px: int,
@@ -174,7 +175,7 @@ class SubtitleOverlay(QWidget):
         self.view.setStyleSheet("background: transparent;")
         self.view.page().setBackgroundColor(QColor(0, 0, 0, 0))
         self.view.setHtml(
-            qt_overlay_html(ws_url, self.font_px, mode=mode, hold_sec=hold_sec, fade_sec=fade_sec),
+            qt_overlay_html(ws_url, self.font_px, mode=mode, hold_sec=hold_sec, hold_per_char_sec=hold_per_char_sec, fade_sec=fade_sec),
             QUrl("http://127.0.0.1:8765/"),
         )
 
@@ -625,6 +626,12 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         help="Minimum seconds each line stays before the next may replace it.",
     )
     parser.add_argument(
+        "--hold_per_char",
+        type=float,
+        default=0.08,
+        help="Extra second per character in main text.",
+    )
+    parser.add_argument(
         "--fade",
         type=float,
         default=20.0,
@@ -667,6 +674,7 @@ def main(argv: list[str]) -> int:
         font_px=ns.font_px,
         mode=ns.mode,
         hold_sec=ns.hold,
+        hold_per_char_sec=ns.hold_per_char,
         fade_sec=ns.fade,
         edge_px=ns.edge_px,
         corner_px=ns.corner_px,

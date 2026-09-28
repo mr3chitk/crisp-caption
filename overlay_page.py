@@ -115,7 +115,7 @@ def subtitle_overlay_html(
 }}
 html,
 body {{
-  background: rgba(10, 10, 10, 0.2);
+  background: rgba(0, 0, 0, 0.15);
   color: #fff;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   height: 100%;

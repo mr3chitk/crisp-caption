@@ -105,6 +105,7 @@ def make_app(
                 f"{ws_proto}://{req.host}/ws",
                 mode=mode,
                 hold_sec=_overlay_num(q, "hold", 2.0, 0.5, 30.0),
+                hold_per_char_sec=_overlay_num(q, "hold_per_char", 0.08, 0.01, 1.0),
                 fade_sec=_overlay_num(q, "fade", 4.0, 0.0, 300.0),
                 font=_overlay_num(q, "font", 1.0, 0.5, 4.0),
                 pos=pos,
