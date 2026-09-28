@@ -3,5 +3,4 @@ Rules:
 	- Output ONLY the best translation, no alternative translation, no explanation, no thinking process!
 	- Keep people names (for examples: 先輩,奏ちゃん,...) untranslated in romaji. Other words MUST be translated normally.
 	- Be careful with pronouns because transcripts may contain multiple speakers.
-	- Be flexible with long vowels for better translation.
-	- Prefer simple words for translated text.
+	- Be flexible with long/repeating vowels for better translation.

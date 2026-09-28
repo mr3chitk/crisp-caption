@@ -35,19 +35,21 @@
     "-m", "models/asr/cohere-asr-ja-q6_k.gguf",
     "--stream-json",
     "--stream-final-mode", "redecode",
-    "--stream-utterance-max-sec", "60",
-    "--stream-final-on-silence-ms", "300",
-    "--stream-vad-merge-gap-ms", "250",
-    "--stream-length", "5000",
-    "--stream-step", "1000",
-    "--stream-partial-decode-ms", "1500",
+    "--stream-utterance-max-sec", "10",
+    "--stream-final-on-silence-ms", "500",
+    "--stream-vad-merge-gap-ms", "0",
+    "--stream-length", "7500",
+    "--stream-step", "1500",
+    "--stream-partial-decode-ms", "0",
+    "--hotwords","トワ,ヤゴオ,フブキ,スバル,ネネ,ホロライブ,ホロメン",
     "--vad",
     "-vm", "models/vad/firered-vad.gguf",
-    "-vt", "0.70",
-    "-vspd", "180",
-    "-vsd", "330",
+    "-vt", "0.50",
+    "-vspd", "200",
+    "-vsd", "200",
     "-vmsd", "10",
-    "-vp", "110"
+    "-vp", "100",
+    "--beam-size", "3"
   ],
 
   // --- 翻譯 ---
@@ -58,16 +60,16 @@
   "translate_url": "https://YOUR-COLAB-TUNNEL.trycloudflare.com/v1/chat/completions",
 
   // 用多少筆最近翻譯當上下文
-  "translate_window": 8,
+  "translate_window": 6,
 
   // 翻譯抽樣參數
-  "temperature": 0.7,
+  "temperature": 0.0,
   "top_k": 20,
-  "top_p": 0.6,
+  "top_p": 0.95,
   "repeat_penalty": 1.05,
-  "max_tokens": 4096,   // 單次輸出上限
+  "max_tokens": 2048,
 
   // 附加檔案（可選）
-  "translate_prompt_file": "",  // 自訂翻譯 prompt（檔名）
-  "glossary_file": ""          // 術語表 JSON（強制特定譯法）
+  "translate_prompt_file": "translate_prompt.txt",
+  "glossary_file": "glossary.json"
 }

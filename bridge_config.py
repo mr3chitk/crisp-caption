@@ -299,7 +299,7 @@ def parse_args(argv: list[str]) -> tuple[argparse.Namespace, list[str]]:
     p.add_argument(
         "--translate-temperature",
         type=float,
-        default=0.7,
+        default=0.0,
         help="Translation sampling temperature (default 0.7).",
     )
     p.add_argument(
@@ -311,7 +311,7 @@ def parse_args(argv: list[str]) -> tuple[argparse.Namespace, list[str]]:
     p.add_argument(
         "--translate-top-p",
         type=float,
-        default=0.6,
+        default=0.95,
         help="Translation top-p sampling value (default 0.6).",
     )
     p.add_argument(
@@ -323,7 +323,7 @@ def parse_args(argv: list[str]) -> tuple[argparse.Namespace, list[str]]:
     p.add_argument(
         "--translate-max-tokens",
         type=int,
-        default=4096,
+        default=2048,
         help="Maximum number of tokens generated per translation request (default 4096).",
     )
     p.add_argument(
