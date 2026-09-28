@@ -46,51 +46,6 @@ class RemoteAsrConfigTests(unittest.TestCase):
             expected = str((profile.parent / "../models/asr/model.gguf").resolve())
         self.assertEqual(crisp_args, ["-m", expected])
 
-    def test_overlay_interj_defaults_from_config_file(self) -> None:
-        with tempfile.TemporaryDirectory() as tmp:
-            profile = Path(tmp) / "profile.json"
-            profile.write_text(
-                json.dumps(
-                    {
-                        "crisp_args": [],
-                        "overlay_interj_len": 5,
-                        "overlay_interj_ratio": 0.3,
-                        "overlay_interj_gap_sec": 1.5,
-                    }
-                ),
-                encoding="utf-8",
-            )
-            ns, crisp_args = parse_args(["bridge_server.py", "--config", str(profile)])
-            cfg = run_config_from_ns(ns, crisp_args)
-        self.assertEqual(cfg.overlay_interj_len, 5)
-        self.assertEqual(cfg.overlay_interj_ratio, 0.3)
-        self.assertEqual(cfg.overlay_interj_gap_sec, 1.5)
-
-    def test_overlay_interj_cli_overrides_default(self) -> None:
-        ns, crisp_args = parse_args(
-            ["bridge_server.py", "--overlay-interj-len", "6", "--overlay-interj-ratio", "0.5"]
-        )
-        cfg = run_config_from_ns(ns, crisp_args)
-        self.assertEqual(cfg.overlay_interj_len, 6)
-        self.assertEqual(cfg.overlay_interj_ratio, 0.5)
-        self.assertEqual(cfg.overlay_interj_gap_sec, 2.0)
-
-    def test_overlay_mode_from_config_file(self) -> None:
-        with tempfile.TemporaryDirectory() as tmp:
-            profile = Path(tmp) / "profile.json"
-            profile.write_text(
-                json.dumps({"crisp_args": [], "overlay_mode": "source"}),
-                encoding="utf-8",
-            )
-            ns, crisp_args = parse_args(["bridge_server.py", "--config", str(profile)])
-            cfg = run_config_from_ns(ns, crisp_args)
-        self.assertEqual(cfg.overlay_mode, "source")
-
-    def test_overlay_mode_cli_overrides_default(self) -> None:
-        ns, crisp_args = parse_args(["bridge_server.py", "--overlay-mode", "source"])
-        cfg = run_config_from_ns(ns, crisp_args)
-        self.assertEqual(cfg.overlay_mode, "source")
-
 
 class CrispEventRelayTests(unittest.IsolatedAsyncioTestCase):
     async def test_final_event_enqueues_translation(self) -> None:

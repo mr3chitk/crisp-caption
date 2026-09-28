@@ -136,7 +136,6 @@ class SubtitleOverlay(QWidget):
         x: int | None,
         y: int | None,
         font_px: int | None,
-        mode: str,
         hold_sec: float,
         hold_per_char_sec: float,
         fade_sec: float,
@@ -175,7 +174,7 @@ class SubtitleOverlay(QWidget):
         self.view.setStyleSheet("background: transparent;")
         self.view.page().setBackgroundColor(QColor(0, 0, 0, 0))
         self.view.setHtml(
-            qt_overlay_html(ws_url, self.font_px, mode=mode, hold_sec=hold_sec, hold_per_char_sec=hold_per_char_sec, fade_sec=fade_sec),
+            qt_overlay_html(ws_url, self.font_px, hold_sec=hold_sec, hold_per_char_sec=hold_per_char_sec, fade_sec=fade_sec),
             QUrl("http://127.0.0.1:8765/"),
         )
 
@@ -614,12 +613,6 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         help="Main subtitle font size (default: saved config or 34).",
     )
     parser.add_argument(
-        "--mode",
-        choices=("source", "trans", "both"),
-        default="both",
-        help="Display mode: source text, translation (fallback source), or both lines.",
-    )
-    parser.add_argument(
         "--hold",
         type=float,
         default=1.5,
@@ -672,7 +665,6 @@ def main(argv: list[str]) -> int:
         x=ns.x,
         y=ns.y,
         font_px=ns.font_px,
-        mode=ns.mode,
         hold_sec=ns.hold,
         hold_per_char_sec=ns.hold_per_char,
         fade_sec=ns.fade,

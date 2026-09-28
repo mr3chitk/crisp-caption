@@ -94,25 +94,18 @@ def make_app(
     async def obs_overlay(req: web.Request) -> web.Response:
         ws_proto = "wss" if req.secure else "ws"
         q = req.query
-        mode = q.get("mode", state.overlay_mode)
-        if mode not in ("source", "trans", "both"):
-            mode = "both"
         pos = q.get("pos", "bottom")
         if pos not in ("top", "bottom"):
             pos = "bottom"
         return web.Response(
             text=obs_overlay_html(
                 f"{ws_proto}://{req.host}/ws",
-                mode=mode,
                 hold_sec=_overlay_num(q, "hold", 2.0, 0.5, 30.0),
                 hold_per_char_sec=_overlay_num(q, "hold_per_char", 0.08, 0.01, 1.0),
                 fade_sec=_overlay_num(q, "fade", 4.0, 0.0, 300.0),
                 font=_overlay_num(q, "font", 1.0, 0.5, 4.0),
                 pos=pos,
-                demo=q.get("demo") == "1",
-                interj_len=int(_overlay_num(q, "interj_len", state.overlay_interj_len, 0.0, 10.0)),
-                interj_ratio=_overlay_num(q, "interj_ratio", state.overlay_interj_ratio, 0.05, 1.0),
-                interj_gap_sec=_overlay_num(q, "interj_gap", state.overlay_interj_gap_sec, 0.0, 30.0),
+                demo=q.get("demo") == "1"
             ),
             content_type="text/html",
         )

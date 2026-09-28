@@ -112,10 +112,6 @@ class BridgeRunConfig:
     translate_bearer: str | None = None
     system_prompt: str | None = None
     glossary: dict[str, str] | None = None
-    overlay_interj_len: int = 3
-    overlay_interj_ratio: float = 0.4
-    overlay_interj_gap_sec: float = 2.0
-    overlay_mode: str = "both"
 
 CRISP_PATH_VALUE_FLAGS = frozenset({"-m", "-vm", "--model", "--vad-model", "--punc-model"})
 
@@ -145,10 +141,6 @@ BRIDGE_CONFIG_KEYS = frozenset(
         "max_tokens",
         "print_raw_crisp_events",
         "debug_timestamps",
-        "overlay_interj_len",
-        "overlay_interj_ratio",
-        "overlay_interj_gap_sec",
-        "overlay_mode",
         "no_translate",
         "translate_prompt_file",
         "glossary_file",
@@ -434,10 +426,6 @@ def run_config_from_ns(
         translate_max_tokens=ns.translate_max_tokens,
         print_raw_crisp_events=ns.print_raw_crisp_events,
         debug_timestamps=ns.debug_timestamps,
-        overlay_interj_len=int(ns.overlay_interj_len),
-        overlay_interj_ratio=float(ns.overlay_interj_ratio),
-        overlay_interj_gap_sec=float(ns.overlay_interj_gap_sec),
-        overlay_mode=str(ns.overlay_mode),
         translate_bearer=translate_bearer
         if translate_bearer is not None
         else (os.environ.get("OPENAI_API_KEY") or None),

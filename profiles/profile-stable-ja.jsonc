@@ -49,11 +49,5 @@
   "repeat_penalty": 1.05,
   "max_tokens": 2048,
   "translate_prompt_file": "translate_prompt.txt",
-  "glossary_file": "glossary.json",
-
-  // --- Overlay（字幕顯示）---
-  "overlay_mode": "both",
-  "overlay_interj_len": 150,
-  "overlay_interj_ratio": 0.3,
-  "overlay_interj_gap_sec": 10.0
+  "glossary_file": "glossary.json"
 }

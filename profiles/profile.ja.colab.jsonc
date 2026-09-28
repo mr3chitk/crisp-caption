@@ -69,11 +69,5 @@
 
   // 附加檔案（可選）
   "translate_prompt_file": "",  // 自訂翻譯 prompt（檔名）
-  "glossary_file": "",          // 術語表 JSON（強制特定譯法）
-
-  // --- Overlay（字幕顯示）---
-  "overlay_mode": "both",         // 顯示模式：source | trans | both
-  "overlay_interj_len": 3,        // 多短的尾句算插入語（字元數）
-  "overlay_interj_ratio": 0.4,    // 合併門檻（相對前句長度的比例）
-  "overlay_interj_gap_sec": 2.0   // 跟前一句最大間隔（秒）
+  "glossary_file": ""          // 術語表 JSON（強制特定譯法）
 }

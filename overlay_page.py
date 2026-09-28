@@ -5,7 +5,6 @@ def qt_overlay_html(
     ws_url: str,
     font_px: int,
     *,
-    mode: str = "both",
     hold_sec: float = 2.0,
     hold_per_char_sec: float = 0.08,
     fade_sec: float = 4.0,
@@ -37,7 +36,6 @@ def qt_overlay_html(
 def obs_overlay_html(
     ws_url: str,
     *,
-    mode: str = "both",
     hold_sec: float = 2.0,
     hold_per_char_sec: float = 0.08,
     fade_sec: float = 4.0,

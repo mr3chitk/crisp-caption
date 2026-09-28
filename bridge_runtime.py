@@ -40,10 +40,6 @@ class CrispRuntime:
 
             self.state.active_profile = cfg.profile_name
             self.state.crisp_epoch += 1
-            self.state.overlay_interj_len = cfg.overlay_interj_len
-            self.state.overlay_interj_ratio = cfg.overlay_interj_ratio
-            self.state.overlay_interj_gap_sec = cfg.overlay_interj_gap_sec
-            self.state.overlay_mode = cfg.overlay_mode
             self.state.first_pcm_mono = None
             self.state.last_audio_t = None
             self.state.crisp_status = "starting"
