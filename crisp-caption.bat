@@ -123,8 +123,7 @@ if not exist ".venv\Scripts\python.exe" (
 
 set "TRANSLATOR_PATH=C:\Users\PC\LLM-simple\4.translation.bat"
 if exist "%TRANSLATOR_PATH%" (
-    echo [LLM] Starting Translator...
-    start /min "Translator" cmd /c "%TRANSLATOR_PATH%"
+  start /min "Translator" cmd /c "%TRANSLATOR_PATH%"
 ) else (
   set "LLAMA_SERVER=tools\llama.cpp\llama-server.exe"
   set "MODEL=models\translation\gemma-4-E4B-it-qat-UD-Q4_K_XL.gguf"
@@ -154,9 +153,9 @@ if exist "%TRANSLATOR_PATH%" (
   ) else (
     set "LLAMA_CMD=%LLAMA_SERVER% -dev Vulkan0 %COMMON%"
   )
-  echo Starting translation server in a new window (backend=%BACKEND%)...
   start "crisp-caption translation" cmd /k "%LLAMA_CMD%"
 )
+
 REM start "" http://127.0.0.1:8765/
 call scripts\_run_py.bat bridge_server.py
 pause
