@@ -6,7 +6,7 @@ def qt_overlay_html(
     font_px: int,
     *,
     hold_sec: float = 2.0,
-    hold_per_char_sec: float = 0.08,
+    hold_per_char_sec: float = 0.04,
     fade_sec: float = 4.0,
 ) -> str:
     return subtitle_overlay_html(
@@ -37,7 +37,7 @@ def obs_overlay_html(
     ws_url: str,
     *,
     hold_sec: float = 2.0,
-    hold_per_char_sec: float = 0.08,
+    hold_per_char_sec: float = 0.04,
     fade_sec: float = 4.0,
     font: float = 1.0,
     pos: str = "bottom",
@@ -301,8 +301,8 @@ body {{
 
     const now = Date.now();
     if (mainShownAt > 0) {{
-      let startTimeD = mainShownAt + opts.holdMs + (opts.holdPerCharMs*displayed.main.length);
-      let startTimeP = pendingQueue.reduce((m, e) => Math.max(m, e.fireAt + opts.holdMs + (opts.holdPerCharMs*e.msg.main.length)), 0);
+      let startTimeD = mainShownAt + opts.holdMs + (opts.holdPerCharMs*displayed.trans.length);
+      let startTimeP = pendingQueue.reduce((m, e) => Math.max(m, e.fireAt + opts.holdMs + (opts.holdPerCharMs*e.msg.trans.length)), 0);
       let startTime = Math.max(startTimeD,startTimeP);
       if(now < startTime) {{
         schedulePending(d, startTime, now);
