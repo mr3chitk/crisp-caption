@@ -621,8 +621,8 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument(
         "--hold_per_char",
         type=float,
-        default=0.035,
-        help="Extra second per character in main text.",
+        default=0.03,
+        help="Extra second per character in translated text.",
     )
     parser.add_argument(
         "--fade",
