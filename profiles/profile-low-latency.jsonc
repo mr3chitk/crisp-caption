@@ -27,6 +27,7 @@
     "--stream-length", "7500",
     "--stream-step", "1500",
     "--stream-partial-decode-ms", "0",
+    "--frequency-penalty", "0.2",
     "--hotwords-file","hotwords.txt",
     "--vad",
     "-vm", "../models/vad/firered-vad.gguf",
