@@ -82,6 +82,9 @@ class LocalCrispAsrBackend:
         self.state.last_error = ""
         await broadcast_health(self.state)
 
+        env = os.environ.copy()
+        # env["CRISPASR_KV_QUANT"] = "q8_0"
+
         self.proc = await asyncio.create_subprocess_exec(
             *cmd,
             stdin=asyncio.subprocess.PIPE,
@@ -89,6 +92,7 @@ class LocalCrispAsrBackend:
             stderr=stderr_arg,
             cwd=cwd,
             limit=1024 * 1024,
+            env=env,
         )
 
         self.tasks = [
