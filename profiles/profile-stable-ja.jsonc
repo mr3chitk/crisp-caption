@@ -34,9 +34,10 @@
     "-vm", "../models/vad/firered-vad.gguf",
     "-vt", "0.50",
     "-vspd", "200",
-    "-vsd", "200",
+    "-vsd", "500",
     "-vmsd", "30",
-    "-vp", "100"
+    "-vp", "100",
+    "--seed", "1"
   ],
 
   // --- 翻譯 ---
@@ -49,5 +50,5 @@
   "repeat_penalty": 1.05,
   "max_tokens": 2048,
   "translate_prompt_file": "translate_prompt.txt",
-  "glossary_file": "glossary.json"
+  "glossary_file": ""
 }

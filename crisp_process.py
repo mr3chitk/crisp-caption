@@ -182,7 +182,7 @@ SAMPLE_RATE = 16000
 # PowerShell quoting mistakes occasionally produce ONE argv whose value looks like "--flag value".
 _MERGED_LONG_FLAG_NUM = re.compile(
     r"^--(?P<flag>stream-length|stream-step|stream-keep|stream-final-on-silence-ms|stream-utterance-max-sec|"
-    r"stream-final-mode|flush-after|max-new-tokens|chunk-seconds|stream-partial-decode-ms|hotwords-file|beam-size|"
+    r"stream-final-mode|flush-after|max-new-tokens|chunk-seconds|stream-partial-decode-ms|hotwords-file|beam-size|seed|"
     r"tts-steps|tts-max-input-chars|vad-min-speech-duration-ms|vad-min-silence-duration-ms|vad-speech-pad-ms|frequency-penalty|"
     r"vad-max-speech-duration-s|vad-samples-overlap|vad-threshold)\s+(?P<val>\S.+)$",
     re.IGNORECASE,

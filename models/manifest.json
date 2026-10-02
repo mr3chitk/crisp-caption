@@ -3,8 +3,8 @@
     {
       "name": "Cohere Japanese ASR model",
       "path": "models/asr/cohere-asr-ja-q6_k.gguf",
-      "url": "https://huggingface.co/CKHO/cohere-asr-ja-GGUF/resolve/main/cohere-asr-ja-q5_0.gguf",
-      "sha256": "135e62208f042a9304a1ac42f43e9c0e81cb9f89b666b89495e63adc1291a722"
+      "url": "https://huggingface.co/CKHO/cohere-asr-ja-GGUF/resolve/main/cohere-asr-ja-q6_k.gguf",
+      "sha256": "7387d3a40011fd9517d67e242a3a41eaa015c45b93eacaff771e7870a50c349e"
     },
     {
       "name": "FireRed VAD model",
