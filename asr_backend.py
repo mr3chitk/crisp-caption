@@ -83,7 +83,7 @@ class LocalCrispAsrBackend:
         await broadcast_health(self.state)
 
         env = os.environ.copy()
-        # env["CRISPASR_KV_QUANT"] = "q8_0"
+        env["CRISPASR_KV_QUANT"] = "q8_0"
 
         self.proc = await asyncio.create_subprocess_exec(
             *cmd,

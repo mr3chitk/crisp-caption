@@ -1,10 +1,10 @@
 {
   "artifacts": [
     {
-      "name": "Cohere Japanese ASR model",
-      "path": "models/asr/cohere-asr-ja-q6_k.gguf",
-      "url": "https://huggingface.co/CKHO/cohere-asr-ja-GGUF/resolve/main/cohere-asr-ja-q6_k.gguf",
-      "sha256": "7387d3a40011fd9517d67e242a3a41eaa015c45b93eacaff771e7870a50c349e"
+      "name": "qwen3-asr-1.7b-q4_k.gguf",
+      "path": "models/asr/qwen3-asr-1.7b-q4_k.gguf",
+      "url": "https://huggingface.co/cstr/qwen3-asr-1.7b-GGUF/resolve/main/qwen3-asr-1.7b-q4_k.gguf",
+      "sha256": "ec197cef7ccc589fdcae1becc3f4a3de119d0a41e790b898b519b1a048dad8d4"
     },
     {
       "name": "FireRed VAD model",

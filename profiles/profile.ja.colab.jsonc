@@ -30,16 +30,16 @@
   // 注意：遠端模式路徑不以 ../ 開頭（在 Colab 根目錄解析）
   // 以下參數與本機 profile-stable-ja.jsonc 一致（T4 適用）
   "crisp_args": [
-    "--backend", "cohere",
+    "--backend", "qwen3",
     "-l", "ja",
-    "-m", "models/asr/cohere-asr-ja-q6_k.gguf",
+    "-m", "models/asr/qwen3-asr-1.7b-q4_k.gguf",
     "--stream-json",
     "--stream-final-mode", "redecode",
     "--stream-utterance-max-sec", "10",
     "--stream-final-on-silence-ms", "500",
     "--stream-vad-merge-gap-ms", "0",
     "--stream-length", "7500",
-    "--stream-step", "1500",
+    "--stream-step", "2000",
     "--stream-partial-decode-ms", "0",
     "--frequency-penalty", "0.2",
     "--hotwords-file","hotwords.txt",

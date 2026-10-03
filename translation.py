@@ -20,7 +20,7 @@ def build_glossary_text(glossary: dict[str, str]) -> str:
     if not glossary:
         return ""
     lines = "\n".join(f"- {k} => {v}." for k, v in glossary.items())
-    return f"Glossary (MUST use but ONLY on matching words in translating text): \n{lines}"
+    return f"Glossary (use but ONLY on matching words in translating text): \n{lines}"
 
 
 def clean_translation_output(text: str) -> str:
@@ -41,7 +41,7 @@ def build_user_message(
         context_blocks.append(build_glossary_text(glossary))
     if history:
         history_lines = [
-            f"   - {orig}" for idx, (orig, trans) in enumerate(history, start=1)
+            f"    - {orig}" for idx, (orig, trans) in enumerate(history, start=1)
             # f"{idx}. Original: {orig}\n   Translation: {trans}" for idx, (orig, trans) in enumerate(history, start=1)
         ]
         context_blocks.append(
