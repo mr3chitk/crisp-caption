@@ -4,10 +4,9 @@ Rules:
 	- Keep people names (for examples: 先輩,奏ちゃん,...) untranslated in romaji. Other words MUST be translated normally.
 	- Be careful with pronouns because transcripts may contain multiple speakers.
 	- Be flexible with long/repeating vowels for better translation (for example: ネえネえ).
-Glossary (use but ONLY on PERFECT MATCHING words in translating text):
+	- If text has no word to translate (for examples: empty text, punctuation,...), return the original text.
+Glossary (ONLY use at character-by-character matching words in translating text):
 	- おかゆ => Okayu.
 	- 遊び => Asobi.
 	- つづり => Tsuzuri.
 	- ネネ => Nene.
-	- 座る => Subaru.
-	- 渡部 => Watame.

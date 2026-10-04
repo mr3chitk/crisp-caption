@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 def build_glossary_text(glossary: dict[str, str]) -> str:
     if not glossary:
         return ""
-    lines = "\n".join(f"- {k} => {v}." for k, v in glossary.items())
+    lines = "\n".join(f"    - {k} => {v}." for k, v in glossary.items())
     return f"Glossary (use but ONLY on matching words in translating text): \n{lines}"
 
 
@@ -45,12 +45,12 @@ def build_user_message(
             # f"{idx}. Original: {orig}\n   Translation: {trans}" for idx, (orig, trans) in enumerate(history, start=1)
         ]
         context_blocks.append(
-            "Previous context (use to improve new translation, do not retranslate):\n" + "\n".join(history_lines)
+            "Previous context (use to improve new translation, do NOT re-translate):\n" + "\n".join(history_lines)
         )
     prefix = ("\n\n".join(context_blocks) + "\n\n") if context_blocks else ""
     return (
         f"{prefix}"
-        f"Translate the following text to {target_lang}:\n"
+        f"Translate the following text ONLY to {target_lang}:\n"
         f"{text}"
     )
 

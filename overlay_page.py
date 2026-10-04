@@ -12,16 +12,17 @@ def qt_overlay_html(
     return subtitle_overlay_html(
         ws_url=ws_url,
         body_css="align-items: start; display: grid; padding: 8px 8px 8px;",
-        main_font=f"{font_px}px",
-        partial_font=f"{max(16, round(font_px * 1))}px",
-        trans_font=f"{max(16, round(font_px * 1))}px",
+        main_font=f"{max(16, round(font_px * 0.85))}px",
+        partial_font=f"{max(16, round(font_px * 0.7))}px",
+        trans_font=f"{max(16, round(font_px * 1.0))}px",
         main_weight="650",
         main_line_height="1.2",
+        main_margin_top="12px",
         partial_weight="650",
         partial_line_height="1.2",
-        partial_margin_top="8px",
+        partial_margin_top="12px",
         trans_weight="650",
-        trans_margin_top="8px",
+        trans_margin_top="4px",
         status_font="22px",
         status_weight="650",
         initial_status="",
@@ -56,6 +57,7 @@ def obs_overlay_html(
         trans_font=f"clamp({24 * font:.0f}px, {3.4 * font:.2f}vw, {48 * font:.0f}px)",
         main_weight="780",
         main_line_height="1.28",
+        main_margin_top="10px",
         partial_weight="650",
         partial_line_height="1.32",
         partial_margin_top="10px",
@@ -82,6 +84,7 @@ def subtitle_overlay_html(
     trans_font: str,
     main_weight: str,
     main_line_height: str,
+    main_margin_top: str,
     partial_weight: str,
     partial_line_height: str,
     partial_margin_top: str,
@@ -95,6 +98,7 @@ def subtitle_overlay_html(
     hold_sec: float,
     hold_per_char_sec: float,
     fade_sec: float,
+    show_partial: bool = False,
     demo: bool = False,
 ) -> str:
     render_delay_ms = 650 if show_connected_briefly else 0
@@ -102,6 +106,7 @@ def subtitle_overlay_html(
     hold_per_char_ms = round(hold_per_char_sec * 1000)
     fade_ms = round(fade_sec * 1000)
     demo_js = "true" if demo else "false"
+    show_partial_js = "true" if show_partial else "false"
     return f"""<!doctype html>
 <html>
 <head>
@@ -142,16 +147,13 @@ body {{
   opacity: 0;
 }}
 #main {{
-  display: -webkit-box;
   color: rgba(210, 210, 210, 1);
   font-size: {main_font};
   font-weight: {main_weight};
   line-height: {main_line_height};
   min-height: {main_line_height}em;
-  overflow: hidden;
+  margin-top: {main_margin_top};
   overflow-wrap: anywhere;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
 }}
 #trans {{
   color: rgba(255, 255, 255, 1);
@@ -160,11 +162,10 @@ body {{
   line-height: {main_line_height};
   min-height: {main_line_height}em;
   margin-top: {trans_margin_top};
-  overflow: hidden;
   overflow-wrap: anywhere;
 }}
 #partial {{
-  color: rgba(170, 170, 170, 1);
+  color: rgba(210, 210, 210, 1);
   font-size: {partial_font};
   font-style: italic;
   font-weight: {partial_weight};
@@ -201,6 +202,7 @@ body {{
     holdPerCharMs: {hold_per_char_ms},
     fadeMs: {fade_ms},
     demo: {demo_js},
+    showPartial: {show_partial_js},
   }};
   const status = document.getElementById('status');
   const mainLine = document.getElementById('main');
@@ -232,7 +234,8 @@ body {{
     const finals = rows.filter((r) => r.kind === 'final' && r.text && r.translation);
     let translatedRow = null;
     if (finals.length > 0) {{ translatedRow = finals[finals.length - 1]; }}
-    const partialRow = null; //rows.slice().reverse().find((row) => row.kind === 'partial' && row.text);
+    let partialRow = null;
+    if (opts.showPartial) {{ partialRow = rows.slice().reverse().find((row) => row.kind === 'partial' && row.text); }}
     return {{
       main: translatedRow?.text || '',
       trans: translatedRow?.translation || '',

@@ -1,3 +1,9 @@
+# WHAT'S NEW?
+- Qwen3 is the default asr (with q8 kv)
+- Improve overlay (NOTE: partial overlay is disabled by default. enable it via subtitle_overlay_html(show_partial) in overlay_page.py, you will need a better --stream-step.)
+- Improve configs/prompts focusing on JP-EN pipeline stability (NOTE: Current location of glossary is in system prompt. Also hotwords are for my usage.)
+- Recommended translator is moe gemma 26b (fits 6G VRAM + 24G RAM) or an equivalent model. Gemma e4b is shipped by default via fallback.
+
 # crisp-caption
 
 **Read this in another language:** [繁體中文](README.zh-TW.md) | English

@@ -9,7 +9,7 @@
     {
       "name": "FireRed VAD model",
       "path": "models/vad/firered-vad.gguf",
-      "url": "https://huggingface.co/cstr/firered-vad-GGUF/resolve/aa92f55584d0fa37b9aae9a9c10bee275a0af240/firered-vad.gguf",
+      "url": "https://huggingface.co/cstr/firered-vad-GGUF/resolve/main/firered-vad.gguf",
       "sha256": "72d37db1a5d2a9db386d1452b3f54d13f97bea79710105fc65acd050ea7db600"
     },
     {
